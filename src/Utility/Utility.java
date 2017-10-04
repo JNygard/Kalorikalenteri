@@ -28,5 +28,19 @@ public class Utility {
 		
 		return i;
 	}
+	
+	public static void printNL(int times) {
+		int x=0;
+		while(x<times) {
+			System.out.print("\n");
+			x++;
+		}
+	}
+	
+	public static void printString(String s) {
+		System.out.print(s);
+	}
+	
+	
 
 }

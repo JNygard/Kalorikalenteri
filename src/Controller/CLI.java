@@ -22,36 +22,46 @@ public class CLI {
 	
 	public void start() {
 		controlLoop();
+		System.out.println("End");
 	}
 	
 	
 	public void controlLoop() {
-		int option = 0;
+		int option = 10;
 		
 		do {
-			option = Utility.askInt("1: Add food/100g \n9: Quit \n");
+			option = Utility.askInt("\n"
+					+ "0: Quit \n"
+					+ "1: Add food/100g\n"
+					+ "2: Print foods/100g\n"
+					+ "3: \n"
+					+ "4: \n"
+					+ "5: \n"
+					+ ">");
 			
 			switch(option) {
 				case 0:
-					
-					break;
+					return;
 				case 1:
 					addFood100g();
 					break;
-			
-			
+				case 2:
+					printFoods();
+					break;
+				case 3:
+					
+					break;
 			
 			}
-			
-			
-			
-		}while(option!=9);
+		
+		}while(option!=0);
 		
 		
 	}
 	
 	
 	
+	//Add new
 	public void addFood100g() {
 		Food100g f = new Food100g();
 		String name;
@@ -62,6 +72,14 @@ public class CLI {
 		
 		af100.add(f);
 	}
+	
+	//Print all
+	public void printFoods() {
+		for(Food100g f : af100.getAll()) {
+			Utility.printString(f.getName() + ", " + f.getKcal() + " kcal \n");
+		}
+	}
+	
 	
 	public void addFood() {
 		
