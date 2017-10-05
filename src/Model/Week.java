@@ -1,16 +1,15 @@
 package Model;
 
-public class Meal {
-	
+public class Week {
+
 	private int id;
 	private String name;
-
-	public Meal() {
+	
+	public Week() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Meal(int id, String name) {
-		super();
+	public Week(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
@@ -30,7 +29,7 @@ public class Meal {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	
 
 }

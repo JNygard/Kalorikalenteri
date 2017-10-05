@@ -1,5 +1,9 @@
 package Utility;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Utility {
@@ -41,6 +45,22 @@ public class Utility {
 		System.out.print(s);
 	}
 	
+	public static String dateToString(Date d) {
+        DateFormat ogFormat = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+        String s = null;
+        s = ogFormat.format(d);
+        
+        return s;
+	}
 	
+	public static Date stringToDate(String s) {
+        DateFormat ogFormat = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+        Date d = null;
+        try {
+            d = (Date) ogFormat.parse(s);
+        } catch (ParseException e) {e.printStackTrace();}
+        
+        return d;
+	}
 
 }

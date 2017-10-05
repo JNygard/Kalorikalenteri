@@ -1,20 +1,28 @@
 package Model;
 
+import java.sql.Date;
+
 public class MealTime {
 	
 	private int id;
-	private int meal_id;
-	private String time;
+	private Meal meal;
+	private Date time;
 
 	public MealTime() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MealTime(int id, int meal_id, String time) {
+	
+	
+
+	public MealTime(int id, Meal meal, Date time) {
 		this.id = id;
-		this.meal_id = meal_id;
+		this.meal = meal;
 		this.time = time;
 	}
+
+
+
 
 	public int getId() {
 		return id;
@@ -24,21 +32,38 @@ public class MealTime {
 		this.id = id;
 	}
 
-	public int getMeal_id() {
-		return meal_id;
+
+	
+
+	public Meal getMeal() {
+		return meal;
 	}
 
-	public void setMeal_id(int meal_id) {
-		this.meal_id = meal_id;
+
+
+
+	public void setMeal(Meal meal) {
+		this.meal = meal;
 	}
 
-	public String getTime() {
+
+
+
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(String time) {
+
+
+
+	public void setTime(Date time) {
 		this.time = time;
 	}
+
+
+
+
+	
 	
 	
 	

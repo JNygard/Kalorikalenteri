@@ -3,7 +3,9 @@ package Controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import DB.AdapterFood;
 import DB.AdapterFood100g;
+import DB.AdapterMeal;
 import Model.Food;
 import Model.Food100g;
 import Model.Meal;
@@ -14,10 +16,14 @@ public class CLI {
 	
 	
 	AdapterFood100g af100;
+	AdapterFood afood;
+	AdapterMeal ameal;
 	
 	//Constructor
 	public CLI() {
 		af100 = new AdapterFood100g();
+		afood = new AdapterFood();
+		ameal = new AdapterMeal();
 	}
 	
 	public void start() {
@@ -26,30 +32,45 @@ public class CLI {
 	}
 	
 	
+	//Main loop
 	public void controlLoop() {
 		int option = 10;
 		
 		do {
+			Utility.printString("\n----------Menu----------------");
 			option = Utility.askInt("\n"
 					+ "0: Quit \n"
-					+ "1: Add food/100g\n"
-					+ "2: Print foods/100g\n"
-					+ "3: \n"
-					+ "4: \n"
-					+ "5: \n"
+					+ "--------------------\n"
+					+ "1: Print foods/100g/100g\n"
+					+ "2: Add food\n"
+					+ "3: Delete food/100g\n"
+					+ "--------------------\n"
+					+ "4: Print meals\n"
+					+ "5: Add meal\n"
+					+ "6: Delete meal\n"
+					+ "--------------------\n"
 					+ ">");
 			
 			switch(option) {
 				case 0:
 					return;
 				case 1:
-					addFood100g();
+					printFoods100g();
 					break;
 				case 2:
-					printFoods();
+					addFood100g();
 					break;
 				case 3:
-					
+					deleteFood100g();
+					break;
+				case 4:
+					printMeals();
+					break;
+				case 5:
+					addMeal();
+					break;
+				case 6:
+					deleteMeal();
 					break;
 			
 			}
@@ -59,9 +80,104 @@ public class CLI {
 		
 	}
 	
+	//---------------Meal START-------------------------------------
 	
+	//Add meal
+	private void addMeal() {
+		Meal m = new Meal();
+		//ArrayList<Food> foods = new ArrayList();
+		
+		Utility.printString("-------Making new meal item-------\n");
+		
+		//Create new meal
+		String name = Utility.askString("Meal name: ");
+		m = new Meal(0, name);
+		
+		m = ameal.add(m);
+		
+		
+		int option = 10;
+		do {
+			option = Utility.askInt("0: End \n"
+					+ "1: Add new food item to meal \n"
+					+ ">");
+			switch(option){
+				
+				case 0:
+					return;
+				case 1:
+					addFood(m.getId());
+					break;
+			}
+		}while(option!=0);
+		
+		
+	}
+
+
+
+	//Delete meal
+	private void deleteMeal() {
+		
+	}
+
+	//Print meals
+	private void printMeals() {
+		Utility.printString("--------Printing all meals-----------\n");
+		for(Meal m : ameal.getAll()) {
+			printMeal(m);
+			Utility.printNL(1);
+		}
+		Utility.printNL(1);
+	}
 	
-	//Add new
+	//Print meal
+	private void printMeal(Meal m) {
+
+		int mealKcals = 0;
+		
+		//Calculate meal kcals
+		for(Food f : afood.getAll(m.getId())) {
+			int kcals = f.getFood100g().getKcal() * f.getGrams();
+			kcals = kcals/100;
+			mealKcals+=kcals;
+		}
+		Utility.printString(m.getName() + "(" + mealKcals + " Kcals)" +": \n");
+		
+		//Print foods
+		for(Food f : afood.getAll(m.getId())) {
+			int kcals = f.getFood100g().getKcal() * f.getGrams();
+			kcals = kcals/100;
+			Utility.printString(" " + f.getGrams() + "g " +  f.getFood100g().getName() + " = " + kcals + " Kcal\n");
+		}
+		
+		
+	}
+	
+	//---------------Meal END-------------------------------------
+	//--------------Food Start------------------------------------
+	
+	//Add food
+	private void addFood(int mid) {
+		printFoods100g();
+		int f100ID = Utility.askInt("Food/100g id(from list above): ");
+		int grams = Utility.askInt("Amount (g): ");
+		afood.add(new Food(0,af100.get(f100ID),grams, ameal.get(mid)));
+		
+	}
+	
+	//Delete food
+	private void deleteFood() {
+		
+		int id = Utility.askInt("Delete food id: ");
+		afood.delete(id);
+		
+	}
+	
+	//--------------Food END------------------------------------
+	//--------------Food/100g START-------------------------------------
+	
+	//Add new food!100g
 	public void addFood100g() {
 		Food100g f = new Food100g();
 		String name;
@@ -73,26 +189,24 @@ public class CLI {
 		af100.add(f);
 	}
 	
+	//Delete food/100g
+	public void deleteFood100g() {
+		int id = Utility.askInt("ID: ");
+		af100.delete(id);
+	}
+	
 	//Print all
-	public void printFoods() {
+	public void printFoods100g() {
+		Utility.printString("----------Printing foods/100g----------------\n");
 		for(Food100g f : af100.getAll()) {
-			Utility.printString(f.getName() + ", " + f.getKcal() + " kcal \n");
+			Utility.printString(f.getId() + ": " + f.getName() + ", " + f.getKcal() + " kcal \n");
 		}
 	}
 	
-	
-	public void addFood() {
-		
-	}
-	
-	public void addMeal() {
-		
-	}
+	//--------------Food/100g END-------------------------------------
 	
 	
-	public void addmealTime() {
-		
-	}
+
 	
 	
 
