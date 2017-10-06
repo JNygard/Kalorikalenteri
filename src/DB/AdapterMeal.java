@@ -13,6 +13,8 @@ public class AdapterMeal {
 
 	Connection conn;
 	String TB_1 = "meal";
+	
+	static AdapterFood afood = new AdapterFood();
 
 	public AdapterMeal() {
 		conn = SQLiteConnection.dbConnector();
@@ -29,7 +31,7 @@ public class AdapterMeal {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new Meal(rs.getInt(1), rs.getString(2));
+				f = new Meal(rs.getInt(1), rs.getString(2), afood.getAll(rs.getInt(1)));
 			}
 			
 			rs.close();
@@ -52,7 +54,7 @@ public class AdapterMeal {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new Meal(rs.getInt(1), rs.getString(2));
+				f = new Meal(rs.getInt(1), rs.getString(2), afood.getAll(rs.getInt(1)));
 				meals.add(f);
 			}
 			
@@ -96,8 +98,13 @@ public class AdapterMeal {
 			PreparedStatement pst = conn.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			
+			ArrayList<Food> foods=null;
+			if(afood.getAll(rs.getInt(1))!=null) {
+				foods =  afood.getAll(rs.getInt(1));
+			}
+			
 			while(rs.next()) {
-				f = new Meal(rs.getInt(1), rs.getString(2));
+				f = new Meal(rs.getInt(1), rs.getString(2), foods);
 			}
 			
 			rs.close();

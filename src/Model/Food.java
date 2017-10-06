@@ -5,7 +5,7 @@ public class Food {
 	private int id;
 	private Food100g food100g;
 	private int grams;
-	private Meal meal;
+	private int meal_id;
 
 	public Food() {
 		// TODO Auto-generated constructor stub
@@ -14,12 +14,11 @@ public class Food {
 	
 	
 
-	public Food(int id, Food100g food100g, int grams, Meal meal) {
-
+	public Food(int id, Food100g food100g, int grams, int meal_id) {
 		this.id = id;
 		this.food100g = food100g;
 		this.grams = grams;
-		this.meal = meal;
+		this.meal_id = meal_id;
 	}
 
 
@@ -49,13 +48,21 @@ public class Food {
 		this.grams = grams;
 	}
 
-	public Meal getMeal() {
-		return meal;
+
+
+
+	public int getMeal_id() {
+		return meal_id;
 	}
 
-	public void setMeal(Meal meal) {
-		this.meal = meal;
+
+
+
+	public void setMeal_id(int meal_id) {
+		this.meal_id = meal_id;
 	}
+
+	
 	
 	
 	

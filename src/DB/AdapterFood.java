@@ -14,13 +14,11 @@ public class AdapterFood {
 	Connection conn;
 	String TB_1 = "food";
 	
-	AdapterFood100g af100;
-	AdapterMeal aMeal;
+	static AdapterFood100g af100 = new AdapterFood100g();
+	static AdapterMeal aMeal = new AdapterMeal();
 
 	public AdapterFood() {
 		conn = SQLiteConnection.dbConnector();
-		af100 = new AdapterFood100g();
-		aMeal = new AdapterMeal();
 	}
 	
 	
@@ -34,7 +32,7 @@ public class AdapterFood {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new Food(rs.getInt(1), af100.get(rs.getInt(2)), rs.getInt(3), aMeal.get(rs.getInt(4)));
+				f = new Food(rs.getInt(1), af100.get(rs.getInt(2)), rs.getInt(3), rs.getInt(4));
 			}
 			
 			rs.close();
@@ -62,7 +60,7 @@ public class AdapterFood {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new Food(rs.getInt(1), af100.get(rs.getInt(2)), rs.getInt(3), aMeal.get(rs.getInt(4)));
+				f = new Food(rs.getInt(1), af100.get(rs.getInt(2)), rs.getInt(3), rs.getInt(4));
 				foods.add(f);
 			}
 			
@@ -85,7 +83,7 @@ public class AdapterFood {
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, f.getFood100g().getId());
 			pst.setInt(2, f.getGrams());
-			pst.setInt(3, f.getMeal().getId());
+			pst.setInt(3, f.getMeal_id());
 			
 			pst.execute();
 			pst.close();
@@ -103,7 +101,7 @@ public class AdapterFood {
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, f.getFood100g().getId());
 			pst.setInt(2, f.getGrams());
-			pst.setInt(3, f.getMeal().getId());
+			pst.setInt(3, f.getMeal_id());
 			pst.setInt(4, f.getId());
 			
 			pst.execute();

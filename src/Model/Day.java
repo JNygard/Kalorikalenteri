@@ -23,7 +23,6 @@ public class Day {
 	
 	
 	public Day(int id, int day, int week_id, ArrayList<MealTime> mealTimes) {
-		super();
 		this.id = id;
 		this.day = day;
 		this.week_id = week_id;

@@ -1,7 +1,7 @@
 package DB;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,11 +19,10 @@ public class AdapterMealTime {
 	Connection conn;
 	String TB_1 = "meal_time";
 	
-	AdapterMeal ameal;
+	static AdapterMeal ameal = new AdapterMeal();
 
 	public AdapterMealTime() {
 		conn = SQLiteConnection.dbConnector();
-		ameal = new AdapterMeal();
 	}
 	
 	
@@ -37,7 +36,10 @@ public class AdapterMealTime {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), Utility.stringToDate(rs.getString(3)));
+				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), 
+						Utility.stringToDate(rs.getString(3)),
+						rs.getInt(4)
+						);
 			}
 			
 			rs.close();
@@ -65,7 +67,8 @@ public class AdapterMealTime {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), Utility.stringToDate(rs.getString(3)));
+				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), Utility.stringToDate(rs.getString(3)),
+						rs.getInt(4));
 				meals.add(f);
 			}
 			
@@ -83,11 +86,12 @@ public class AdapterMealTime {
 	public MealTime add(MealTime f) {
 		
 		try {
-			String sql = "INSERT INTO " + TB_1 + " (meal_id, time) "
-					+ " VALUES (?, ?)";
+			String sql = "INSERT INTO " + TB_1 + " (meal_id, time, day_id) "
+					+ " VALUES (?, ?, ?)";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, f.getMeal().getId());
 			pst.setString(2, Utility.dateToString(f.getTime()));
+			pst.setInt(3, f.getDay_id());
 			
 			
 			pst.execute();
@@ -111,7 +115,8 @@ public class AdapterMealTime {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), Utility.stringToDate(rs.getString(3)));
+				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), Utility.stringToDate(rs.getString(3)),
+						rs.getInt(4));
 			}
 			
 			rs.close();

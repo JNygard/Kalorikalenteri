@@ -15,16 +15,11 @@ import Utility.Utility;
 public class CLI {
 	
 	
-	AdapterFood100g af100;
-	AdapterFood afood;
-	AdapterMeal ameal;
+	static AdapterFood100g af100= new AdapterFood100g();
+	static AdapterFood afood= new AdapterFood();
+	static AdapterMeal ameal= new AdapterMeal();
 	
-	//Constructor
-	public CLI() {
-		af100 = new AdapterFood100g();
-		afood = new AdapterFood();
-		ameal = new AdapterMeal();
-	}
+
 	
 	public void start() {
 		controlLoop();
@@ -130,7 +125,7 @@ public class CLI {
 	}
 
 	//Print meals
-	private void printMeals() {
+	public static void printMeals() {
 		Utility.printString("--------Printing all meals-----------\n");
 		for(Meal m : ameal.getAll()) {
 			printMeal(m);
@@ -139,8 +134,17 @@ public class CLI {
 		Utility.printNL(1);
 	}
 	
+	//Print meal titles
+	public static void printMealTitles() {
+		Utility.printString("--------Meal titles-----------\n");
+		for(Meal m : ameal.getAll()) {
+			Utility.printString(m.getId() + ": " + m.getName() + "\n");
+		}
+		Utility.printNL(1);
+	}
+	
 	//Print meal
-	private void printMeal(Meal m) {
+	public static void printMeal(Meal m) {
 
 		int mealKcals = 0;
 		
@@ -170,7 +174,7 @@ public class CLI {
 		printFoods100g();
 		int f100ID = Utility.askInt("Food/100g id(from list above): ");
 		int grams = Utility.askInt("Amount (g): ");
-		afood.add(new Food(0,af100.get(f100ID),grams, ameal.get(mid)));
+		afood.add(new Food(0,af100.get(f100ID),grams, mid));
 		
 	}
 	
@@ -204,7 +208,7 @@ public class CLI {
 	}
 	
 	//Print all
-	public void printFoods100g() {
+	public static void printFoods100g() {
 		Utility.printString("----------Printing foods/100g----------------\n");
 		for(Food100g f : af100.getAll()) {
 			Utility.printString(f.getId() + ": " + f.getName() + ", " + f.getKcal() + " kcal \n");

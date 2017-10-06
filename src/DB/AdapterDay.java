@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Model.Day;
+import Model.MealTime;
 import Model.Week;
 
 public class AdapterDay {
@@ -14,11 +15,10 @@ public class AdapterDay {
 	Connection conn;
 	String TB_1 = "day";
 	
-	AdapterMealTime amt;
+	static AdapterMealTime amt= new AdapterMealTime();
 
 	public AdapterDay() {
 		conn = SQLiteConnection.dbConnector();
-		amt = new AdapterMealTime();
 	}
 	
 	
@@ -81,7 +81,7 @@ public class AdapterDay {
 		
 		try {
 			String sql = "INSERT INTO " + TB_1 + " (day, week_id) "
-					+ " VALUES (?)";
+					+ " VALUES (?,?)";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, f.getDay());
 			pst.setInt(2, f.getWeek_id());
@@ -107,9 +107,14 @@ public class AdapterDay {
 			PreparedStatement pst = conn.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			
+			ArrayList<MealTime> mealTimes = null;
+			if(amt.getAll(rs.getInt(1))!=null) {
+				mealTimes = amt.getAll(rs.getInt(1));
+			}
+			
 			while(rs.next()) {
 				f = new Day(rs.getInt(1),rs.getInt(2),rs.getInt(3),
-						amt.getAll(rs.getInt(1)));
+						mealTimes);
 			}
 			
 			rs.close();

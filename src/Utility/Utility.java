@@ -1,6 +1,6 @@
 package Utility;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -61,6 +61,45 @@ public class Utility {
         } catch (ParseException e) {e.printStackTrace();}
         
         return d;
+	}
+	
+	public static String dateToPresentable(Date d) {
+        DateFormat ogFormat = new SimpleDateFormat("HH:mm");
+        String s = null;
+        s = ogFormat.format(d);
+        
+        return s;
+	}
+	
+	public static String weekDayToString(int i) {
+		switch(i){
+			case 1:
+				
+				return "Monday";
+			case 2:
+				
+				return "Tuesday";
+			case 3:
+				
+				return "Wednesday";
+			case 4:
+				
+				return "Thursday";
+			case 5:
+				
+				return "Friday";
+			case 6:
+				
+				return "Saturday";
+			case 7:
+				
+				return "Sunday";
+			
+			
+		}
+		
+		return null;
+		
 	}
 
 }

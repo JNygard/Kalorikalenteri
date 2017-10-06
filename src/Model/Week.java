@@ -68,6 +68,17 @@ public class Week {
 		this.days = days;
 	}
 
+	
+	public Day getDay(int i) {
+		
+		for(Day d: days){
+			if(d.getDay()==i) {
+				return d;
+			}
+		}
+		
+		return null;
+	}
 
 	
 

@@ -15,11 +15,10 @@ public class AdapterWeek {
 	Connection conn;
 	String TB_1 = "week";
 	
-	AdapterDay aDay;
+	static AdapterDay aDay = new AdapterDay();
 
 	public AdapterWeek() {
 		conn = SQLiteConnection.dbConnector();
-		aDay = new AdapterDay();
 	}
 	
 	
