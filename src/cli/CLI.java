@@ -1,4 +1,4 @@
-package Controller;
+package cli;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -49,6 +49,8 @@ public class CLI {
 					+ "5: Add meal\n"
 					+ "6: Delete meal\n"
 					+ "--------------------\n"
+					+ "7: Print week schedule\n"
+					+ "8: Create new week schedule\n"
 					+ ">");
 			
 			switch(option) {
@@ -72,6 +74,12 @@ public class CLI {
 				case 6:
 					deleteMeal();
 					break;
+				case 7:
+					CLIschedule.viewWeekSchedule();
+					break;
+				case 8:
+					CLIschedule.createWeekSchedule();
+					break;
 			
 			}
 		
@@ -87,7 +95,7 @@ public class CLI {
 		Meal m = new Meal();
 		//ArrayList<Food> foods = new ArrayList();
 		
-		Utility.printString("-------Making new meal item-------\n");
+		Utility.printString("-------Creating new meal item-------\n");
 		
 		//Create new meal
 		String name = Utility.askString("Meal name: ");
@@ -142,7 +150,7 @@ public class CLI {
 			kcals = kcals/100;
 			mealKcals+=kcals;
 		}
-		Utility.printString(m.getName() + "(" + mealKcals + " Kcals)" +": \n");
+		Utility.printString(m.getId() + ": " + m.getName() + "(" + mealKcals + " Kcals)" +": \n");
 		
 		//Print foods
 		for(Food f : afood.getAll(m.getId())) {

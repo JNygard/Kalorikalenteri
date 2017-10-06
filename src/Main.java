@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import Controller.CLI;
 import DB.AdapterFood100g;
 import DB.SQLiteConnection;
 import Model.Food100g;
+import cli.CLI;
 
 public class Main {
 	

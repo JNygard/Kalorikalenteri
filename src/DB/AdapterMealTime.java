@@ -51,11 +51,16 @@ public class AdapterMealTime {
 	}
 	
 	//Get all
-	public ArrayList<MealTime> getAll() {
+	public ArrayList<MealTime> getAll(int dID) {
 		ArrayList<MealTime> meals = new ArrayList();
 		MealTime f;
 		try {
-			String sql = "SELECT * FROM " + TB_1;
+			String sql = "";
+			if(dID==0) {
+				sql = "SELECT * FROM " + TB_1;
+			}else {
+				sql = "SELECT * FROM " + TB_1 + " WHERE day_id="+dID;
+			}
 			PreparedStatement pst = conn.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			

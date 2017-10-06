@@ -10,7 +10,6 @@ public class Meal {
 	}
 
 	public Meal(int id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
