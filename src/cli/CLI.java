@@ -20,6 +20,7 @@ public class CLI {
 	static AdapterMeal ameal= new AdapterMeal();
 	
 
+	private static String continueMSG = "Any key to continue";
 	
 	public void start() {
 		controlLoop();
@@ -32,7 +33,7 @@ public class CLI {
 		int option = 10;
 		
 		do {
-			Utility.printString("\n----------Menu----------------");
+			Utility.printString("\n----------Main menu----------------");
 			option = Utility.askInt("\n"
 					+ "0: Quit \n"
 					+ "--------------------\n"
@@ -44,7 +45,7 @@ public class CLI {
 					+ "5: Add meal\n"
 					+ "6: Delete meal\n"
 					+ "--------------------\n"
-					+ "7: Print week schedule\n"
+					+ "7: View week schedules\n"
 					+ "8: Create new week schedule\n"
 					+ ">");
 			
@@ -53,6 +54,7 @@ public class CLI {
 					return;
 				case 1:
 					printFoods100g();
+					Utility.askString(continueMSG);
 					break;
 				case 2:
 					addFood100g();
@@ -62,6 +64,7 @@ public class CLI {
 					break;
 				case 4:
 					printMeals();
+					Utility.askString(continueMSG);
 					break;
 				case 5:
 					addMeal();
@@ -141,6 +144,13 @@ public class CLI {
 			Utility.printString(m.getId() + ": " + m.getName() + "\n");
 		}
 		Utility.printNL(1);
+	}
+	
+	//Ask meal id & print
+	public static void askMealID() {
+		int id = Utility.askInt("Meal number: ");
+		printMeal(ameal.get(id));
+		Utility.askString(continueMSG);
 	}
 	
 	//Print meal

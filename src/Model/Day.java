@@ -69,7 +69,19 @@ public class Day {
 		this.week_id = week_id;
 	}
 	
-	
+	public int getKcals() {
+		int kcals = 0;
+		int k100 = 0;
+		for(MealTime mt : this.mealTimes) {
+			Meal m = mt.getMeal();
+			
+			kcals+=m.getKcals();
+			
+		}
+		
+		return kcals;
+		
+	}
 	
 	
 

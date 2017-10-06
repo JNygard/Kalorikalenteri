@@ -53,8 +53,12 @@ public class Meal {
 
 	public int getKcals() {
 		int kcals = 0;
+		int k100 = 0;
 		
-		
+		for(Food f : foods) {
+			k100 = f.getFood100g().getKcal() * f.getGrams();
+			kcals += k100/100;
+		}
 		
 		return kcals;
 	}

@@ -79,6 +79,17 @@ public class Week {
 		
 		return null;
 	}
+	
+	public int getKcal() {
+		int kcals = 0;
+		
+		for(Day d : this.days) {
+			kcals+=d.getKcals();
+		}
+		
+		
+		return kcals;
+	}
 
 	
 

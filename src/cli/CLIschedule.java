@@ -39,18 +39,45 @@ public class CLIschedule {
 		int weekID = Utility.askInt("\nSelect week to view: ");
 		w = aweek.get(weekID);
 		
-		printWeekSchedule(w);
+		viewWeek(w);
 		
+	}
+	
+	//View week
+	public static void viewWeek(Week w) {
+		int option = 10;
+		do {
+			w = aweek.get(w.getId());
+			printWeekSchedule(w);
+			
+			Utility.printString("----------Week view menu----------------\n");
+			option = Utility.askInt("0: Exit week view\n"
+					+ "1: Add new meal to schedule\n"
+					+ "2: View meal contents\n"
+					+ ">");
+			
+			switch(option) {
+			case 0:
+				return;
+			case 1:
+				addMealtime(w);
+				break;
+			case 2:
+				CLI.askMealID();
+				break;
+			
+			}
+			
+			
+		}while(option!=0);
 	}
 	
 	//Print weekschedule
 	public static void printWeekSchedule(Week w) {
-		
 		for(Day d : w.getDays()) {
 			printDay(d);
 		}
-		
-		
+		Utility.printNL(1);
 	}
 	
 	
@@ -68,32 +95,15 @@ public class CLIschedule {
 		}
 		
 		
-		int option = 10;
-		do {
-			w = aweek.get(w.getId());
-			printWeekSchedule(w);
-			
-			option = Utility.askInt("0: End\n"
-					+ "1: Add new meal to schedule");
-			
-			switch(option) {
-			case 0:
-				return;
-			case 1:
-				addMealtime(w);
-			
-			}
-			
-			
-		}while(option!=0);
+		
 		
 	}
 	
 	//Print weeks 
 	public static void printWeekTitles() {
-		Utility.printString("-----Printing week titles-----\n");
+		Utility.printString("-----Week titles-----\n");
 		for(Week w : aweek.getAll()) {
-			Utility.printString(w.getId() + ": " + w.getName() + " \n");
+			Utility.printString(w.getId() + ": " + w.getName() + " (" + w.getKcal()  + " Kcal) \n");
 		}
 		
 	}
@@ -109,7 +119,7 @@ public class CLIschedule {
 	public static void printDay(Day d) {
 		
 		Utility.printString("-----------------\n");
-		Utility.printString(Utility.weekDayToString(d.getDay()) + " \n");
+		Utility.printString(d.getDay() + "." + Utility.weekDayToString(d.getDay()) + " (" + d.getKcals() + " Kcal)"  + " \n");
 		
 		
 		for(MealTime mt : d.getMealTimes()) {
@@ -155,7 +165,9 @@ public class CLIschedule {
 	public static void printMealtime(MealTime mt) {
 		Meal m = mt.getMeal();
 		
-		Utility.printString(Utility.dateToPresentable(mt.getTime())+ " : " + m.getName() + " \n");
+		Utility.printString(Utility.dateToPresentable(mt.getTime())+ " " +
+				m.getId() + ": " +
+				m.getName() + "(" + m.getKcals()  + "Kcal)" +  " \n");
 		
 		
 		//CLI.printMeal(m);
