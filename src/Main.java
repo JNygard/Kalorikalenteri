@@ -7,12 +7,14 @@ import javax.swing.JOptionPane;
 
 import DB.AdapterFood100g;
 import DB.SQLiteConnection;
+import GUI.GUI;
 import Model.Food100g;
 import cli.CLI;
 
 public class Main {
 	
 	static CLI cli = new CLI();
+	static GUI gui = new GUI();
 
 	public Main() {
 	}
@@ -21,7 +23,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		cli.start();
+		//cli.start();
+		
 		/*
 		AdapterFood100g a100 = new AdapterFood100g();
 		

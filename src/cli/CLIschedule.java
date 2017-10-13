@@ -24,9 +24,6 @@ public class CLIschedule {
 	static AdapterFood afood = new AdapterFood();
 	static AdapterMeal ameal = new AdapterMeal();
 	
-
-	
-	
 	
 	//---------Week start------------------------------------
 
