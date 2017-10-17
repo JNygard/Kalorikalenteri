@@ -33,9 +33,6 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import GUIlistener.ExitListener;
-import GUIlistener.HelpListener;
-
 
 public class MealWindow extends JFrame{
 	
@@ -81,14 +78,6 @@ public class MealWindow extends JFrame{
 	JPanel foodGrid = new JPanel(new GridLayout(1,2));
 	JTextField JTfoodName = new JTextField();
 	JTextField JTfoodKcal = new JTextField();
-	JTextField JTfoodFAT = new JTextField();
-	JTextField JTfoodPROTEIN = new JTextField();
-	JTextField JTfoodCARBOHYDRATE = new JTextField();
-	JTextField JTfoodALCOHOL = new JTextField();
-	JTextField JTfoodORGANIC_ACIDS = new JTextField();
-	JTextField JTfoodSUGARALCOHOLS = new JTextField();
-	JTextField JTfoodFIBER = new JTextField();
-	
 	JButton BfoodEmpty = new JButton();
 	JButton BfoodAdd = new JButton();
 	

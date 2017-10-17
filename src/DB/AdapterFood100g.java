@@ -69,6 +69,28 @@ public class AdapterFood100g {
 		}
 	}
 	
+	//Get all sstirng
+	public ArrayList<String> getAllString() {
+		ArrayList<String> foods = new ArrayList();
+		String f;
+		try {
+			String sql = "SELECT * FROM " + TB_1;
+			PreparedStatement pst = conn.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				f = rs.getString(2);
+				foods.add(f);
+			}
+			
+			rs.close();
+			pst.close();
+			return foods;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;	
+		}
+	}
 	
 	//Add one
 	public void add(Food100g f) {

@@ -8,13 +8,16 @@ import javax.swing.JOptionPane;
 import DB.AdapterFood100g;
 import DB.SQLiteConnection;
 import GUI.GUI;
+import GUImain.MainWindow;
+import GUImeal.MealWindow;
 import Model.Food100g;
 import cli.CLI;
 
 public class Main {
 	
 	static CLI cli = new CLI();
-	static GUI gui = new GUI();
+	//static MainWindow gui2 = new MainWindow();
+	static MealWindow mw = new MealWindow();
 
 	public Main() {
 	}
