@@ -41,6 +41,7 @@ public class MealWindowBuilder {
 	private static void buildFoodPanelLayout() {
 		buildnewFoodPanel();
 		buildFoodListPanel();
+		
 		MealWindow.foodPanel.add(MealWindow.foodGrid);
 		
 		MealWindow.BfoodReady.setText("Valmis");
@@ -134,6 +135,8 @@ public class MealWindowBuilder {
 	private static void buildMealPanelLayout() {
 		buildMealMealPamel();
 		buildMealFoodPanel();
+		
+		
 		MealWindow.mealPanel.add(MealWindow.mealGrid);
 		
 		MealWindow.BmealReady.setText("Valmis");
@@ -149,7 +152,6 @@ public class MealWindowBuilder {
 		Box mealBox = Box.createVerticalBox();
 		mealBox.setBorder(BorderFactory.createTitledBorder(MealWindow.groupTitle1));
 		
-		
 		//Name
 		Box nameBox = Box.createVerticalBox();
 		nameBox.setBorder(BorderFactory.createTitledBorder("Nimi"));
@@ -162,11 +164,16 @@ public class MealWindowBuilder {
 		incridientBox.setBorder(BorderFactory.createTitledBorder("Sisältö"));
 		
 		//Add incridient
+		Box selectedFoodBox = Box.createHorizontalBox();
+		MealWindow.LaddNewIncridient.setText("");
+		selectedFoodBox.add(MealWindow.LaddNewIncridient);
+		incridientBox.add(selectedFoodBox);
+		
 		//Add new incridient
 		MealWindow.BaddNewIncridient.setText("Lisää");
 		Box addNewInc = Box.createHorizontalBox();	
-		MealWindow.LaddNewIncridient.setText("Juustosipsi (g/ml): ");
-		addNewInc.add(MealWindow.LaddNewIncridient);
+		MealWindow.LaddNewIncridientWeight.setText("Määrä (g/ml): ");
+		addNewInc.add(MealWindow.LaddNewIncridientWeight);
 		addNewInc.add(MealWindow.TFweight);
 		addNewInc.add(MealWindow.BaddNewIncridient);
 		incridientBox.add(addNewInc);//Add to mealbox///////////////
@@ -174,6 +181,8 @@ public class MealWindowBuilder {
 		
 		//Set incridient list
 		Box incridientBox2 = Box.createVerticalBox();
+		String[] s =  {" "};
+		MealWindow.LmealIncridients.setListData(s);
 		MealWindow.LmealIncridients.setVisibleRowCount(8);
 		MealWindow.LmealIncridients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		/*
@@ -190,8 +199,8 @@ public class MealWindowBuilder {
 		
 		
 		//Selected incridient
-		Box selectedIncBox = Box.createVerticalBox();		
-		MealWindow.LselectedIncridient.setText("Maitomanna 100g 100kcal ");
+		Box selectedIncBox = Box.createHorizontalBox();		
+		MealWindow.LselectedIncridient.setText("");
 		selectedIncBox.add(MealWindow.LselectedIncridient);		
 		incridientBox.add(selectedIncBox);//Add to mealbox///////////////
 		

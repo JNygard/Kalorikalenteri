@@ -1,10 +1,14 @@
 package Utility;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
+
+import Model.Food;
+import Model.Food100g;
 
 public class Utility {
 	
@@ -100,6 +104,23 @@ public class Utility {
 		
 		return null;
 		
+	}
+	
+	public static int calculateFoodCalories(int k100, int weight) {
+		int calories = 0;
+		calories = k100 * weight;
+		calories = calories/100;
+		
+		return calories;
+	}
+
+	//Create string name list from food100g list
+	public static ArrayList<String> toFood100toStringArray(ArrayList<Food> mealIncridients) {
+		ArrayList<String> sl = new ArrayList();
+		for(Food f : mealIncridients) {
+			sl.add(f.getFood100g().getName() + " " + f.getGrams() + " g");
+		}
+		return sl;
 	}
 
 }

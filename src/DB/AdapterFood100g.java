@@ -43,7 +43,28 @@ public class AdapterFood100g {
 			e.printStackTrace();
 			return null;	
 		}
-		
+	}
+	
+	//Get by name
+	public Food100g get(String name) {
+		Food100g f = null;
+		try {
+			String sql = "SELECT * FROM " + TB_1 + " WHERE name=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, name);
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				f = new Food100g(rs.getInt(1), rs.getString(2), rs.getInt(3));
+			}
+			
+			rs.close();
+			pst.close();
+			return f;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;	
+		}
 	}
 	
 	//Get all
@@ -70,17 +91,29 @@ public class AdapterFood100g {
 	}
 	
 	//Get all sstirng
-	public ArrayList<String> getAllString() {
+	public ArrayList<String> getAllString(int scope) {
 		ArrayList<String> foods = new ArrayList();
-		String f;
+		String f = "";
 		try {
 			String sql = "SELECT * FROM " + TB_1;
 			PreparedStatement pst = conn.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = rs.getString(2);
+				
+				switch(scope) {
+					case 0:
+						f = rs.getString(2);
+						break;
+					case 1:
+						f = rs.getString(2) + " | " + rs.getInt(3) + " kcal/100g";
+						break;
+				
+				}
+				
 				foods.add(f);
+				
+			
 			}
 			
 			rs.close();
