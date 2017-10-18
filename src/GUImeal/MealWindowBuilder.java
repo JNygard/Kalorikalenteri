@@ -44,22 +44,20 @@ public class MealWindowBuilder {
 		
 		MealWindow.foodPanel.add(MealWindow.foodGrid);
 		
-		MealWindow.BfoodReady.setText("Valmis");
-		MealWindow.BfoodCancel.setText("Peruuta");
-		MealWindow.foodPanel.add(MealWindow.BfoodCancel, BorderLayout.NORTH);
-		MealWindow.foodPanel.add(MealWindow.BfoodReady, BorderLayout.NORTH);
+		MealWindow.BfoodExit.setText("Poistu");
+		MealWindow.foodPanel.add(MealWindow.BfoodExit, BorderLayout.NORTH);
 		
 	}
 	
 	//Build new food panel
 	private static void buildnewFoodPanel() {
 		Box foodBox = Box.createVerticalBox();
-		foodBox.setBorder(BorderFactory.createTitledBorder("Uusi elintarvike"));
+		foodBox.setBorder(BorderFactory.createTitledBorder(MealWindow.newFpnael));
 		
 		//Name
 		Box nameBox = Box.createHorizontalBox();
 		nameBox.setMaximumSize(new Dimension(MealWindow.panelWidth1,20));
-		nameBox.add(new JLabel("Nimi: "));
+		nameBox.add(new JLabel(MealWindow.newFname));
 		MealWindow.JTfoodName.setPreferredSize(new Dimension(MealWindow.panelWidth1,20));
 		nameBox.add(MealWindow.JTfoodName);
 		foodBox.add(nameBox);//Add to mealbox///////
@@ -68,7 +66,7 @@ public class MealWindowBuilder {
 		//kcal
 		Box kcalBox = Box.createHorizontalBox();
 		kcalBox.setMaximumSize(new Dimension(MealWindow.panelWidth1,20));
-		kcalBox.add(new JLabel("Kcal: "));
+		kcalBox.add(new JLabel(MealWindow.newFkcal));
 		MealWindow.JTfoodKcal.setPreferredSize(new Dimension(MealWindow.panelWidth1,20));
 		kcalBox.add(MealWindow.JTfoodKcal);
 		foodBox.add(kcalBox);//Add to mealbox///////
@@ -78,7 +76,7 @@ public class MealWindowBuilder {
 		//Buttons
 		JPanel sFoodButtonPanel = new JPanel(new GridLayout(1,2));		
 		//Cancel 
-		MealWindow.BfoodEmpty.setText("Peru");
+		MealWindow.BfoodEmpty.setText("Tyhjennä");
 		sFoodButtonPanel.add(MealWindow.BfoodEmpty);
 		//Add
 		MealWindow.BfoodAdd.setText("Lisää");
@@ -87,32 +85,20 @@ public class MealWindowBuilder {
 		sFoodButtonPanel.setMaximumSize(new Dimension(MealWindow.panelWidth1,25));
 		
 		
-		
-				
-		
-		
-		
+	
 		MealWindow.foodGrid.add(foodBox);
 	}
 		
 	//Build foodlist panel
 	private static void buildFoodListPanel() {
 		Box foodList = Box.createVerticalBox();
-		foodList.setBorder(BorderFactory.createTitledBorder("Elintarvikkeet"));
+		foodList.setBorder(BorderFactory.createTitledBorder(MealWindow.newFfoods));
 		
 			
 		//List
-		MealWindow.LfoodList2.setVisibleRowCount(10);
+		MealWindow.LfoodList2.setVisibleRowCount(MealWindow.foodListHeight);
 		MealWindow.LfoodList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		/*
-		LfoodList2.addListSelectionListener(
-				new ListSelectionListener() {
-					@Override
-					public void valueChanged(ListSelectionEvent arg0) {
-						JOptionPane.showMessageDialog(getParent(), "asd " + arg0.getLastIndex());
-					}
-			});
-			*/
+
 		foodList.add(new JScrollPane(MealWindow.LfoodList2));//ADD///////////////
 		
 		//Remove and edit button
@@ -153,15 +139,15 @@ public class MealWindowBuilder {
 		mealBox.setBorder(BorderFactory.createTitledBorder(MealWindow.groupTitle1));
 		
 		//Name
-		Box nameBox = Box.createVerticalBox();
-		nameBox.setBorder(BorderFactory.createTitledBorder("Nimi"));
-		MealWindow.JTmealName.setPreferredSize(new Dimension(200,20));
+		Box nameBox = Box.createHorizontalBox();
+		MealWindow.JTmealName.setPreferredSize(new Dimension(MealWindow.panelWidth1,20));
+		nameBox.add(new JLabel(MealWindow.nameLabel));
 		nameBox.add(MealWindow.JTmealName);
 		mealBox.add(nameBox);//Add to mealbox///////
 		
 		//Incridients
 		Box incridientBox = Box.createVerticalBox();
-		incridientBox.setBorder(BorderFactory.createTitledBorder("Sisältö"));
+		incridientBox.setBorder(BorderFactory.createTitledBorder(MealWindow.incridientLabel));
 		
 		//Add incridient
 		Box selectedFoodBox = Box.createHorizontalBox();
@@ -227,7 +213,7 @@ public class MealWindowBuilder {
 		Box mealFoodBox = Box.createVerticalBox();
 		mealFoodBox.setBorder(BorderFactory.createTitledBorder(MealWindow.groupTitle2));
 		
-		MealWindow.LfoodList1.setVisibleRowCount(3);
+		MealWindow.LfoodList1.setVisibleRowCount(MealWindow.foodListHeight);
 		MealWindow.LfoodList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		/*
 		MealWindow.LfoodList1.addListSelectionListener(

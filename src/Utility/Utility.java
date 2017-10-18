@@ -106,7 +106,10 @@ public class Utility {
 		
 	}
 	
-	public static int calculateFoodCalories(int k100, int weight) {
+	public static int calculateFoodCalories(Food f) {
+		int k100 =  f.getFood100g().getKcal();
+		int weight =  f.getGrams();
+		
 		int calories = 0;
 		calories = k100 * weight;
 		calories = calories/100;

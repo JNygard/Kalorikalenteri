@@ -26,7 +26,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		//cli.start();
+		cli.start();
 		
 		/*
 		AdapterFood100g a100 = new AdapterFood100g();
