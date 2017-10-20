@@ -125,5 +125,30 @@ public class AdapterFood {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	//Check how many food uses food100g
+	public int checkF100Use(int id) {
+		int count = 0;
+		try {
+			
+			String sql = "";
+			sql = "SELECT COUNT(*) FROM " + TB_1 + " WHERE food100g_id="+id;
+			
+			PreparedStatement pst = conn.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			
+
+			count = rs.getInt(1);
+			
+			rs.close();
+			pst.close();
+			return count;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
 
 }

@@ -29,14 +29,14 @@ public class MealWindow extends JFrame{
 	
 	//String
 	protected static String title = "Hallitse aterioita ja elintarvikkeita";
-	//mTab
+		//mTab
 	protected static String tab1Title = "Ateriat";
 	protected static String tab2Title = "Elintarvikeet";
 	protected static String groupTitle1 = "Uusi ateria";
 	protected static String groupTitle2 = "Elintarvikkeet";
 	protected static String nameLabel = "Nimi: ";
 	protected static String incridientLabel = "Sisältö";
-	//fTab
+		//fTab
 	protected static String newFpnael = "Uusi elintarvike";
 	protected static String newFname = "Nimi: ";
 	protected static String newFkcal = "Kcal: ";
@@ -100,12 +100,13 @@ public class MealWindow extends JFrame{
 	protected static  AdapterFood afood= new AdapterFood();
 	protected static  AdapterMeal ameal= new AdapterMeal();
 	
-	//New meal
+	//Mealtab
 	protected static  Food selectedIncridient = null;
 	protected static  Food100g selectedFood = null;
 	protected static ArrayList<Food> mealIncridients = new ArrayList();
 	
-	
+	//Foodtab
+	protected static Food100g selectedFood2 = null;
 
 	//Construtor
 	public MealWindow() {
@@ -141,7 +142,7 @@ public class MealWindow extends JFrame{
 		LfoodList2.addListSelectionListener(
 				new ListSelectionListener() {
 					public void valueChanged(ListSelectionEvent arg0) {
-						
+						FoodTab.setSelectedFood();
 					}});
 		//BTN empty
 		BfoodEmpty.addActionListener(new ActionListener() {
@@ -156,7 +157,7 @@ public class MealWindow extends JFrame{
 		//BTN remove
 		BfoodRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				FoodTab.deleteFood();
 			}});
 		//BTN edit
 		BfoodEdit.addActionListener(new ActionListener() {
@@ -214,7 +215,18 @@ public class MealWindow extends JFrame{
 	//Action Listeners END-----------------------------------------------------------------
 	
 	
-	
+	//Confirm dialog
+	public static boolean confirm(String title, String msg) {
+		Object[] options = {"Peruuta", "Kyllä"};
+		int n = JOptionPane.showOptionDialog(inner,msg,title,
+		    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
+		    null,options,options[1]);
+				
+		if(n==1) {
+			return true;
+		}
+		return false;
+	}
 	
 	//Show dialog message
 	public static void showMessage(String msg) {

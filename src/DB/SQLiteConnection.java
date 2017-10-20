@@ -12,7 +12,7 @@ public class SQLiteConnection {
 		
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conn=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\QH900\\eclipse-workspace\\DietPlan\\dietPlan.db");
+			Connection conn=DriverManager.getConnection("jdbc:sqlite:dietPlan.db");
 			//JOptionPane.showMessageDialog(null, "Connection succesfull");
 			return conn;
 		}catch(Exception e) {

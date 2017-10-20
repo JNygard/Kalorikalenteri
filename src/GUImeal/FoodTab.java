@@ -1,5 +1,7 @@
 package GUImeal;
 
+import javax.swing.JOptionPane;
+
 import Model.Food100g;
 
 public class FoodTab {
@@ -36,10 +38,36 @@ public class FoodTab {
 	}
 	
 	
+	//Edit food
+	protected static void editFood() {
+		
+	}
+	
+	//Delete food
+	protected static void deleteFood() {
+		String fName = MealWindow.selectedFood2.getName();
+		boolean confirm = MealWindow.confirm("Poista elintarvike", "Haluatko varmasti poistaa elintarvikkeen?");
+		int count = 0;
+		if(confirm) {
+			count = MealWindow.af100.delete(MealWindow.selectedFood2.getId());
+		}
+		if(count==0) {
+			updateFoodlist2();
+			MealTab.updateFoodlist1();
+		}else {
+			MealWindow.showMessage("Elintarviketta " +fName+ " ei voi poistaa koska sit‰ k‰ytet‰‰n " + count + " kertaa eri aterioissa. Elintarvike tulee poistaa aterioista, tai ateria poistaa, jotta se voitaisiin poistaa kokonaan ohjelmasta.");
+		}
+	}
 	
 	
-	
-	
+	//Set selected food
+	protected static void setSelectedFood() {
+		try {
+		MealWindow.selectedFood2 = MealWindow.af100.get(MealWindow.LfoodList2.getSelectedValue().toString());
+		}catch(Exception e) {
+			
+		}
+	}
 	
 	
 	

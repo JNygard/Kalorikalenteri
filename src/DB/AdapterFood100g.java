@@ -18,6 +18,8 @@ public class AdapterFood100g {
 	Connection conn;
 	String TB_1 = "food100g";
 
+	static AdapterFood afood = new AdapterFood();
+	
 	public AdapterFood100g() {
 		conn = SQLiteConnection.dbConnector();
 	}
@@ -162,7 +164,11 @@ public class AdapterFood100g {
 	}
 	
 	//Delete
-	public void delete(int id) {
+	public int delete(int id) {
+		int count = afood.checkF100Use(id);
+		if(count>0) {
+			return count;
+		}
 		try {
 			String sql = "DELETE FROM " + TB_1 + " WHERE id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
@@ -170,9 +176,11 @@ public class AdapterFood100g {
 			
 			pst.execute();
 			pst.close();
+			return count;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return count;
 	}
 	
 	
