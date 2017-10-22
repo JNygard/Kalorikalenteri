@@ -6,30 +6,45 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.SpringLayout;
 
 import GUImeal.MealWindow;
 import GUImeal.FoodTab;
 
 public class MainWindow extends JFrame{
 	
+	MealWindow mw = new MealWindow();
+	
 	
 	//String
 	protected static String title = "Kalorikalenteri";
 	
 	//Dimensions
-	protected static int windowWidth = 800;
+	protected static int windowWidth = 1100;
 	protected static int windowHeigth = 600;
 	
 	
 	//View components------------------------------------------------------------------------------------
+	protected static JPanel inner = new JPanel();
 	
+	protected static JPanel weekPanel = new JPanel(new GridLayout(1,1,1,1));
+	protected static Box dataPanel = Box.createVerticalBox();
+	
+	protected static Box dataWeekPanel = Box.createVerticalBox();
+	protected static Box dataMealPanel = Box.createVerticalBox();
 	
 	
 	//Menubar
@@ -37,18 +52,75 @@ public class MainWindow extends JFrame{
 	protected static JMenu menu1 = new JMenu("Tiedosto");
 	protected static JMenu menu3 = new JMenu("Lis‰‰");
 	protected static JMenu menu2 = new JMenu("Tietoja");
-	protected static JMenuItem mi1 = new JMenuItem("Lopeta");
-	protected static JMenuItem mi3 = new JMenuItem("Hallitse aterioita");
-	protected static JMenuItem mi2 = new JMenuItem("Apua");
-
+	protected static JMenuItem MIexit = new JMenuItem("Lopeta");
+	protected static JMenuItem MIgoToMeal = new JMenuItem("Hallitse aterioita");
+	protected static JMenuItem MIhelp = new JMenuItem("Apua");
+	protected static JMenuItem MIinfo = new JMenuItem("Tietoja");
 	
-
-	protected static JPanel inner = new JPanel(new GridLayout(1,1,20,10));;
+	//--Weekview  panel---------------------------------------------------------------------------------------------------------
 	
-	//Tablayout
-	protected static JPanel mealPanel = new JPanel();
-	protected static JPanel foodPanel = new JPanel();
-	protected static JTabbedPane tabbedPane = new JTabbedPane();
+	protected static String[] columnNameWeek = {"Klo", "Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};
+	protected static Object[][] dataWeek = {
+		    {"0:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"1:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"2:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"3:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"4:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"5:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"6:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"7:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"8:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"9:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"10:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"11:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"12:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"13:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"14:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"15:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"16:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"17:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"18:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"19:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"20:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"21:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"22:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"23:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+	};
+	protected static JTable TBweekTable = new JTable(dataWeek, columnNameWeek);
+	
+	
+	//--Data panel---------------------------------------------------------------------------------------------------------
+	
+	
+	//Week
+	protected static String[] testList = {"Wa", "asd", "daSDAF", "ASFGDGG"};
+	protected static JList weekList = new JList();
+	protected static JButton BTnewWeek = new JButton("Uusi");
+	protected static JButton BTdeleteWeek = new JButton("Poista");
+	protected static JButton BTeditWeek = new JButton("Muokkaa");
+	protected static JTextArea TAweek = new JTextArea(2, 2);
+	protected static JLabel LweekDescription = new JLabel("Kuvaus");
+	protected static JLabel LweekTitle = new JLabel("ViikkoTitle");
+	
+	
+	protected static String[] columnNames = {"Nimi","g/ml","Kcal"};
+	protected static Object[][] data = {
+		    {"Name", 50, 50},
+		    {"Name2", 50, 50},
+		    {"Name3", 50, 50},
+		    {"Name4", 50, 50},
+		    {"Name5", 50, 50},
+		    {"Name6", 50, 50},
+	};
+		        
+	//Meal/Hour
+	protected static JList mealList = new JList();
+	protected static JButton BTcontrolMeal = new JButton("Hallitse aterioita");
+	protected static JButton BTemptyMeal = new JButton("Tyhjenn‰ ajankohta");
+	protected static JTable TBmealIncridients = new JTable(data, columnNames);
+	
+	protected static JLabel LmealKcal = new JLabel("Yht: 150 Kcal");
+
 	
 	
 	public MainWindow() {
@@ -67,22 +139,62 @@ public class MainWindow extends JFrame{
 		
 		this.setVisible(true);
 		setMenuListeners();
+		setDataPanelListeners();
 	}
 	
 	private void setMenuListeners(){
-		
-		mi1.addActionListener(new ActionListener() {
+		//Exit
+		MIexit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CloseFrame();
 			}});
-		mi3.addActionListener(new ActionListener() {
+		//Go to meal edit
+		MIgoToMeal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new MealWindow();
+				mw.setVisible(true);
 			}});
-		mi2.addActionListener(new ActionListener() {
+		//Help
+		MIhelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				showMessage("Ohje");
 			}});
+		//Info
+		MIinfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showMessage("Tietoja");
+			}});
+	}
+	
+	private void setDataPanelListeners() {
+		//List
+		
+		//BTN 
+		BTnewWeek.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showMessage("ASD");
+			}});
+		//BTN 
+		BTdeleteWeek.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showMessage("ASD");
+			}});
+		//BTN 
+		BTeditWeek.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showMessage("ASD");
+			}});
+		
+		//BTN 
+		BTcontrolMeal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				mw.setVisible(true);
+			}});
+		//BTN 
+		BTemptyMeal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showMessage("ASD");
+			}});
+		
 	}
 	
 	

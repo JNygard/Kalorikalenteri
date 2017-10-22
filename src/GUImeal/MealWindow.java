@@ -117,7 +117,6 @@ public class MealWindow extends JFrame{
 		MealWindowBuilder.buildWindow(); //Builds window
 		this.getContentPane().add(inner);
 		setSize(windowWidth,windowHeight);
-		this.setVisible(true);
 		this.setResizable(false);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -213,6 +212,7 @@ public class MealWindow extends JFrame{
 	}
 	
 	//Action Listeners END-----------------------------------------------------------------
+	
 	
 	
 	//Confirm dialog
