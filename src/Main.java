@@ -13,11 +13,13 @@ import GUImeal.MealWindow;
 import Model.Food100g;
 import cli.CLI;
 
+
+
 public class Main {
 	
 	static CLI cli = new CLI();
-	//static MainWindow gui2 = new MainWindow();
-	static MealWindow mw = new MealWindow();
+	static MainWindow gui2 = new MainWindow();
+	//static MealWindow mw = new MealWindow();
 
 	public Main() {
 	}

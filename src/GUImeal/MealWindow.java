@@ -113,7 +113,7 @@ public class MealWindow extends JFrame{
 		
 		//Build window
 		super(title);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		MealWindowBuilder.buildWindow(); //Builds window
 		this.getContentPane().add(inner);
 		setSize(windowWidth,windowHeight);
