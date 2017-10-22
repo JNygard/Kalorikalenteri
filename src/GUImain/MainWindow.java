@@ -1,6 +1,9 @@
 package GUImain;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -35,12 +38,13 @@ public class MainWindow extends JFrame{
 	//Dimensions
 	protected static int windowWidth = 1100;
 	protected static int windowHeigth = 600;
-	
+	protected static int maxBTNwidth = 600;
+	protected static int maxBTNheigth = 30;
 	
 	//View components------------------------------------------------------------------------------------
-	protected static JPanel inner = new JPanel();
+	protected static JPanel inner = new JPanel( new BorderLayout(2,1));
 	
-	protected static JPanel weekPanel = new JPanel(new GridLayout(1,1,1,1));
+	protected static JPanel weekPanel = new JPanel(new GridBagLayout());
 	protected static Box dataPanel = Box.createVerticalBox();
 	
 	protected static Box dataWeekPanel = Box.createVerticalBox();
@@ -59,7 +63,7 @@ public class MainWindow extends JFrame{
 	
 	//--Weekview  panel---------------------------------------------------------------------------------------------------------
 	
-	protected static String[] columnNameWeek = {"Klo", "Ma", "Ti", "Ke", "To", "Pe", "La", "Su"};
+	protected static String[] columnNameWeek = {"Klo", "Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai", "Sunnuntai"};
 	protected static Object[][] dataWeek = {
 		    {"0:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
 		    {"1:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
@@ -85,6 +89,7 @@ public class MainWindow extends JFrame{
 		    {"21:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
 		    {"22:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
 		    {"23:00", "Pakke", " ", " ", " ", "Makke", " ", " "},
+		    {"Yhteensä", "1000 kcal", "1000 kcal", "1000 kcal", "1000 kcal", "1000 kcal", "1000 kcal", "1000 kcal"}
 	};
 	protected static JTable TBweekTable = new JTable(dataWeek, columnNameWeek);
 	
@@ -111,6 +116,10 @@ public class MainWindow extends JFrame{
 		    {"Name4", 50, 50},
 		    {"Name5", 50, 50},
 		    {"Name6", 50, 50},
+		    {"Name6", 50, 50},
+		    {"Name6", 50, 50},
+		    {"Name6", 50, 50},
+		    {"Name6", 50, 50}
 	};
 		        
 	//Meal/Hour

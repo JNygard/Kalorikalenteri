@@ -1,5 +1,6 @@
 package GUImain;
 
+import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -26,8 +27,10 @@ public class MainWindowBuilder {
 	//Build tabs
 	protected static void buildView() {
 		
-		buildWeekPanel();
+		
 		buildDataPanel();
+		buildWeekPanel();
+		
 		
 		
 		
@@ -39,16 +42,21 @@ public class MainWindowBuilder {
 	protected static void buildWeekPanel() {
 		
 		//Week table
-		JScrollPane jsc = new JScrollPane(MainWindow.TBweekTable);
-		MainWindow.TBweekTable.setRowHeight(30);
-		MainWindow.TBweekTable.setPreferredScrollableViewportSize(new Dimension(700,450));
+		JScrollPane jsc = new JScrollPane(MainWindow.TBweekTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
+		MainWindow.TBweekTable.setRowHeight(40);
 		
+		//MainWindow.TBweekTable.setPreferredScrollableViewportSize(new Dimension(700,450));
 		
-		MainWindow.weekPanel.add(jsc);
+		//MainWindow.TBweekTable.setAutoResizeMode( MainWindow.TBweekTable.AUTO_RESIZE_OFF );
+		//MainWindow.TBweekTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+		
+		MainWindow.TBweekTable.setFillsViewportHeight(true);
+		
+		MainWindow.TBweekTable.setCellSelectionEnabled(true);
+		
 
-		
-		MainWindow.inner.add(MainWindow.weekPanel);
+		MainWindow.inner.add(jsc,BorderLayout.CENTER );
 	}
 	
 	
@@ -59,7 +67,8 @@ public class MainWindowBuilder {
 		
 		buildDataWeekPanel() ;
 		buildDataMealPanel() ;
-		MainWindow.inner.add(MainWindow.dataPanel);
+		
+		MainWindow.inner.add(MainWindow.dataPanel, BorderLayout.LINE_END);
 	}
 	
 	
@@ -89,13 +98,15 @@ public class MainWindowBuilder {
 
 		//BTN
 		JPanel wButtonPanel = new JPanel(new GridLayout(1,3));
+		wButtonPanel.setMaximumSize(new Dimension(MainWindow.maxBTNwidth, MainWindow.maxBTNheigth));
 		wButtonPanel.add(MainWindow.BTdeleteWeek);
 		wButtonPanel.add(MainWindow.BTeditWeek);
 		wButtonPanel.add(MainWindow.BTnewWeek);
 		MainWindow.dataWeekPanel.add(wButtonPanel);
 		
+		MainWindow.dataWeekPanel.setMaximumSize(new Dimension(600,300));
 		MainWindow.dataWeekPanel.setBorder(BorderFactory.createTitledBorder("Viikko"));
-		MainWindow.dataPanel.add(MainWindow.dataWeekPanel);
+		MainWindow.dataPanel.add(MainWindow.dataWeekPanel,BorderLayout.CENTER);
 		
 	}
 	
@@ -120,6 +131,7 @@ public class MainWindowBuilder {
 		
 		//BTN
 		JPanel wButtonPanel = new JPanel(new GridLayout(1,3));
+		wButtonPanel.setMaximumSize(new Dimension(MainWindow.maxBTNwidth, MainWindow.maxBTNheigth));
 		wButtonPanel.add(MainWindow.BTemptyMeal);
 		wButtonPanel.add(MainWindow.BTcontrolMeal);
 		MainWindow.dataMealPanel.add(wButtonPanel);
@@ -134,7 +146,7 @@ public class MainWindowBuilder {
 		MainWindow.LmealKcal.setFont(MainWindow.LmealKcal.getFont().deriveFont(14.0f));
 		MainWindow.dataMealPanel.add(MainWindow.LmealKcal);
 		
-		
+		MainWindow.dataMealPanel.setMaximumSize(new Dimension(600,400));
 		MainWindow.dataMealPanel.setBorder(BorderFactory.createTitledBorder("Ajankohta"));
 		MainWindow.dataPanel.add(MainWindow.dataMealPanel);
 	}
