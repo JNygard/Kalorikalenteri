@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 import Model.Food;
 import Model.Food100g;
+import Model.Meal;
+import Model.Week;
 
 public class Utility {
 	
@@ -98,7 +100,27 @@ public class Utility {
 			case 7:
 				
 				return "Sunday";
-			
+			case 8:
+				
+				return "Maanantai";
+			case 9:
+				
+				return "Tiistai";
+			case 10:
+				
+				return "Keskiviikko";
+			case 11:
+				
+				return "Torstai";
+			case 12:
+				
+				return "Perjantai";
+			case 13:
+				
+				return "Lauantai";
+			case 14:
+				
+				return "Sunnuntai";
 			
 		}
 		
@@ -125,5 +147,23 @@ public class Utility {
 		}
 		return sl;
 	}
+	
+	//Create string name list from food100g list
+	public static ArrayList<String> mealToStringArray(ArrayList<Meal> ml) {
+		ArrayList<String> sl = new ArrayList();
+		for(Meal f : ml) {
+			sl.add(f.getName());
+		}
+		return sl;
+	}
 
+	//Create string name list from food100g list
+	public static ArrayList<String> weektoStringArray(ArrayList<Week> wl) {
+		ArrayList<String> sl = new ArrayList();
+		for(Week f : wl) {
+			sl.add(f.getName());
+		}
+		return sl;
+	}
+	
 }

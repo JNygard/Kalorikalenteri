@@ -14,7 +14,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import GUImeal.MealWindow;
@@ -42,8 +44,26 @@ public class MainWindowBuilder {
 	protected static void buildWeekPanel() {
 		
 		//Week table
-		JScrollPane jsc = new JScrollPane(MainWindow.TBweekTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
+		String[] columnNameWeek = {"Klo", "Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai", "Sunnuntai"};
+		Object[][] dataWeek = {
+			    {"0:00", "", " ", " ", " ", "", " ", " "},{"1:00", "", " ", " ", " ", "", " ", " "},
+			    {"2:00", "", " ", " ", " ", "", " ", " "},{"3:00", "", " ", " ", " ", "", " ", " "},
+			    {"4:00", "", " ", " ", " ", "", " ", " "},{"5:00", "", " ", " ", " ", "", " ", " "},
+			    {"6:00", "", " ", " ", " ", "", " ", " "},{"7:00", "", " ", " ", " ", "", " ", " "},
+			    {"8:00", "", " ", " ", " ", "", " ", " "}, {"9:00", "", " ", " ", " ", "", " ", " "},
+			    {"10:00", "", " ", " ", " ", "", " ", " "}, {"11:00", "", " ", " ", " ", "", " ", " "},
+			    {"12:00", "", " ", " ", " ", "", " ", " "},{"13:00", "", " ", " ", " ", "", " ", " "},
+			    {"14:00", "", " ", " ", " ", "", " ", " "},{"15:00", "", " ", " ", " ", "", " ", " "},
+			    {"16:00", "", " ", " ", " ", "", " ", " "}, {"17:00", "", " ", " ", " ", "", " ", " "},
+			    {"18:00", "", " ", " ", " ", "", " ", " "}, {"19:00", "", " ", " ", " ", "", " ", " "},
+			    {"20:00", "", " ", " ", " ", "", " ", " "},{"21:00", "", " ", " ", " ", "", " ", " "},
+			    {"22:00", "", " ", " ", " ", "", " ", " "},{"23:00", "", " ", " ", " ", "", " ", " "}
+		};
+		
+		MainWindow.TBweekTable  = new JTable(dataWeek, columnNameWeek);
+		MainWindow.jsc  = new JScrollPane(MainWindow.TBweekTable);
+
 		MainWindow.TBweekTable.setRowHeight(40);
 		
 		//MainWindow.TBweekTable.setPreferredScrollableViewportSize(new Dimension(700,450));
@@ -51,12 +71,14 @@ public class MainWindowBuilder {
 		//MainWindow.TBweekTable.setAutoResizeMode( MainWindow.TBweekTable.AUTO_RESIZE_OFF );
 		//MainWindow.TBweekTable.getColumnModel().getColumn(0).setPreferredWidth(100);
 		
-		MainWindow.TBweekTable.setFillsViewportHeight(true);
+		//MainWindow.TBweekTable.setFillsViewportHeight(true);
 		
+		MainWindow.TBweekTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		MainWindow.TBweekTable.setCellSelectionEnabled(true);
 		
-
-		MainWindow.inner.add(jsc,BorderLayout.CENTER );
+		
+		MainWindow.inner.add(MainWindow.jsc,BorderLayout.CENTER );
+		
 	}
 	
 	
@@ -68,7 +90,7 @@ public class MainWindowBuilder {
 		buildDataWeekPanel() ;
 		buildDataMealPanel() ;
 		
-		MainWindow.inner.add(MainWindow.dataPanel, BorderLayout.LINE_END);
+		MainWindow.inner.add(MainWindow.dataPanel, BorderLayout.LINE_START);
 	}
 	
 	
@@ -93,7 +115,6 @@ public class MainWindowBuilder {
 		//TA
 		MainWindow.TAweek.setEditable(false);
 		MainWindow.TAweek.setLineWrap(true);
-		MainWindow.TAweek.setText("AFDFSDFSDFSD j jidgfsi js jgs oisg ksfgk sgjdkgjs sadg gsd f sdf s df sdf ");
 		MainWindow.dataWeekPanel.add(new JScrollPane(MainWindow.TAweek));
 
 		//BTN
@@ -104,7 +125,7 @@ public class MainWindowBuilder {
 		wButtonPanel.add(MainWindow.BTnewWeek);
 		MainWindow.dataWeekPanel.add(wButtonPanel);
 		
-		MainWindow.dataWeekPanel.setMaximumSize(new Dimension(600,300));
+		MainWindow.dataWeekPanel.setMaximumSize(new Dimension(600,200));
 		MainWindow.dataWeekPanel.setBorder(BorderFactory.createTitledBorder("Viikko"));
 		MainWindow.dataPanel.add(MainWindow.dataWeekPanel,BorderLayout.CENTER);
 		
@@ -115,7 +136,8 @@ public class MainWindowBuilder {
 		
 		//Label time		
 		JPanel f1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		f1.add(new JLabel("Maanantai Klo 15 "));
+		f1.add(MainWindow.LselectedCell);
+		MainWindow.LselectedCell.setFont(MainWindow.LmealKcal.getFont().deriveFont(14.0f));
 		MainWindow.dataMealPanel.add(f1);//Add to /////
 		
 
@@ -146,7 +168,7 @@ public class MainWindowBuilder {
 		MainWindow.LmealKcal.setFont(MainWindow.LmealKcal.getFont().deriveFont(14.0f));
 		MainWindow.dataMealPanel.add(MainWindow.LmealKcal);
 		
-		MainWindow.dataMealPanel.setMaximumSize(new Dimension(600,400));
+		MainWindow.dataMealPanel.setMaximumSize(new Dimension(600,350));
 		MainWindow.dataMealPanel.setBorder(BorderFactory.createTitledBorder("Ajankohta"));
 		MainWindow.dataPanel.add(MainWindow.dataMealPanel);
 	}
@@ -164,7 +186,11 @@ public class MainWindowBuilder {
 		MainWindow.menuBar.add(MainWindow.menu1);
 		MainWindow.menuBar.add(MainWindow.menu3);
 		MainWindow.menuBar.add(MainWindow.menu2);
+		
+		MainWindow.menu1.add(MainWindow.MIprint);
+		MainWindow.menu1.add(MainWindow.MIsettings);
 		MainWindow.menu1.add(MainWindow.MIexit);
+		MainWindow.menu3.add(MainWindow.MIaddWeek);
 		MainWindow.menu3.add(MainWindow.MIgoToMeal);
 		MainWindow.menu2.add(MainWindow.MIhelp);
 		MainWindow.menu2.add(MainWindow.MIinfo);

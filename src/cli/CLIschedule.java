@@ -151,7 +151,7 @@ public class CLIschedule {
 		
 		int mid = Utility.askInt("Select meal id: ");
 		
-		mt = amt.add(new MealTime(0, ameal.get(mid), new Date(), w.getDay(day).getId()));
+		mt = amt.add(new MealTime(0, ameal.get(mid), 0, w.getDay(day).getId()));
 		
 		Utility.printString("Mealtime added\n");
 	}
@@ -162,7 +162,7 @@ public class CLIschedule {
 	public static void printMealtime(MealTime mt) {
 		Meal m = mt.getMeal();
 		
-		Utility.printString(Utility.dateToPresentable(mt.getTime())+ " " +
+		Utility.printString(mt.getHour()+ " " +
 				m.getId() + ": " +
 				m.getName() + "(" + m.getKcals()  + "Kcal)" +  " \n");
 		

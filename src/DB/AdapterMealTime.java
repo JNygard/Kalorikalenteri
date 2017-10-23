@@ -37,7 +37,7 @@ public class AdapterMealTime {
 			
 			while(rs.next()) {
 				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), 
-						Utility.stringToDate(rs.getString(3)),
+						rs.getInt(3),
 						rs.getInt(4)
 						);
 			}
@@ -67,7 +67,7 @@ public class AdapterMealTime {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), Utility.stringToDate(rs.getString(3)),
+				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), rs.getInt(3),
 						rs.getInt(4));
 				meals.add(f);
 			}
@@ -90,7 +90,7 @@ public class AdapterMealTime {
 					+ " VALUES (?, ?, ?)";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, f.getMeal().getId());
-			pst.setString(2, Utility.dateToString(f.getTime()));
+			pst.setInt(2, f.getHour());
 			pst.setInt(3, f.getDay_id());
 			
 			
@@ -115,7 +115,7 @@ public class AdapterMealTime {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), Utility.stringToDate(rs.getString(3)),
+				f = new MealTime(rs.getInt(1),ameal.get(rs.getInt(2)), rs.getInt(3),
 						rs.getInt(4));
 			}
 			
@@ -135,7 +135,7 @@ public class AdapterMealTime {
 			String sql = "UPDATE " + TB_1 + " SET meal_id=?, time=? WHERE id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, f.getMeal().getId());
-			pst.setString(2, Utility.dateToString(f.getTime()));
+			pst.setInt(2, f.getHour());
 			pst.setInt(3, f.getId());
 			
 			pst.execute();

@@ -46,7 +46,30 @@ public class AdapterWeek {
 		}
 		
 	}
-	
+	//Get by name
+	public Week get(String name) {
+		Week f = null;
+		try {
+			String sql = "SELECT * FROM " + TB_1 + " WHERE name=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, name);
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(2),
+						aDay.getAll(rs.getInt(1))
+						);
+			}
+			
+			rs.close();
+			pst.close();
+			return f;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;	
+		}
+		
+	}
 	//Get all
 	public ArrayList<Week> getAll() {
 		ArrayList<Week> weeks = new ArrayList();
