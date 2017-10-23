@@ -32,7 +32,7 @@ public class AdapterWeek {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(2),
+				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(3),
 						aDay.getAll(rs.getInt(1))
 						);
 			}
@@ -56,7 +56,7 @@ public class AdapterWeek {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(2),
+				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(3),
 						aDay.getAll(rs.getInt(1))
 						);
 			}
@@ -80,7 +80,7 @@ public class AdapterWeek {
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
-				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(2),
+				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(3),
 						aDay.getAll(rs.getInt(1))
 						);
 				weeks.add(f);
@@ -133,7 +133,7 @@ public class AdapterWeek {
 				if(aDay.getAll(rs.getInt(1))!=null){
 					days = aDay.getAll(rs.getInt(1));
 				}
-				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(2),
+				f = new Week(rs.getInt(1), rs.getString(2), rs.getString(3),
 						days
 						);
 			}

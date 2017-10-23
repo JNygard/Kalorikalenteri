@@ -1,7 +1,13 @@
 package GUImain;
 
+import java.util.ArrayList;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 import Model.Cell;
 import Model.Day;
+import Model.Food;
 import Utility.Utility;
 
 public class DataView {
@@ -14,6 +20,7 @@ public class DataView {
 		MainWindow.selectedWeek = MainWindow.aweek.get(MainWindow.weekList.getSelectedValue().toString());
 		MainWindow.TAweek.setText(MainWindow.selectedWeek.getDescription());
 		WeekView.updateWeekView();
+		
 	}
 	
 	//Set selected cell
@@ -25,12 +32,21 @@ public class DataView {
 		setSelectedMeal();
 	}
 	
-	//
+	//Set selected meal
 	public static void setSelectedMeal() {
 		Day d = MainWindow.selectedWeek.getDay(MainWindow.selectedCell.getX());
-		MainWindow.showMessage(d.getMealTimes().toString());
-		//MainWindow.selectedMealTime = MainWindow.amealTime.get(id);
+		MainWindow.selectedMealTime = d.getMealTime(MainWindow.selectedCell.getY());
 		
+		if(MainWindow.selectedMealTime!=null) {
+			MainWindow.selectedMeal = MainWindow.selectedMealTime.getMeal();
+			MainWindow.mealList.setSelectedIndex(MainWindow.selectedMeal.getId()-1);
+		}else {
+			MainWindow.selectedMeal = null;
+			MainWindow.mealList.clearSelection();
+		}
+		
+		
+		updateMealIncridientsList() ;
 	}
 	
 	
@@ -48,6 +64,18 @@ public class DataView {
 	
 	//Set update meal incridients
 	protected static void updateMealIncridientsList() {
+		ArrayList<Object> ojs = new ArrayList();
+		String[] mealIncridientscolumnNames = {"Nimi","g/ml","Kcal"};
+		Object[][] mealIncridientsData = {
+			    {"Name", 50, 50},{"Name2", 50, 50},{"Name3", 50, 50},{"Name4", 50, 50}, {"Name5", 50, 50},
+			    {"Name6", 50, 50}, {"Name6", 50, 50},{"Name6", 50, 50},{"Name6", 50, 50},{"Name6", 50, 50}
+		};
+		
+		for(Food d : MainWindow.selectedMeal.getFoods()) {
+
+		}
+		
+		
 		//MainWindow.mealList.setListData(Utility.mealToStringArray(MainWindow.ameal.getAll()).toArray());
 		//MainWindow.
 	}

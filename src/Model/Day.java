@@ -69,6 +69,19 @@ public class Day {
 		this.week_id = week_id;
 	}
 	
+	public MealTime getMealTime(int hour) {
+		MealTime mt = null;
+		
+		for(MealTime m : this.mealTimes) {
+			if(m.getHour()==hour) {
+				mt = m;
+			}
+		}
+		
+		
+		return mt;
+	}
+	
 	public int getKcals() {
 		int kcals = 0;
 		int k100 = 0;

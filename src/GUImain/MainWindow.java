@@ -204,6 +204,7 @@ public class MainWindow extends JFrame{
 				new ListSelectionListener() {
 					public void valueChanged(ListSelectionEvent arg0) {
 						DataView.setSelectedWeek();
+						setTitled(title + " - " +  selectedWeek.getName());
 					}});
 		//TABLE
 		/*
@@ -272,6 +273,10 @@ public class MainWindow extends JFrame{
 		jsc.getVerticalScrollBar().setValue( jsc.getVerticalScrollBar().getMaximum());
 	}
 	
+	//Change title
+	private void setTitled(String ss) {
+		this.setTitle(ss);
+	}
 
 	//Confirm dialog
 	public static boolean confirm(String title, String msg) {
