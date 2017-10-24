@@ -49,7 +49,7 @@ public class MealWindow extends JFrame{
 	protected static int foodListHeight = 12;
 	
 	//View Components----------------------------------------------------------------------------------
-	protected static JPanel inner = new JPanel(new GridLayout(1,1,20,10));;
+	protected static JPanel inner = new JPanel(new GridLayout(1,1,20,10));
 	protected static JPanel mealPanel = new JPanel();
 	protected static JPanel foodPanel = new JPanel();
 	protected static JTabbedPane tabbedPane = new JTabbedPane();

@@ -36,6 +36,7 @@ import DB.AdapterMeal;
 import DB.AdapterMealTime;
 import DB.AdapterWeek;
 import GUImeal.MealWindow;
+import GUIweek.CreateWeekWindow;
 import Model.Cell;
 import Model.Food;
 import Model.Meal;
@@ -46,6 +47,7 @@ import GUImeal.FoodTab;
 public class MainWindow extends JFrame{
 	
 	MealWindow mw = new MealWindow();
+	CreateWeekWindow cww = new CreateWeekWindow();
 	
 	
 	//String
@@ -245,7 +247,7 @@ public class MainWindow extends JFrame{
 		//BTN 
 		BTnewWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				showMessage("ASD");
+				cww.show();
 			}});
 		//BTN 
 		BTdeleteWeek.addActionListener(new ActionListener() {
