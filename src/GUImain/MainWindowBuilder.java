@@ -178,6 +178,22 @@ public class MainWindowBuilder {
 		
 		MainWindow.dataMealPanel.setMaximumSize(new Dimension(600,350));
 		MainWindow.dataMealPanel.setBorder(BorderFactory.createTitledBorder("Ajankohta"));
+		
+		
+		//Label week kcal		
+		JPanel f3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		f3.add(MainWindow.LweekKcal);
+		MainWindow.LweekKcal.setFont(MainWindow.LweekKcal.getFont().deriveFont(14.0f));
+		MainWindow.dataMealPanel.add(f3);//Add to /////
+		
+		//Label AVG day kcal		
+		JPanel f4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		f4.add(MainWindow.LdayKcalAVG);
+		MainWindow.LdayKcalAVG.setFont(MainWindow.LweekKcal.getFont().deriveFont(14.0f));
+		MainWindow.dataMealPanel.add(f4);//Add to /////
+		
+		
+		
 		MainWindow.dataPanel.add(MainWindow.dataMealPanel);
 	}
 	

@@ -3,17 +3,25 @@ package GUIweek;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import DB.AdapterDay;
+import DB.AdapterWeek;
 import GUImain.DataView;
+import GUImain.MainWindow;
 import GUImain.MainWindowBuilder;
+import Model.Day;
+import Model.Week;
 
 public class CreateWeekWindow extends JFrame{
 	
@@ -42,6 +50,11 @@ public class CreateWeekWindow extends JFrame{
 	
 	protected static JButton BTready = new JButton("Valmis");
 	protected static JButton BTcancel = new JButton("Peruuta");
+	
+	
+	//DB
+	protected static  AdapterWeek aweek= new AdapterWeek();
+	protected static  AdapterDay aday = new AdapterDay();
 
 	public CreateWeekWindow() {
 		super(title);
@@ -50,7 +63,8 @@ public class CreateWeekWindow extends JFrame{
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
-		 buildWindow() ;
+		 buildWindow();
+		 setListeners();
 		
 		this.getContentPane().add(inner);
 		
@@ -59,6 +73,23 @@ public class CreateWeekWindow extends JFrame{
 	}
 	
 	
+	//Set listeners
+	private void setListeners() {
+		
+		//BT
+		BTready.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				addWeek();
+			}});
+		//BT
+		BTcancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CloseFrame();
+			}});
+		
+	}
+
+
 	private void buildWindow() {
 		Box b1 = Box.createHorizontalBox();
 		TFname.setPreferredSize(new Dimension(this.fieldLength,this.TFheigth));
@@ -80,6 +111,64 @@ public class CreateWeekWindow extends JFrame{
 		inner.add(buttonPanel);
 		
 		
+	}
+	
+	
+	
+	
+	//Add week
+	private void addWeek() {
+		String name = TFname.getText();
+		String description = TAdescription.getText();
+		
+		if(name.length()<2) {
+			showMessage("Anna vähintään 2 merkkiä pitkä nimi");
+			return;
+		}
+		
+		if(aweek.get(name)==null) {
+			
+			Week w = aweek.add(new Week(0,name,description)); //Create Week
+			
+			int x = 1;
+			while(x<=7) {
+				aday.add(new Day(0,x,w.getId(),null)); //Create days to week (AdapterWeek job?)
+				x++;
+			}
+			MainWindow.updateWeekView();
+			CloseFrame();
+			
+		}else {
+			showMessage("Nimi on jo käytössä. Valitse toinen");
+		}
+		
+		
+	}
+	
+	
+	//---------------------------------------------------------------------------------------------
+	
+	//Confirm dialog
+	public static boolean confirm(String title, String msg) {
+		Object[] options = {"Peruuta", "Kyllä"};
+		int n = JOptionPane.showOptionDialog(inner,msg,title,
+		    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
+		    null,options,options[1]);
+				
+		if(n==1) {
+			return true;
+		}
+		return false;
+	}
+	
+	//Show dialog message
+	public static void showMessage(String msg) {
+		JOptionPane.showMessageDialog(inner, msg);
+	}
+	
+	//Close window
+	public void CloseFrame(){
+	    super.dispose();
 	}
 
 }

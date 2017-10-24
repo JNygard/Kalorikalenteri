@@ -110,7 +110,10 @@ public class MainWindow extends JFrame{
 	protected static JButton BTemptyMeal = new JButton("Tyhjenn‰ ajankohta");
 	protected static JLabel LmealName = new JLabel();
 	protected static JTable TBmealIncridients = new JTable(mealIncridientsData, mealIncridientscolumnNames);
-	protected static JLabel LmealKcal = new JLabel("Yht: 0 Kcal");
+	protected static JLabel LmealKcal = new JLabel("Ateria: 0 Kcal");
+	
+	protected static JLabel LweekKcal = new JLabel("Viikossa: 0 Kcal.");
+	protected static JLabel LdayKcalAVG = new JLabel("Keskim‰‰rin: 0 Kcal/p‰iv‰");
 	
 	//Contents-------------------------------------------------------------------------------------------------------------------------
 	
@@ -181,7 +184,7 @@ public class MainWindow extends JFrame{
 		//Add week
 		MIaddWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				showMessage("Lis‰‰ viikko");
+				cww.show();
 			}});
 		//Go to meal edit
 		MIgoToMeal.addActionListener(new ActionListener() {
@@ -252,7 +255,7 @@ public class MainWindow extends JFrame{
 		//BTN 
 		BTdeleteWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				showMessage("ASD");
+				DataView.deleteWeek();
 			}});
 		//BTN 
 		BTeditWeek.addActionListener(new ActionListener() {
@@ -274,7 +277,10 @@ public class MainWindow extends JFrame{
 	}
 	
 	
-	
+	//public Update weekview 
+	public static void updateWeekView() {
+		DataView.updateWeekList();
+	};
 	
 	//Scroll week down
 	public static void scrollWeekViewDown() {

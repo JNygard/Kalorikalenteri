@@ -18,11 +18,17 @@ public class DataView {
 	
 	//set Selected week
 	public static void setSelectedWeek() {
+		if(MainWindow.weekList.getSelectedValue()!=null) {
 		MainWindow.selectedWeek = MainWindow.aweek.get(MainWindow.weekList.getSelectedValue().toString());
 		MainWindow.TAweek.setText(MainWindow.selectedWeek.getDescription());
-		WeekView.updateWeekView();
 		
+		updateAVGdayKcal();
+		updateWeekCalories();
+		WeekView.updateWeekView();
+		}
 	}
+	
+
 	
 	//Set selected cell
 	public static void setTime(int day, int hour) {
@@ -44,6 +50,8 @@ public class DataView {
 				}
 				
 				updateMealIncridientsList() ;
+				updateAVGdayKcal();
+				updateWeekCalories();
 			}
 		}else {
 			MainWindow.TBweekTable.clearSelection();
@@ -75,7 +83,8 @@ public class DataView {
 			}
 			
 			
-			
+			updateAVGdayKcal();
+			updateWeekCalories();
 			updateMealIncridientsList() ;
 		}else {
 			MainWindow.LmealName.setText("");
@@ -92,7 +101,8 @@ public class DataView {
 					MainWindow.amealTime.delete(MainWindow.selectedMealTime.getId());
 					
 					WeekView.updateWeekView();
-					
+					updateAVGdayKcal();
+					updateWeekCalories();
 				}
 			}else {
 				MainWindow.showMessage("No selecred mealtime");
@@ -103,9 +113,50 @@ public class DataView {
 		
 	}
 	
+	//Delete week
+	public static void deleteWeek() {
+		if(MainWindow.selectedWeek!=null) {
+			if(MainWindow.confirm("Poistetaan viikkoaikataulu", "Haluatko aivan varmasti poistaa viikkoaikataulun? Kaikki viikon tiedot poistuvat")) {
+				MainWindow.aweek.delete(MainWindow.selectedWeek.getId());
+				MainWindow.selectedWeek=null;
+				WeekView.updateWeekView();
+				updateAll();
+			}
+			
+			
+		}else {
+			MainWindow.showMessage("Ei valittua viikkoa");
+		}
+	}
+	
 	
 	
 	//Update view----------------------------------------------------------------------------
+	//Update ALL
+	public static void updateAll() {
+		updateWeekCalories();
+		updateAVGdayKcal() ;
+		updateWeekList();
+		updateMealList();
+		updateMealIncridientsList();
+	}
+	
+	//Set week kcal
+	public static void updateWeekCalories() {
+		int k = 0;
+		if(MainWindow.selectedWeek!=null)
+			k =  MainWindow.selectedWeek.getKcal();
+		MainWindow.LweekKcal.setText("Viikossa: " + k + " Kcal");
+	}
+	
+	//Set AVG day kcal
+	public static void updateAVGdayKcal() {
+		int k = 0;
+		if(MainWindow.selectedWeek!=null)
+			 k = MainWindow.selectedWeek.getKcal()/7;
+		MainWindow.LdayKcalAVG.setText("Keskim‰‰rin: " + k + " Kcal/p‰iv‰");
+	}
+	
 	
 	//Set update weeklist
 	protected static void updateWeekList() {
