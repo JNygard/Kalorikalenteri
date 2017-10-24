@@ -99,18 +99,16 @@ public class MainWindow extends JFrame{
 	
 	
 	protected static String[] mealIncridientscolumnNames = {"Nimi","g/ml","Kcal"};
-	protected static Object[][] mealIncridientsData = {
-		    {"Name", 50, 50},{"Name2", 50, 50},{"Name3", 50, 50},{"Name4", 50, 50}, {"Name5", 50, 50},
-		    {"Name6", 50, 50}, {"Name6", 50, 50},{"Name6", 50, 50},{"Name6", 50, 50},{"Name6", 50, 50}
-	};
+	protected static Object[][] mealIncridientsData = {};
 		        
 	//Meal/Hour
 	protected static JLabel LselectedCell= new JLabel(" ");
 	protected static JList mealList = new JList();
 	protected static JButton BTcontrolMeal = new JButton("Hallitse aterioita");
 	protected static JButton BTemptyMeal = new JButton("Tyhjennä ajankohta");
+	protected static JLabel LmealName = new JLabel();
 	protected static JTable TBmealIncridients = new JTable(mealIncridientsData, mealIncridientscolumnNames);
-	protected static JLabel LmealKcal = new JLabel("Yht: 150 Kcal");
+	protected static JLabel LmealKcal = new JLabel("Yht: 0 Kcal");
 	
 	//Contents-------------------------------------------------------------------------------------------------------------------------
 	
@@ -131,6 +129,8 @@ public class MainWindow extends JFrame{
 	
 	//Weekview
 	protected static Cell selectedCell;
+	
+	
 	
 	public MainWindow() {
 		super(title);
@@ -205,6 +205,12 @@ public class MainWindow extends JFrame{
 					public void valueChanged(ListSelectionEvent arg0) {
 						DataView.setSelectedWeek();
 						setTitled(title + " - " +  selectedWeek.getName());
+					}});
+		//LIST
+		mealList.addListSelectionListener(
+				new ListSelectionListener() {
+					public void valueChanged(ListSelectionEvent arg0) {
+						DataView.setSelectedMeal();
 					}});
 		//TABLE
 		/*

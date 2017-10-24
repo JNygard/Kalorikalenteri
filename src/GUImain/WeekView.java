@@ -15,10 +15,12 @@ public class WeekView {
 	//Update weekview
 	public static void updateWeekView() {
 		setEmptyTable();
-		Week w = MainWindow.selectedWeek;
+		MainWindow.selectedWeek = MainWindow.aweek.get(MainWindow.selectedWeek.getId());
+		MainWindow.TBweekTable.enable();
 		
 		
-		for(Day d : w.getDays()) {
+		
+		for(Day d : MainWindow.selectedWeek.getDays()) {
 			for(MealTime m : d.getMealTimes()) {
 				MainWindow.TBweekTable.setValueAt(m.getMeal().getName(),  m.getHour(),d.getDay());
 			}

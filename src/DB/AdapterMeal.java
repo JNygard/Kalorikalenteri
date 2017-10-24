@@ -43,7 +43,28 @@ public class AdapterMeal {
 		}
 		
 	}
-	
+	//Get by name
+	public Meal get(String name) {
+		Meal f = null;
+		try {
+			String sql = "SELECT * FROM " + TB_1 + " WHERE name=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, name);
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				f = new Meal(rs.getInt(1), rs.getString(2), afood.getAll(rs.getInt(1)));
+			}
+			
+			rs.close();
+			pst.close();
+			return f;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;	
+		}
+		
+	}
 	//Get all
 	public ArrayList<Meal> getAll() {
 		ArrayList<Meal> meals = new ArrayList();

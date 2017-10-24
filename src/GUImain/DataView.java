@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import Model.Cell;
 import Model.Day;
 import Model.Food;
+import Model.MealTime;
 import Utility.Utility;
 
 public class DataView {
@@ -25,28 +26,58 @@ public class DataView {
 	
 	//Set selected cell
 	public static void setTime(int day, int hour) {
-		//MainWindow.selectedMealTime = MainWindow.selectedWeek.getDay(day).getMealTimes().get(hour);
-		MainWindow.selectedCell = new Cell(day, hour);
-		MainWindow.LselectedCell.setText(Utility.weekDayToString(day+7) + " Klo " + hour + ":00");
-		
-		setSelectedMeal();
+		if(day!=0) {
+			if(MainWindow.selectedWeek!=null) {
+				MainWindow.selectedCell = new Cell(day, hour);
+				MainWindow.LselectedCell.setText(Utility.weekDayToString(day+7) + " Klo " + hour + ":00");
+				
+				Day d = MainWindow.selectedWeek.getDay(MainWindow.selectedCell.getX());
+				MainWindow.selectedMealTime = d.getMealTime(MainWindow.selectedCell.getY());
+				
+				if(MainWindow.selectedMealTime!=null) {
+					MainWindow.selectedMeal = MainWindow.selectedMealTime.getMeal();
+					MainWindow.mealList.setSelectedIndex(MainWindow.selectedMeal.getId()-1);
+				}else {
+					MainWindow.selectedMeal = null;
+					MainWindow.mealList.clearSelection();
+				}
+				
+				updateMealIncridientsList() ;
+			}
+		}else {
+			MainWindow.TBweekTable.clearSelection();
+			MainWindow.TBweekTable.getSelectionModel().clearSelection();
+		}
 	}
 	
 	//Set selected meal
 	public static void setSelectedMeal() {
-		Day d = MainWindow.selectedWeek.getDay(MainWindow.selectedCell.getX());
-		MainWindow.selectedMealTime = d.getMealTime(MainWindow.selectedCell.getY());
-		
-		if(MainWindow.selectedMealTime!=null) {
-			MainWindow.selectedMeal = MainWindow.selectedMealTime.getMeal();
-			MainWindow.mealList.setSelectedIndex(MainWindow.selectedMeal.getId()-1);
+		if(MainWindow.mealList.getSelectedValue()!=null) {
+			MainWindow.selectedMeal = MainWindow.ameal.get(MainWindow.mealList.getSelectedValue().toString());
+			MainWindow.LmealName.setText(MainWindow.selectedMeal.getName());
+			if(MainWindow.selectedMealTime!=null && MainWindow.selectedCell!=null) {
+				MainWindow.selectedMealTime.setMeal(MainWindow.selectedMeal);
+				MainWindow.amealTime.update(MainWindow.selectedMealTime);
+				
+				WeekView.updateWeekView();
+			}else if(MainWindow.selectedCell!=null) {
+				MealTime nm = new MealTime(0, MainWindow.selectedMeal, MainWindow.selectedCell.getY(), MainWindow.selectedWeek.getDay(MainWindow.selectedCell.getX()).getId());
+				MainWindow.amealTime.add(nm);
+				
+				
+				WeekView.updateWeekView();
+			}else {
+				
+				
+				MainWindow.showMessage("Et ole valinnut ajankohtaa");
+			}
+			
+			
+			
+			updateMealIncridientsList() ;
 		}else {
-			MainWindow.selectedMeal = null;
-			MainWindow.mealList.clearSelection();
+			MainWindow.LmealName.setText("");
 		}
-		
-		
-		updateMealIncridientsList() ;
 	}
 	
 	
@@ -71,8 +102,30 @@ public class DataView {
 			    {"Name6", 50, 50}, {"Name6", 50, 50},{"Name6", 50, 50},{"Name6", 50, 50},{"Name6", 50, 50}
 		};
 		
-		for(Food d : MainWindow.selectedMeal.getFoods()) {
-
+		
+		
+		if(MainWindow.selectedMeal!=null) {
+			DefaultTableModel dtm = new DefaultTableModel(MainWindow.selectedMeal.getFoods().size(), 3);
+			dtm.setColumnIdentifiers(MainWindow.mealIncridientscolumnNames);
+			MainWindow.TBmealIncridients.setModel(dtm);
+			
+			int x = 0;
+			int foodKcal = 0;
+			for(Food d : MainWindow.selectedMeal.getFoods()) {
+				MainWindow.TBmealIncridients.setValueAt(d.getFood100g().getName(),  x,0);
+				MainWindow.TBmealIncridients.setValueAt(d.getGrams(),  x,1);
+				MainWindow.TBmealIncridients.setValueAt(Utility.calculateFoodCalories(d),  x,2);
+				foodKcal+= Utility.calculateFoodCalories(d);
+				x++;
+			}
+			
+			MainWindow.LmealKcal.setText("Ateria: " + foodKcal + " Kcal");
+		}else {
+			DefaultTableModel dtm = new DefaultTableModel(0, 3);
+			dtm.setColumnIdentifiers(MainWindow.mealIncridientscolumnNames);
+			MainWindow.TBmealIncridients.setModel(dtm);
+			MainWindow.LmealKcal.setText("Ateria: 0 Kcal");
+			
 		}
 		
 		

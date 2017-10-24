@@ -75,7 +75,7 @@ public class MainWindowBuilder {
 		
 		MainWindow.TBweekTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		MainWindow.TBweekTable.setCellSelectionEnabled(true);
-		
+		MainWindow.TBweekTable.disable();
 		
 		MainWindow.inner.add(MainWindow.jsc,BorderLayout.CENTER );
 		
@@ -158,6 +158,13 @@ public class MainWindowBuilder {
 		wButtonPanel.add(MainWindow.BTcontrolMeal);
 		MainWindow.dataMealPanel.add(wButtonPanel);
 		
+
+		
+		//Label meal name		
+				JPanel f2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+				f2.add(MainWindow.LmealName);
+				MainWindow.LmealName.setFont(MainWindow.LmealKcal.getFont().deriveFont(14.0f));
+				MainWindow.dataMealPanel.add(f2);//Add to /////
 		
 		//Incridient table
 		JScrollPane jsc = new JScrollPane(MainWindow.TBmealIncridients);
