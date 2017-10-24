@@ -167,6 +167,7 @@ public class MainWindowBuilder {
 				MainWindow.dataMealPanel.add(f2);//Add to /////
 		
 		//Incridient table
+				MainWindow.TBmealIncridients.setEnabled(false);
 		JScrollPane jsc = new JScrollPane(MainWindow.TBmealIncridients);
 		jsc.setPreferredSize(new Dimension(150, 100));
 		MainWindow.dataMealPanel.add(jsc);

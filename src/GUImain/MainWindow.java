@@ -266,7 +266,7 @@ public class MainWindow extends JFrame{
 		//BTN 
 		BTemptyMeal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				showMessage("ASD");
+				DataView.emptyCell();
 			}});
 		
 	}

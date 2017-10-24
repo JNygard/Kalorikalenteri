@@ -38,6 +38,7 @@ public class DataView {
 					MainWindow.selectedMeal = MainWindow.selectedMealTime.getMeal();
 					MainWindow.mealList.setSelectedIndex(MainWindow.selectedMeal.getId()-1);
 				}else {
+					MainWindow.selectedMealTime = null;
 					MainWindow.selectedMeal = null;
 					MainWindow.mealList.clearSelection();
 				}
@@ -59,12 +60,13 @@ public class DataView {
 				MainWindow.selectedMealTime.setMeal(MainWindow.selectedMeal);
 				MainWindow.amealTime.update(MainWindow.selectedMealTime);
 				
+				
 				WeekView.updateWeekView();
 			}else if(MainWindow.selectedCell!=null) {
+				
 				MealTime nm = new MealTime(0, MainWindow.selectedMeal, MainWindow.selectedCell.getY(), MainWindow.selectedWeek.getDay(MainWindow.selectedCell.getX()).getId());
-				MainWindow.amealTime.add(nm);
-				
-				
+				MainWindow.selectedMealTime = MainWindow.amealTime.add(nm);
+								
 				WeekView.updateWeekView();
 			}else {
 				
@@ -79,6 +81,28 @@ public class DataView {
 			MainWindow.LmealName.setText("");
 		}
 	}
+	
+	//Empty cell
+	public static void emptyCell() {
+		if(MainWindow.selectedCell!=null) {
+			if(MainWindow.selectedMealTime!=null) {
+				
+				if(MainWindow.confirm("Tyhjenn‰ ajankohta", "Haluatko tyhjent‰‰ ajankohdan?")) {
+				
+					MainWindow.amealTime.delete(MainWindow.selectedMealTime.getId());
+					
+					WeekView.updateWeekView();
+					
+				}
+			}else {
+				MainWindow.showMessage("No selecred mealtime");
+			}
+		}else {
+			MainWindow.showMessage("No selecred cell");
+		}
+		
+	}
+	
 	
 	
 	//Update view----------------------------------------------------------------------------
