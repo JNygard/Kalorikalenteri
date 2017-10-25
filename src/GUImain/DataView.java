@@ -18,13 +18,13 @@ public class DataView {
 	
 	//set Selected week
 	public static void setSelectedWeek() {
-		if(MainWindow.weekList.getSelectedValue()!=null) {
-		MainWindow.selectedWeek = MainWindow.aweek.get(MainWindow.weekList.getSelectedValue().toString());
-		MainWindow.TAweek.setText(MainWindow.selectedWeek.getDescription());
-		
-		updateAVGdayKcal();
-		updateWeekCalories();
-		WeekView.updateWeekView();
+		if(!MainWindow.weekList.isSelectionEmpty()) {
+			MainWindow.selectedWeek = MainWindow.aweek.get(MainWindow.weekList.getSelectedValue().toString());
+			MainWindow.TAweek.setText(MainWindow.selectedWeek.getDescription());
+			
+			updateAVGdayKcal();
+			updateWeekCalories();
+			WeekView.updateWeekView();
 		}
 	}
 	
@@ -63,7 +63,6 @@ public class DataView {
 	public static void setSelectedMeal() {
 		if(MainWindow.mealList.getSelectedValue()!=null) {
 			MainWindow.selectedMeal = MainWindow.ameal.get(MainWindow.mealList.getSelectedValue().toString());
-			MainWindow.LmealName.setText(MainWindow.selectedMeal.getName());
 			if(MainWindow.selectedMealTime!=null && MainWindow.selectedCell!=null) {
 				MainWindow.selectedMealTime.setMeal(MainWindow.selectedMeal);
 				MainWindow.amealTime.update(MainWindow.selectedMealTime);
@@ -117,7 +116,7 @@ public class DataView {
 	public static void deleteWeek() {
 		if(MainWindow.selectedWeek!=null) {
 			if(MainWindow.confirm("Poistetaan viikkoaikataulu", "Haluatko aivan varmasti poistaa viikkoaikataulun? Kaikki viikon tiedot poistuvat")) {
-				MainWindow.aweek.delete(MainWindow.selectedWeek.getId());
+				MainWindow.aweek.delete(MainWindow.selectedWeek);
 				MainWindow.selectedWeek=null;
 				WeekView.updateWeekView();
 				updateAll();
@@ -136,6 +135,7 @@ public class DataView {
 	public static void updateAll() {
 		updateWeekCalories();
 		updateAVGdayKcal() ;
+		MainWindow.weekList.clearSelection();
 		updateWeekList();
 		updateMealList();
 		updateMealIncridientsList();
@@ -159,14 +159,16 @@ public class DataView {
 	
 	
 	//Set update weeklist
-	protected static void updateWeekList() {
+	public static void updateWeekList() {
 		MainWindow.weekList.setListData(Utility.weektoStringArray(MainWindow.aweek.getAll()).toArray());
 	}
 	
 	//Set update meal
-	protected static void updateMealList() {
+	public static void updateMealList() {
 		MainWindow.mealList.setListData(Utility.mealToStringArray(MainWindow.ameal.getAll()).toArray());
 	}
+	
+	
 	
 	//Set update meal incridients
 	protected static void updateMealIncridientsList() {
@@ -180,6 +182,8 @@ public class DataView {
 		
 		
 		if(MainWindow.selectedMeal!=null) {
+			MainWindow.LmealName.setText(MainWindow.selectedMeal.getName());
+			
 			DefaultTableModel dtm = new DefaultTableModel(MainWindow.selectedMeal.getFoods().size(), 3);
 			dtm.setColumnIdentifiers(MainWindow.mealIncridientscolumnNames);
 			MainWindow.TBmealIncridients.setModel(dtm);
@@ -200,6 +204,7 @@ public class DataView {
 			dtm.setColumnIdentifiers(MainWindow.mealIncridientscolumnNames);
 			MainWindow.TBmealIncridients.setModel(dtm);
 			MainWindow.LmealKcal.setText("Ateria: 0 Kcal");
+			MainWindow.LmealName.setText(" ");
 			
 		}
 		

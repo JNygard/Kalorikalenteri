@@ -108,7 +108,7 @@ public class MainWindow extends JFrame{
 	protected static JList mealList = new JList();
 	protected static JButton BTcontrolMeal = new JButton("Hallitse aterioita");
 	protected static JButton BTemptyMeal = new JButton("Tyhjennä ajankohta");
-	protected static JLabel LmealName = new JLabel();
+	protected static JLabel LmealName = new JLabel(" ");
 	protected static JTable TBmealIncridients = new JTable(mealIncridientsData, mealIncridientscolumnNames);
 	protected static JLabel LmealKcal = new JLabel("Ateria: 0 Kcal");
 	
@@ -209,7 +209,11 @@ public class MainWindow extends JFrame{
 				new ListSelectionListener() {
 					public void valueChanged(ListSelectionEvent arg0) {
 						DataView.setSelectedWeek();
-						setTitled(title + " - " +  selectedWeek.getName());
+						if(selectedWeek!=null) {
+							setTitled(title + " - " +  selectedWeek.getName());
+						}else {
+							setTitled(title);
+						}
 					}});
 		//LIST
 		mealList.addListSelectionListener(

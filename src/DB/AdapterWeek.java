@@ -166,11 +166,16 @@ public class AdapterWeek {
 	}
 	
 	//Delete
-	public void delete(int id) {
+	public void delete(Week w) {
+		int id = w.getId();
 		try {
+			//Delete days
+			aDay.deleteByWeek(w);
+			
 			String sql = "DELETE FROM " + TB_1 + " WHERE id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, id);
+
 			
 			pst.execute();
 			pst.close();

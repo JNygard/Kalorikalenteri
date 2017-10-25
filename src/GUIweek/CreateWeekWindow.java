@@ -136,6 +136,7 @@ public class CreateWeekWindow extends JFrame{
 				x++;
 			}
 			MainWindow.updateWeekView();
+			emptyWeek();
 			CloseFrame();
 			
 		}else {
@@ -145,6 +146,12 @@ public class CreateWeekWindow extends JFrame{
 		
 	}
 	
+	//Empty week
+	private void emptyWeek() {
+		TFname.setText("");
+		TAdescription.setText("");
+		
+	}
 	
 	//---------------------------------------------------------------------------------------------
 	

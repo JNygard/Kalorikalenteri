@@ -12,15 +12,19 @@ public class FoodTab {
 	//Add food
 	protected static void addFood() {
 		String name = MealWindow.JTfoodName.getText();
-		if(name.length()<2) {
-			MealWindow.showMessage("Anna pidempi nimi");
+		if(name.length()<2 || name.length() > MealWindow.maxNameLength) {
+			MealWindow.showMessage("Nimen täytyy olla 2 - " + MealWindow.maxNameLength + " merkkiä pitkä");
 			return;
 		}
 		int kcal = 0;
 		try {
 			kcal = Integer.parseInt(MealWindow.JTfoodKcal.getText());
 		}catch (Exception e) {
-			MealWindow.showMessage("Virheellinen kcal syöte");
+			MealWindow.showMessage("Virheellinen kcal syötä");
+			return;
+		}
+		if(kcal>MealWindow.maxKcal) {
+			MealWindow.showMessage("Liian suuri syöte. Syöte alle " + MealWindow.maxKcal + " Kcal");
 			return;
 		}
 		

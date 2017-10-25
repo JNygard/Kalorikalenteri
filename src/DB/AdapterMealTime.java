@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import Model.Day;
 import Model.Meal;
 import Model.MealTime;
 import Utility.Utility;
@@ -152,6 +153,21 @@ public class AdapterMealTime {
 			String sql = "DELETE FROM " + TB_1 + " WHERE id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, id);
+			
+			pst.execute();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//Delete by day_id
+	public void deleteByDay(Day d) {
+		int day_id = d.getId();
+		try {
+			String sql = "DELETE FROM " + TB_1 + " WHERE day_id=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, day_id);
 			
 			pst.execute();
 			pst.close();

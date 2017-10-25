@@ -21,6 +21,7 @@ import javax.swing.event.ListSelectionListener;
 import DB.AdapterFood;
 import DB.AdapterFood100g;
 import DB.AdapterMeal;
+import GUImain.DataView;
 import Model.Food;
 import Model.Food100g;
 import Utility.Utility;
@@ -47,6 +48,10 @@ public class MealWindow extends JFrame{
 	protected static int windowHeight = 410;
 	protected static int panelWidth1 = 200;
 	protected static int foodListHeight = 12;
+	
+	protected static int maxNameLength = 40;
+	protected static int maxKcal = 10000;
+	protected static int maxWeight = 10000;
 	
 	//View Components----------------------------------------------------------------------------------
 	protected static JPanel inner = new JPanel(new GridLayout(1,1,20,10));
@@ -202,6 +207,7 @@ public class MealWindow extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				if (MealTab.mealReady()) {
 					CloseFrame();
+					DataView.updateMealList();
 				}
 			}});
 		//BTN Cancel 

@@ -157,4 +157,24 @@ public class AdapterDay {
 			e.printStackTrace();
 		}
 	}
+	
+	//Delete by week_id
+	public void deleteByWeek(Week w) {
+		try {
+			String sql = "DELETE FROM " + TB_1 + " WHERE week_id=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, w.getId());
+			
+			//Delete meal_times by day
+			for(Day d : w.getDays()) {
+				amt.deleteByDay(d);
+			}
+			
+			
+			pst.execute();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

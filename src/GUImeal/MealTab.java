@@ -2,6 +2,7 @@ package GUImeal;
 
 import java.util.ArrayList;
 
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import Model.Food;
@@ -81,8 +82,18 @@ public class MealTab {
 			MealWindow.afood.add(f);
 		}
 		MealWindow.showMessage(title + " lisätty");
+		emptyFields();
 		return true;
 		
+	}
+	
+	
+	public static void emptyFields() {
+		MealWindow.mealIncridients = new ArrayList();	
+		String[] s =  {" "};
+		MealWindow.LmealIncridients.setListData(s);
+		MealWindow.JTmealName.setText("");
+		updateTotalKcal();
 	}
 	
 	//UPDATE VIEW--------------------------------------------------------------------
