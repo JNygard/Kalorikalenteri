@@ -2,12 +2,14 @@ package GUImeal;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import Utility.Utility;
 
 public class MealWindowBuilder {
 
@@ -49,6 +53,8 @@ public class MealWindowBuilder {
 		
 	}
 	
+
+	
 	//Build new food panel
 	private static void buildnewFoodPanel() {
 		Box foodBox = Box.createVerticalBox();
@@ -56,18 +62,18 @@ public class MealWindowBuilder {
 		
 		//Name
 		Box nameBox = Box.createHorizontalBox();
-		nameBox.setMaximumSize(new Dimension(MealWindow.panelWidth1,20));
+		nameBox.setMaximumSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
 		nameBox.add(new JLabel(MealWindow.newFname));
-		MealWindow.JTfoodName.setPreferredSize(new Dimension(MealWindow.panelWidth1,20));
+		MealWindow.JTfoodName.setPreferredSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
 		nameBox.add(MealWindow.JTfoodName);
 		foodBox.add(nameBox);//Add to mealbox///////
 		
 		
 		//kcal
 		Box kcalBox = Box.createHorizontalBox();
-		kcalBox.setMaximumSize(new Dimension(MealWindow.panelWidth1,20));
+		kcalBox.setMaximumSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
 		kcalBox.add(new JLabel(MealWindow.newFkcal));
-		MealWindow.JTfoodKcal.setPreferredSize(new Dimension(MealWindow.panelWidth1,20));
+		MealWindow.JTfoodKcal.setPreferredSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
 		kcalBox.add(MealWindow.JTfoodKcal);
 		foodBox.add(kcalBox);//Add to mealbox///////
 		
@@ -123,7 +129,9 @@ public class MealWindowBuilder {
 		buildMealFoodPanel();
 		
 		
+		MealWindow.mealPanel.add(MealWindow.meallistGrid);
 		MealWindow.mealPanel.add(MealWindow.mealGrid);
+		MealWindow.mealGrid.setVisible(false);
 		
 		MealWindow.BmealReady.setText("Valmis");
 		MealWindow.BmealCancel.setText("Peruuta");
@@ -138,9 +146,31 @@ public class MealWindowBuilder {
 		Box mealBox = Box.createVerticalBox();
 		mealBox.setBorder(BorderFactory.createTitledBorder(MealWindow.groupTitle1));
 		
+		Box mealBox2 = Box.createVerticalBox();
+		mealBox2.setBorder(BorderFactory.createTitledBorder(MealWindow.groupTitle3));
+
+		
+		//Meallist
+		Box mealListBox = Box.createHorizontalBox();
+		Box emptybox = Box.createHorizontalBox();
+		MealWindow.JCmealList = new JComboBox(Utility.mealToStringArray(MealWindow.ameal.getAll()).toArray());
+		mealListBox.add(MealWindow.JCmealList);
+		MealWindow.JCmealList.setPreferredSize(new Dimension(MealWindow.panelWidth1+28, MealWindow.inputHeight1));
+		mealBox2.add(mealListBox);
+		
+		
+		JPanel REDpanel = new JPanel(new GridLayout(1,3));	
+		REDpanel.add(MealWindow.BmealDelete);
+		//REDpanel.add(MealWindow.BmealEdit);
+		REDpanel.add(MealWindow.BmealNew);
+		mealBox2.add(REDpanel);
+		
+		MealWindow.meallistGrid.add(mealBox2);
+		MealWindow.meallistGrid.add(emptybox);
+		
 		//Name
 		Box nameBox = Box.createHorizontalBox();
-		MealWindow.JTmealName.setPreferredSize(new Dimension(MealWindow.panelWidth1,20));
+		MealWindow.JTmealName.setPreferredSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
 		nameBox.add(new JLabel(MealWindow.nameLabel));
 		nameBox.add(MealWindow.JTmealName);
 		mealBox.add(nameBox);//Add to mealbox///////

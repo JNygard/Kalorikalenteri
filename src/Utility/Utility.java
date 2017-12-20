@@ -1,7 +1,9 @@
 package Utility;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.awt.List;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +32,7 @@ public class Utility {
 		return s;
 	}
 	
+	
 	public static int askInt(String q) {
 		int i;
 		
@@ -38,6 +41,26 @@ public class Utility {
 		
 		return i;
 	}
+	
+	public static String limitString(String s, int l) {
+		if(s.length()>l) {
+			String h = splitToNChar(s, l)[0];
+			h+="..";
+			return h;
+		}else {
+			return s;
+		}
+	}
+	
+    private static String[] splitToNChar(String text, int size) {
+    	ArrayList<String> parts = new ArrayList<>();
+
+        int length = text.length();
+        for (int i = 0; i < length; i += size) {
+            parts.add(text.substring(i, Math.min(length, i + size)));
+        }
+        return parts.toArray(new String[0]);
+    }
 	
 	public static void printNL(int times) {
 		int x=0;
@@ -143,7 +166,7 @@ public class Utility {
 	public static ArrayList<String> toFood100toStringArray(ArrayList<Food> mealIncridients) {
 		ArrayList<String> sl = new ArrayList();
 		for(Food f : mealIncridients) {
-			sl.add(f.getFood100g().getName() + " " + f.getGrams() + " g");
+			sl.add(limitString(f.getFood100g().getName(),20) + " " + f.getGrams() + " g");
 		}
 		return sl;
 	}

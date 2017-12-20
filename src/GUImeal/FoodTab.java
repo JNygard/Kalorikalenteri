@@ -20,7 +20,7 @@ public class FoodTab {
 		try {
 			kcal = Integer.parseInt(MealWindow.JTfoodKcal.getText());
 		}catch (Exception e) {
-			MealWindow.showMessage("Virheellinen kcal syötä");
+			MealWindow.showMessage("Virheellinen kcal syöte");
 			return;
 		}
 		if(kcal>MealWindow.maxKcal) {

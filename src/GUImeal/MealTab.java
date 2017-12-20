@@ -6,6 +6,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import Model.Food;
+import Model.Food100g;
 import Model.Meal;
 import Utility.Utility;
 
@@ -22,6 +23,7 @@ public class MealTab {
 		try { amount = Integer.parseInt(MealWindow.TFweight.getText());
 		} catch(Exception e) {
 			MealWindow.showMessage("Virheellinen m‰‰r‰");return;}
+		
 		MealWindow.mealIncridients.add(new Food(0, MealWindow.selectedFood, amount, 0));
 		MealWindow.TFweight.setText("");
 		updateIncridientList();
@@ -44,10 +46,24 @@ public class MealTab {
 		}
 	}
 	
+	//Set selected meal
+	protected static void setSelectedMeal() {
+		MealWindow.selectedMeal = MealWindow.ameal.get(String.valueOf(MealWindow.JCmealList.getSelectedItem()));
+		MealWindow.JTmealName.setText(MealWindow.selectedMeal.getName());
+		MealWindow.mealIncridients.clear();
+		for(Food f : MealWindow.selectedMeal.getFoods()) {
+			MealWindow.mealIncridients.add(new Food(0, f.getFood100g(), f.getGrams(), 0));
+		}
+		MealWindow.TFweight.setText("");
+		updateIncridientList();
+		updateTotalKcal();
+		showMealInputs(true);
+	}
+	
 	//Set selected food1
 	protected static  void setSelectedFood1() {
 		MealWindow.selectedFood = MealWindow.af100.get(MealWindow.LfoodList1.getSelectedValue().toString());
-		MealWindow.LaddNewIncridient.setText(MealWindow.selectedFood.getName() + " | " + MealWindow.selectedFood.getKcal() + " kcal/100g");
+		MealWindow.LaddNewIncridient.setText(Utility.limitString(MealWindow.selectedFood.getName(),15) + " | " + MealWindow.selectedFood.getKcal() + " kcal/100g");
 	}
 	
 	//Set selected incridient
@@ -57,7 +73,7 @@ public class MealTab {
 		MealWindow.selectedIncridient = MealWindow.mealIncridients.get(MealWindow.LmealIncridients.getSelectedIndex());
 		
 		MealWindow.LselectedIncridient.setText(
-				MealWindow.selectedIncridient.getFood100g().getName() + " " +
+				Utility.limitString(MealWindow.selectedIncridient.getFood100g().getName(),20) + " " +
 				Utility.calculateFoodCalories(MealWindow.selectedIncridient) +
 				"Kcal"
 				);	
@@ -94,6 +110,11 @@ public class MealTab {
 		MealWindow.LmealIncridients.setListData(s);
 		MealWindow.JTmealName.setText("");
 		updateTotalKcal();
+	}
+	
+	//Hide edit/new inputs
+	protected static void showMealInputs(boolean n) {
+		MealWindow.mealGrid.setVisible(n);
 	}
 	
 	//UPDATE VIEW--------------------------------------------------------------------

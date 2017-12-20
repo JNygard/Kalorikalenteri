@@ -1,6 +1,8 @@
 package GUImeal;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -8,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -15,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -24,6 +28,7 @@ import DB.AdapterMeal;
 import GUImain.DataView;
 import Model.Food;
 import Model.Food100g;
+import Model.Meal;
 import Utility.Utility;
 
 public class MealWindow extends JFrame{
@@ -31,10 +36,11 @@ public class MealWindow extends JFrame{
 	//String
 	protected static String title = "Hallitse aterioita ja elintarvikkeita";
 		//mTab
-	protected static String tab1Title = "Ateriat";
-	protected static String tab2Title = "Elintarvikeet";
-	protected static String groupTitle1 = "Uusi ateria";
+	protected static String tab1Title = "Hallitse aterioita";
+	protected static String tab2Title = "Hallitse elintarvikkeita";
+	protected static String groupTitle1 = "Uusi/muokkaa ateria";
 	protected static String groupTitle2 = "Elintarvikkeet";
+	protected static String groupTitle3 = "Valitse ateria";
 	protected static String nameLabel = "Nimi: ";
 	protected static String incridientLabel = "Sisältö";
 		//fTab
@@ -44,10 +50,12 @@ public class MealWindow extends JFrame{
 	protected static String newFfoods = "Elintarvikkeet";
 	
 	//Dimension
-	protected static int windowWidth = 500;
-	protected static int windowHeight = 410;
-	protected static int panelWidth1 = 200;
-	protected static int foodListHeight = 12;
+	protected static int windowWidth = 700;
+	protected static int windowHeight = 500;
+	protected static int panelWidth1 = 300;
+	protected static int foodListHeight = 14;
+	
+	protected static int inputHeight1 = 25;
 	
 	protected static int maxNameLength = 40;
 	protected static int maxKcal = 10000;
@@ -58,6 +66,9 @@ public class MealWindow extends JFrame{
 	protected static JPanel mealPanel = new JPanel();
 	protected static JPanel foodPanel = new JPanel();
 	protected static JTabbedPane tabbedPane = new JTabbedPane();
+	
+	protected static JPanel meallistGrid = new JPanel(new GridLayout(1,2));
+	
 	protected static JPanel mealGrid = new JPanel(new GridLayout(1,2));
 	protected static JPanel foodGrid = new JPanel(new GridLayout(1,2));
 	
@@ -66,6 +77,13 @@ public class MealWindow extends JFrame{
 	//Meal components
 	protected static JList LmealIncridients = new JList();
 	protected static JList LfoodList1 = new JList();
+	
+	//Meals list
+	protected static JComboBox JCmealList = new JComboBox(); 
+	protected static JButton BmealNew = new JButton("Uusi");
+	protected static JButton BmealDelete = new JButton("Poista");
+	protected static JButton BmealEdit = new JButton("Muokkaa");
+
 	
 	//New meal
 	protected static JTextField JTmealName = new JTextField();
@@ -105,7 +123,11 @@ public class MealWindow extends JFrame{
 	protected static  AdapterFood afood= new AdapterFood();
 	protected static  AdapterMeal ameal= new AdapterMeal();
 	
+	//Mode 0=new 1=edit
+	protected static int mode = 0;
+	
 	//Mealtab
+	protected static Meal selectedMeal = null;
 	protected static  Food selectedIncridient = null;
 	protected static  Food100g selectedFood = null;
 	protected static ArrayList<Food> mealIncridients = new ArrayList();
@@ -192,6 +214,32 @@ public class MealWindow extends JFrame{
 					public void valueChanged(ListSelectionEvent arg0) {
 						MealTab.setSelectedIncridient();
 					}});
+		
+		//List select meal
+		JCmealList.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		    	MealTab.setSelectedMeal();
+		    }
+		});
+		//AddMeal
+		BmealNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		//DeleteMeal
+		BmealDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		//RemoveMeal
+		BmealEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		
 		//BTN Add 
 		BaddNewIncridient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
