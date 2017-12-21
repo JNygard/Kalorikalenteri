@@ -15,6 +15,8 @@ public class AdapterMeal {
 	String TB_1 = "meal";
 	
 	static AdapterFood afood = new AdapterFood();
+	static AdapterMealTime amealTime = new AdapterMealTime();
+
 
 	public AdapterMeal() {
 		conn = SQLiteConnection.dbConnector();
@@ -155,16 +157,23 @@ public class AdapterMeal {
 	}
 	
 	//Delete
-	public void delete(int id) {
+	public int delete(int id) {
 		try {
+			int count = amealTime.checkMealUse(id);
+			if(amealTime.checkMealUse(id)>0) {
+				return count;
+			}
+			
 			String sql = "DELETE FROM " + TB_1 + " WHERE id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, id);
 			
 			pst.execute();
 			pst.close();
+			return count;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return 0;
 	}
 }

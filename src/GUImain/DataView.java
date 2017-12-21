@@ -19,12 +19,26 @@ public class DataView {
 	//set Selected week
 	public static void setSelectedWeek() {
 		if(!MainWindow.weekList.isSelectionEmpty()) {
-			MainWindow.selectedWeek = MainWindow.aweek.get(MainWindow.weekList.getSelectedValue().toString());
-			MainWindow.TAweek.setText(MainWindow.selectedWeek.getDescription());
+			if(MainWindow.weekList.getSelectedValue()!=null) {
+				MainWindow.selectedWeek = MainWindow.aweek.get(MainWindow.weekList.getSelectedValue().toString());
+				MainWindow.TAweek.setText(MainWindow.selectedWeek.getDescription());
 			
-			updateAVGdayKcal();
-			updateWeekCalories();
-			WeekView.updateWeekView();
+				updateAVGdayKcal();
+				updateWeekCalories();
+				WeekView.updateWeekView();
+			}
+			
+		}else {
+			if(MainWindow.aweek.getAll().size()!=0) {
+				updateWeekList();
+				MainWindow.weekList.setSelectedIndex(0);
+				setSelectedWeek();
+			}else {
+				//No weeks, must create new week
+				MainWindow.showMessage("Ei yht‰‰n viikkon‰kym‰‰. Sovelluksen k‰yttˆ vaatii v‰hint‰‰n yhden viikkon‰kym‰n.");
+				MainWindow.cww.show();
+				
+			}
 		}
 	}
 	

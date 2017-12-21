@@ -82,6 +82,30 @@ public class AdapterMealTime {
 		}
 	}
 	
+	//Check use
+	public int checkMealUse(int id) {
+		int count = 0;
+		try {
+			
+			String sql = "";
+			sql = "SELECT COUNT(*) FROM " + TB_1 + " WHERE meal_id="+id;
+			
+			PreparedStatement pst = conn.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			
+
+			count = rs.getInt(1);
+			
+			rs.close();
+			pst.close();
+			return count;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
 	
 	//Add one
 	public MealTime add(MealTime f) {

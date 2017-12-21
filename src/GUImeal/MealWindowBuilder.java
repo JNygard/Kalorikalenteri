@@ -133,8 +133,8 @@ public class MealWindowBuilder {
 		MealWindow.mealPanel.add(MealWindow.mealGrid);
 		MealWindow.mealGrid.setVisible(false);
 		
-		MealWindow.BmealReady.setText("Valmis");
-		MealWindow.BmealCancel.setText("Peruuta");
+		MealWindow.BmealReady.setText("Tallenna");
+		MealWindow.BmealCancel.setText("Poistu");
 		MealWindow.mealPanel.add(MealWindow.BmealCancel, BorderLayout.NORTH);
 		MealWindow.mealPanel.add(MealWindow.BmealReady, BorderLayout.NORTH);
 		

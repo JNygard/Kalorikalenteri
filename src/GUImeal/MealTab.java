@@ -2,9 +2,13 @@ package GUImeal;
 
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+import GUImain.DataView;
+import GUImain.MainWindow;
+import GUImain.WeekView;
 import Model.Food;
 import Model.Food100g;
 import Model.Meal;
@@ -30,6 +34,7 @@ public class MealTab {
 		updateTotalKcal();
 	}
 	
+	
 	//Remove incridient
 	protected static  void removeIncridient() {
 		try {
@@ -46,8 +51,40 @@ public class MealTab {
 		}
 	}
 	
+	//Delete meal
+	protected static void deleteMeal() {
+		
+		if(MealWindow.selectedMeal!=null) {
+				if(MealWindow.confirm("Poistetaan ateria", "Haluatko varmasti poistaa aterian " + MealWindow.selectedMeal.getName() +  "?")) {
+					int count = MealWindow.ameal.delete(MealWindow.selectedMeal.getId());
+					if(count==0) {
+						MealWindow.showMessage("Ateria poistettu");
+						updateMealList();
+						DataView.updateMealList();
+	
+					}else {
+						MealWindow.showMessage("Ateriaa ei voida poistaa, koska sitä käytetään " + count + " ajankohdassa");
+					}
+				}
+		}
+		
+	}
+	
+	//New meal mode
+	protected static void addMealMode() {
+		MealWindow.mode = 0;
+		MealWindow.selectedMeal = null;
+		emptyFields();
+		showMealInputs(true);
+	}
+	
 	//Set selected meal
 	protected static void setSelectedMeal() {
+		if(MealWindow.JCmealList.getSelectedItem()==null) {
+			MealWindow.mode = 0;
+			emptyFields();
+			return;
+		}
 		MealWindow.selectedMeal = MealWindow.ameal.get(String.valueOf(MealWindow.JCmealList.getSelectedItem()));
 		MealWindow.JTmealName.setText(MealWindow.selectedMeal.getName());
 		MealWindow.mealIncridients.clear();
@@ -58,6 +95,7 @@ public class MealTab {
 		updateIncridientList();
 		updateTotalKcal();
 		showMealInputs(true);
+		MealWindow.mode = 1;
 	}
 	
 	//Set selected food1
@@ -84,26 +122,53 @@ public class MealTab {
 		
 	}
 	
-	//Meal ready, add to database and close window
+	//Meal ready, ADD / EDIT to database
 	protected static boolean mealReady() {
 		String title = MealWindow.JTmealName.getText();
+		
+		//EDIT the meal
+		if(MealWindow.ameal.get(title)!=null) {
+			if(MealWindow.confirm("Muokataan ateriaa", "Haluatko varmasti muokata aterian '" + MealWindow.selectedMeal.getName() + "' sisältöä? Muutos vaikuttaa myös jokaiseen ajankohtaan, johon ateria on liitetty viikkonäkymässä")) {
+				Meal updatedMeal = MealWindow.selectedMeal;
+				//Delete old incridients
+				MealWindow.afood.deleteByMeal(updatedMeal.getId());
+				//Add new incridients
+				for(Food f : MealWindow.mealIncridients) {
+					f.setMeal_id(updatedMeal.getId());
+					MealWindow.afood.add(f);
+				}
+				MealWindow.ameal.update(updatedMeal);
+				MealWindow.showMessage("Ateria muokattu");
+				updateMealList();
+				emptyFields();
+				DataView.setSelectedWeek();
+				return true;
+			}else {
+				//Confirm denied
+				return false;
+			}
+		}	
+		
+		
+		//NEW meal
 		if(title.length()<2) {
+			//Too oshort title
 			MealWindow.showMessage("Nimen täytyy olla pidempi kuin 1 merkki");
 			return false;
 		}
 		Meal m = MealWindow.ameal.add(new Meal(0, title));
-		
 		for(Food f : MealWindow.mealIncridients) {
 			f.setMeal_id(m.getId());
 			MealWindow.afood.add(f);
 		}
 		MealWindow.showMessage(title + " lisätty");
+		updateMealList();
 		emptyFields();
 		return true;
 		
 	}
 	
-	
+	//Empty fields
 	public static void emptyFields() {
 		MealWindow.mealIncridients = new ArrayList();	
 		String[] s =  {" "};
@@ -118,6 +183,14 @@ public class MealTab {
 	}
 	
 	//UPDATE VIEW--------------------------------------------------------------------
+	
+	//Update mealList
+	protected static void updateMealList() {
+		MealWindow.JCmealList.removeAllItems();
+		for(Meal m : MealWindow.ameal.getAll() ){
+			MealWindow.JCmealList.addItem(m.getName());
+		}
+	}
 	
 	//Update foodlist tab1
 	protected static  void updateFoodlist1() {

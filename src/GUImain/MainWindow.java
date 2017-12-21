@@ -47,7 +47,7 @@ import GUImeal.FoodTab;
 public class MainWindow extends JFrame{
 	
 	MealWindow mw = new MealWindow();
-	CreateWeekWindow cww = new CreateWeekWindow();
+	protected static CreateWeekWindow cww = new CreateWeekWindow();
 	
 	
 	//String
@@ -75,10 +75,10 @@ public class MainWindow extends JFrame{
 	protected static JMenuItem MIsettings = new JMenuItem("Asetukset");
 	protected static JMenuItem MIexit = new JMenuItem("Lopeta");
 	protected static JMenuItem MIprint = new JMenuItem("Tulosta");
-	protected static JMenuItem MIaddWeek = new JMenuItem("Viikko");
-	protected static JMenuItem MIgoToMeal = new JMenuItem("Ateria");
-	protected static JMenuItem MIhelp = new JMenuItem("Apua");
-	protected static JMenuItem MIinfo = new JMenuItem("Tietoja");
+	protected static JMenuItem MIaddWeek = new JMenuItem("Lis‰‰ viikko");
+	protected static JMenuItem MIgoToMeal = new JMenuItem("Hallitse aterioita");
+	protected static JMenuItem MIhelp = new JMenuItem("Ohjeita");
+	protected static JMenuItem MIinfo = new JMenuItem("Tietoja ohjelmasta");
 	
 	//--Weekview  panel------     ------     ------     ------     ------     ------     ------     ------     ------     ------     ------     
 
@@ -163,6 +163,10 @@ public class MainWindow extends JFrame{
 		DataView.updateWeekList();
 		DataView.updateMealList();
 		
+		//Set week
+		DataView.setSelectedWeek();
+		setTitle();
+		
 	}
 	
 	private void setMenuListeners(){
@@ -203,17 +207,15 @@ public class MainWindow extends JFrame{
 			}});
 	}
 	
+
+	
 	private void setDataPanelListeners() {
 		//LIST
 		weekList.addListSelectionListener(
 				new ListSelectionListener() {
 					public void valueChanged(ListSelectionEvent arg0) {
 						DataView.setSelectedWeek();
-						if(selectedWeek!=null) {
-							setTitled(title + " - " +  selectedWeek.getName());
-						}else {
-							setTitled(title);
-						}
+						setTitle();
 					}});
 		//LIST
 		mealList.addListSelectionListener(
@@ -312,6 +314,14 @@ public class MainWindow extends JFrame{
 	//Show dialog message
 	public static void showMessage(String msg) {
 		JOptionPane.showMessageDialog(inner, msg);
+	}
+	
+	private void setTitle() {
+		if(selectedWeek!=null) {
+			setTitled(title + " - " +  selectedWeek.getName());
+		}else {
+			setTitled(title);
+		}
 	}
 	
 	//Close window

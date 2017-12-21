@@ -38,7 +38,7 @@ public class MealWindow extends JFrame{
 		//mTab
 	protected static String tab1Title = "Hallitse aterioita";
 	protected static String tab2Title = "Hallitse elintarvikkeita";
-	protected static String groupTitle1 = "Uusi/muokkaa ateria";
+	protected static String groupTitle1 = "Aterian tiedot";
 	protected static String groupTitle2 = "Elintarvikkeet";
 	protected static String groupTitle3 = "Valitse ateria";
 	protected static String nameLabel = "Nimi: ";
@@ -221,16 +221,16 @@ public class MealWindow extends JFrame{
 		    	MealTab.setSelectedMeal();
 		    }
 		});
-		//AddMeal
+		//NewMeal
 		BmealNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				MealTab.addMealMode();
 			}
 		});
 		//DeleteMeal
 		BmealDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				MealTab.deleteMeal();
 			}
 		});
 		//RemoveMeal
@@ -291,5 +291,14 @@ public class MealWindow extends JFrame{
 	public void CloseFrame(){
 	    super.dispose();
 	}
+
+
+	@Override
+	public void hide() {
+		 MealTab.showMealInputs(false);
+		super.hide();
+	}
+	
+	
 
 }

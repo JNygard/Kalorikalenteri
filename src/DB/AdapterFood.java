@@ -126,6 +126,20 @@ public class AdapterFood {
 		}
 	}
 	
+	//Delete by meal ID
+	public void deleteByMeal(int mealID) {
+		try {
+			String sql = "DELETE FROM " + TB_1 + " WHERE meal_id=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, mealID);
+			
+			pst.execute();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	//Check how many food uses food100g
 	public int checkF100Use(int id) {

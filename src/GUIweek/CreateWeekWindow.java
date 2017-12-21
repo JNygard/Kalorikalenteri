@@ -178,4 +178,13 @@ public class CreateWeekWindow extends JFrame{
 	    super.dispose();
 	}
 
+	//Hide
+	@Override
+	public void hide() {
+		super.hide();
+		DataView.setSelectedWeek();
+	}
+	
+	
+
 }
