@@ -35,6 +35,7 @@ import DB.AdapterFood100g;
 import DB.AdapterMeal;
 import DB.AdapterMealTime;
 import DB.AdapterWeek;
+import GUIinfo.CreateInfoWindow;
 import GUImeal.MealWindow;
 import GUIweek.CreateWeekWindow;
 import Model.Cell;
@@ -48,10 +49,14 @@ public class MainWindow extends JFrame{
 	
 	MealWindow mw = new MealWindow();
 	protected static CreateWeekWindow cww = new CreateWeekWindow();
+	protected static CreateInfoWindow ciw = new CreateInfoWindow();
 	
 	
 	//String
 	protected static String title = "Kalorikalenteri";
+	protected static String programAuthor = "Tämä sovellus on Oulun yliopiston tietojenkäsittelytieteen laitoksen "
+			+ "Käyttöliittymäohjelmointi kurssille Joonas Nygårdin tekemä harkoitustyö. ";
+
 	
 	//Dimensions
 	protected static int windowWidth = 1400;
@@ -78,7 +83,7 @@ public class MainWindow extends JFrame{
 	protected static JMenuItem MIaddWeek = new JMenuItem("Lisää viikko");
 	protected static JMenuItem MIgoToMeal = new JMenuItem("Hallitse aterioita");
 	protected static JMenuItem MIhelp = new JMenuItem("Ohjeita");
-	protected static JMenuItem MIinfo = new JMenuItem("Tietoja ohjelmasta");
+	protected static JMenuItem MIinfo = new JMenuItem("Tietoja tekijästä");
 	
 	//--Weekview  panel------     ------     ------     ------     ------     ------     ------     ------     ------     ------     ------     
 
@@ -198,12 +203,12 @@ public class MainWindow extends JFrame{
 		//Help
 		MIhelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				showMessage("Ohje");
+				ciw.show();
 			}});
 		//Info
 		MIinfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				showMessage("Tietoja");
+				showMessage(programAuthor);
 			}});
 	}
 	

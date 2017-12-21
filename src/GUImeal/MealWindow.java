@@ -40,7 +40,7 @@ public class MealWindow extends JFrame{
 	protected static String tab2Title = "Hallitse elintarvikkeita";
 	protected static String groupTitle1 = "Aterian tiedot";
 	protected static String groupTitle2 = "Elintarvikkeet";
-	protected static String groupTitle3 = "Valitse ateria";
+	protected static String groupTitle3 = "Muokkaa ateriaa";
 	protected static String nameLabel = "Nimi: ";
 	protected static String incridientLabel = "Sisältö";
 		//fTab
