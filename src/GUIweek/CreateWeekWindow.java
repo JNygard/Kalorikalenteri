@@ -55,6 +55,9 @@ public class CreateWeekWindow extends JFrame{
 	//DB
 	protected static  AdapterWeek aweek= new AdapterWeek();
 	protected static  AdapterDay aday = new AdapterDay();
+	
+	//Content
+	protected static Week editWeek = null;
 
 	public CreateWeekWindow() {
 		super(title);
@@ -113,6 +116,28 @@ public class CreateWeekWindow extends JFrame{
 		
 	}
 	
+	//Edit week
+	public void editWeek(Week w) {
+		editWeek = w;
+		setTitle("Muokkaa viikkoaikataulun tietoja");
+		
+		TFname.setText(w.getName());
+		TAdescription.setText(w.getDescription());
+		
+		
+	}
+	
+	//New week
+	public void newWeek() {
+		editWeek = null;
+		setTitle("Uusi viikkoaikataulu");
+		
+		TFname.setText("");;
+		TAdescription.setText("");
+		
+		
+	}
+	
 	
 	
 	
@@ -126,14 +151,20 @@ public class CreateWeekWindow extends JFrame{
 			return;
 		}
 		
-		if(aweek.get(name)==null) {
+		if(aweek.get(name)==null || editWeek!=null) {
 			
-			Week w = aweek.add(new Week(0,name,description)); //Create Week
-			
-			int x = 1;
-			while(x<=7) {
-				aday.add(new Day(0,x,w.getId(),null)); //Create days to week (AdapterWeek job?)
-				x++;
+			if(editWeek==null) {
+				Week w = aweek.add(new Week(0,name,description)); //Create Week
+				
+				int x = 1;
+				while(x<=7) {
+					aday.add(new Day(0,x,w.getId(),null)); //Create days to week (AdapterWeek job?)
+					x++;
+				}
+			}else {
+				editWeek.setName(name);
+				editWeek.setDescription(description);
+				aweek.update(editWeek);
 			}
 			MainWindow.updateWeekView();
 			emptyWeek();

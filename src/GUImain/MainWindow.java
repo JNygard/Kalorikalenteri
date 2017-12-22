@@ -262,6 +262,7 @@ public class MainWindow extends JFrame{
 		BTnewWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cww.show();
+				cww.newWeek();
 			}});
 		//BTN 
 		BTdeleteWeek.addActionListener(new ActionListener() {
@@ -271,7 +272,8 @@ public class MainWindow extends JFrame{
 		//BTN 
 		BTeditWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				showMessage("ASD");
+				cww.show();
+				cww.editWeek(selectedWeek);
 			}});
 		
 		//BTN 

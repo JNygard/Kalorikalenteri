@@ -42,6 +42,7 @@ public class MealTab {
 			MealWindow.selectedIncridient = null;
 			updateIncridientList();
 			updateTotalKcal();
+			MealWindow.BremoveIncridient.setEnabled(false);
 		}catch(Exception e) {
 			
 		}
@@ -100,6 +101,7 @@ public class MealTab {
 	
 	//Set selected food1
 	protected static  void setSelectedFood1() {
+		MealWindow.BaddNewIncridient.setEnabled(true);
 		MealWindow.selectedFood = MealWindow.af100.get(MealWindow.LfoodList1.getSelectedValue().toString());
 		MealWindow.LaddNewIncridient.setText(Utility.limitString(MealWindow.selectedFood.getName(),15) + " | " + MealWindow.selectedFood.getKcal() + " kcal/100g");
 	}
@@ -109,7 +111,7 @@ public class MealTab {
 		try {
 		
 		MealWindow.selectedIncridient = MealWindow.mealIncridients.get(MealWindow.LmealIncridients.getSelectedIndex());
-		
+		MealWindow.BremoveIncridient.setEnabled(true);
 		MealWindow.LselectedIncridient.setText(
 				Utility.limitString(MealWindow.selectedIncridient.getFood100g().getName(),20) + " " +
 				Utility.calculateFoodCalories(MealWindow.selectedIncridient) +
@@ -170,6 +172,10 @@ public class MealTab {
 	
 	//Empty fields
 	public static void emptyFields() {
+		MealWindow.BremoveIncridient.setEnabled(false);
+		MealWindow.BaddNewIncridient.setEnabled(false);
+
+
 		MealWindow.mealIncridients = new ArrayList();	
 		String[] s =  {" "};
 		MealWindow.LmealIncridients.setListData(s);

@@ -186,6 +186,7 @@ public class MealWindowBuilder {
 		incridientBox.add(selectedFoodBox);
 		
 		//Add new incridient
+		MealWindow.BaddNewIncridient.setEnabled(false);
 		MealWindow.BaddNewIncridient.setText("Lis‰‰");
 		Box addNewInc = Box.createHorizontalBox();	
 		MealWindow.LaddNewIncridientWeight.setText("M‰‰r‰ (g/ml): ");
@@ -221,7 +222,8 @@ public class MealWindowBuilder {
 		incridientBox.add(selectedIncBox);//Add to mealbox///////////////
 		
 		//Remove button
-		JPanel sRemovePanel = new JPanel(new BorderLayout());		
+		JPanel sRemovePanel = new JPanel(new BorderLayout());
+		MealWindow.BremoveIncridient.setEnabled(false);
 		MealWindow.BremoveIncridient.setText("Poista");
 		sRemovePanel.add(MealWindow.BremoveIncridient, BorderLayout.EAST);
 		incridientBox.add(sRemovePanel);//Add to mealbox///////////////
