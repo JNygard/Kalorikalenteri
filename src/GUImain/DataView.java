@@ -118,10 +118,10 @@ public class DataView {
 					updateWeekCalories();
 				}
 			}else {
-				MainWindow.showMessage("No selecred mealtime");
+				MainWindow.showMessage("Ajankohta on jo tyhjä");
 			}
 		}else {
-			MainWindow.showMessage("No selecred cell");
+			MainWindow.showMessage("Ei valittua ajankohtaa");
 		}
 		
 	}

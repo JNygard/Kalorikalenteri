@@ -33,7 +33,7 @@ public class ScheduleBuilder {
 			
 			//Print 
 			for(Day d : w.getDays()) {
-				writer.println(Utility.weekDayToString(d.getDay()+7));
+				writer.println(Utility.weekDayToString(d.getDay()+7) + " (" + d.getKcals() + " Kcal)");
 				writer.println("_____________________________________________");
 				for(MealTime mt : d.getMealTimes()) {
 					writer.println("Klo. " + mt.getHour() + ":00  " + mt.getMeal().getName() + " (" + mt.getMeal().getKcals() + " Kcal)");

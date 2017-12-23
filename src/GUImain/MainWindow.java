@@ -120,6 +120,7 @@ public class MainWindow extends JFrame{
 	
 	protected static JLabel LweekKcal = new JLabel("Viikossa: 0 Kcal.");
 	protected static JLabel LdayKcalAVG = new JLabel("Keskim‰‰rin: 0 Kcal/p‰iv‰");
+	protected static JLabel LdayKcal = new JLabel("Perjantai: 0 Kcal.");
 	
 	//Contents-------------------------------------------------------------------------------------------------------------------------
 	
@@ -205,7 +206,7 @@ public class MainWindow extends JFrame{
 		//Help
 		MIhelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ciw.show();
+				ciw.guideInBrowser();
 			}});
 		//Info
 		MIinfo.addActionListener(new ActionListener() {

@@ -1,6 +1,6 @@
 Viikko22
 
-Maanantai
+Maanantai (69964 Kcal)
 _____________________________________________
 Klo. 6:00  asdasdasd234 (17491 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
@@ -31,7 +31,7 @@ Klo. 10:00  asdasdasd234 (17491 Kcal)
  -Parkki Leipä 500 g/ml = 17215 Kcal.
 
 
-Tiistai
+Tiistai (35704 Kcal)
 _____________________________________________
 Klo. 6:00  asdasdasd234 (17491 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
@@ -62,7 +62,7 @@ Klo. 10:00  dsdsd (361 Kcal)
  -Nalle pikakaurahiutaleita 23 g/ml = 85 Kcal.
 
 
-Keskiviikko
+Keskiviikko (52473 Kcal)
 _____________________________________________
 Klo. 6:00  asdasdasd234 (17491 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
@@ -86,7 +86,7 @@ Klo. 10:00  asdasdasd234 (17491 Kcal)
  -Parkki Leipä 500 g/ml = 17215 Kcal.
 
 
-Torstai
+Torstai (34982 Kcal)
 _____________________________________________
 Klo. 6:00  asdasdasd234 (17491 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
@@ -103,7 +103,7 @@ Klo. 8:00  asdasdasd234 (17491 Kcal)
  -Parkki Leipä 500 g/ml = 17215 Kcal.
 
 
-Perjantai
+Perjantai (361 Kcal)
 _____________________________________________
 Klo. 7:00  dsdsd (361 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
@@ -113,7 +113,7 @@ Klo. 7:00  dsdsd (361 Kcal)
  -Nalle pikakaurahiutaleita 23 g/ml = 85 Kcal.
 
 
-Lauantai
+Lauantai (17491 Kcal)
 _____________________________________________
 Klo. 7:00  asdasdasd234 (17491 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
@@ -123,6 +123,6 @@ Klo. 7:00  asdasdasd234 (17491 Kcal)
  -Parkki Leipä 500 g/ml = 17215 Kcal.
 
 
-Sunnuntai
+Sunnuntai (0 Kcal)
 _____________________________________________
 
