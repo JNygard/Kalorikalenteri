@@ -36,7 +36,7 @@ public class SettingsWindow extends JFrame{
 	protected static int windowHeigth = 500;
 	
 	protected static int margin1X = 20;
-	protected static int margin1Y = 20;
+	protected static int margin1Y = 60;
 		
 	protected static int fieldLength = 200;
 	protected static int TFheigth = 30;
