@@ -50,10 +50,11 @@ public class FoodTab {
 	//Delete food
 	protected static void deleteFood() {
 		String fName = MealWindow.selectedFood2.getName();
-		boolean confirm = MealWindow.confirm("Poista elintarvike", "Haluatko varmasti poistaa elintarvikkeen?");
 		int count = 0;
-		if(confirm) {
+		if(MealWindow.confirm("Poista elintarvike", "Haluatko varmasti poistaa elintarvikkeen?")) {
 			count = MealWindow.af100.delete(MealWindow.selectedFood2.getId());
+		}else {
+			return;
 		}
 		if(count==0) {
 			updateFoodlist2();
@@ -66,10 +67,17 @@ public class FoodTab {
 	
 	//Set selected food
 	protected static void setSelectedFood() {
-		try {
-		MealWindow.selectedFood2 = MealWindow.af100.get(MealWindow.LfoodList2.getSelectedValue().toString());
-		}catch(Exception e) {
-			
+		if(MealWindow.LfoodList2.getSelectedValue()!=null) {
+			try {
+			MealWindow.selectedFood2 = MealWindow.af100.get(MealWindow.LfoodList2.getSelectedValue().toString());
+			MealWindow.BfoodRemove.setEnabled(true);
+			MealWindow.BfoodEdit.setEnabled(true);
+			}catch(Exception e) {
+				
+			}
+		}else {
+			MealWindow.BfoodRemove.setEnabled(false);
+			MealWindow.BfoodEdit.setEnabled(false);
 		}
 	}
 	

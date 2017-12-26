@@ -254,7 +254,7 @@ public class MealWindow extends JFrame{
 		BmealReady.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (MealTab.mealReady()) {
-					CloseFrame();
+					//CloseFrame();
 					DataView.updateMealList();
 				}
 			}});

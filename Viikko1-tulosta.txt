@@ -1,0 +1,65 @@
+Viikko1
+
+Maanantai (115 Kcal)
+_____________________________________________
+Klo. 5:00  Ateria23 (115 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 53 Kcal.
+ -elintarvik1 45 g/ml = 55 Kcal.
+
+
+Tiistai (115 Kcal)
+_____________________________________________
+Klo. 9:00  Ateria23 (115 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 53 Kcal.
+ -elintarvik1 45 g/ml = 55 Kcal.
+
+
+Keskiviikko (180 Kcal)
+_____________________________________________
+Klo. 5:00  Ateria2 (60 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 53 Kcal.
+
+Klo. 9:00  Ateria2 (60 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 53 Kcal.
+
+Klo. 8:00  Ateria2 (60 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 53 Kcal.
+
+
+Torstai (115 Kcal)
+_____________________________________________
+Klo. 6:00  Ateria23 (115 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 53 Kcal.
+ -elintarvik1 45 g/ml = 55 Kcal.
+
+
+Perjantai (115 Kcal)
+_____________________________________________
+Klo. 5:00  Ateria23 (115 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 53 Kcal.
+ -elintarvik1 45 g/ml = 55 Kcal.
+
+
+Lauantai (130 Kcal)
+_____________________________________________
+Klo. 5:00  Ateria1 (130 Kcal)
+ -banaani1 34 g/ml = 79 Kcal.
+ -elointarvike2 45 g/ml = 10 Kcal.
+ -elintarvik1 34 g/ml = 41 Kcal.
+
+
+Sunnuntai (115 Kcal)
+_____________________________________________
+Klo. 5:00  Ateria23 (115 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 53 Kcal.
+ -elintarvik1 45 g/ml = 55 Kcal.
+
+

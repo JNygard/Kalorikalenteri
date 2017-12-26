@@ -58,7 +58,9 @@ public class DataView {
 				if(MainWindow.selectedMealTime!=null) {
 					MainWindow.selectedMeal = MainWindow.selectedMealTime.getMeal();
 					MainWindow.mealList.setSelectedIndex(MainWindow.selectedMeal.getId()-1);
+					MainWindow.BTemptyMeal.setEnabled(true);
 				}else {
+					MainWindow.BTemptyMeal.setEnabled(false);
 					MainWindow.selectedMealTime = null;
 					MainWindow.selectedMeal = null;
 					MainWindow.mealList.clearSelection();
@@ -90,6 +92,7 @@ public class DataView {
 				MealTime nm = new MealTime(0, MainWindow.selectedMeal, MainWindow.selectedCell.getY(), MainWindow.selectedWeek.getDay(MainWindow.selectedCell.getX()).getId());
 				MainWindow.selectedMealTime = MainWindow.amealTime.add(nm);
 								
+				MainWindow.BTemptyMeal.setEnabled(true);
 				WeekView.updateWeekView();
 			}else {
 				
@@ -115,6 +118,7 @@ public class DataView {
 				if(MainWindow.confirm("Tyhjenn‰ ajankohta", "Haluatko tyhjent‰‰ ajankohdan?")) {
 				
 					MainWindow.amealTime.delete(MainWindow.selectedMealTime.getId());
+					MainWindow.BTemptyMeal.setEnabled(false);
 					
 					WeekView.updateWeekView();
 					updateDayCalories() ;

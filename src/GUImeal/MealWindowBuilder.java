@@ -108,11 +108,14 @@ public class MealWindowBuilder {
 		foodList.add(new JScrollPane(MealWindow.LfoodList2));//ADD///////////////
 		
 		//Remove and edit button
-		JPanel sRemoveEditPanel = new JPanel(new GridLayout(1,2));		
-		//Remove 
+		JPanel sRemoveEditPanel = new JPanel(new GridLayout(1,2));	
+		
+		//Edit 
+		MealWindow.BfoodEdit.setEnabled(false);
 		MealWindow.BfoodEdit.setText("Muokkaa");
 		sRemoveEditPanel.add(MealWindow.BfoodEdit);
-		//Edit
+		//Remove
+		MealWindow.BfoodRemove.setEnabled(false);
 		MealWindow.BfoodRemove.setText("Poista");
 		sRemoveEditPanel.add(MealWindow.BfoodRemove);	
 		foodList.add(sRemoveEditPanel); //Add ///////////////

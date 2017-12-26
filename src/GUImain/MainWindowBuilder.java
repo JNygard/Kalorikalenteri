@@ -154,6 +154,7 @@ public class MainWindowBuilder {
 		//BTN
 		JPanel wButtonPanel = new JPanel(new GridLayout(1,3));
 		wButtonPanel.setMaximumSize(new Dimension(MainWindow.maxBTNwidth, MainWindow.maxBTNheigth));
+		MainWindow.BTemptyMeal.setEnabled(false);
 		wButtonPanel.add(MainWindow.BTemptyMeal);
 		wButtonPanel.add(MainWindow.BTcontrolMeal);
 		MainWindow.dataMealPanel.add(wButtonPanel);

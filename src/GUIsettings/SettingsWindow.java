@@ -28,18 +28,18 @@ public class SettingsWindow extends JFrame{
 	//String
 	private static String title = "Asetukset";
 	
-	protected static String tab1title = "Tyhjennä tiedot";
-	protected static String tab2title = "ASD";
+	protected static String tab1title = "Muut";
+	protected static String tab2title = "Käyttäjä";
 	
 	//Dimensions
 	protected static int windowWidth = 500;
 	protected static int windowHeigth = 500;
 	
-	protected static int margin1X = 20;
-	protected static int margin1Y = 60;
+	protected static int margin1X = 10;
+	protected static int margin1Y = 110;
 		
 	protected static int fieldLength = 200;
-	protected static int TFheigth = 30;
+	protected static int TFwidth = 30;
 	protected static int TAheigth = 60;
 		
 		//View
@@ -52,7 +52,8 @@ public class SettingsWindow extends JFrame{
 		protected static JPanel buttonPanel = new JPanel(new GridLayout(1,2));
 		
 		//Tab1 view
-		//protected static JLabel Lname = new JLabel("Nimi:      ");
+		protected static JLabel LformatWarning = new JLabel("<html> <body> Kaikki sovellukseen asetetu tiedot poistetaan lopullisesti. "
+				+ "<br> KAIKKI TIEDOT POISTETAAN! </body> </html>");
 		protected static JButton BTdefaultData = new JButton("Tyhjennä tiedot");
 		
 		
@@ -91,6 +92,17 @@ public class SettingsWindow extends JFrame{
 	
 	//LISTENERS
 	private void setTab1Listeners() {
+		//BTN ready
+		BTready.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}});
+		//BTN cancel
+		BTcancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}});
+		
 		BTdefaultData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(Settings.formatProgramData()) {

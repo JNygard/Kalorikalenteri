@@ -2,6 +2,9 @@ package GUIsettings;
 
 import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+
 import GUImeal.MealWindow;
 
 public class SettingsWindowBuilder {
@@ -34,8 +37,19 @@ public class SettingsWindowBuilder {
 
 		//Tab1
 		private static void buildTab2PanelLayout() {
+			Box box = Box.createHorizontalBox();
+			box.setBorder(BorderFactory.createTitledBorder("Poista tiedot"));
+			box.setPreferredSize(new Dimension(SettingsWindow.windowWidth-SettingsWindow.margin1X, 100));
+			
+			box.add(SettingsWindow.LformatWarning);
+			box.add(SettingsWindow.BTdefaultData);
+			
+			SettingsWindow.tab1panel.add(box);
 			SettingsWindow.tab1panel.setPreferredSize(new Dimension(SettingsWindow.windowWidth-SettingsWindow.margin1X, SettingsWindow.windowHeigth-SettingsWindow.margin1Y));
-			SettingsWindow.tab1panel.add(SettingsWindow.BTdefaultData);
+
+			
+			
+			
 			
 			
 		}
