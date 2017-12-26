@@ -24,6 +24,7 @@ public class DataView {
 				MainWindow.TAweek.setText(MainWindow.selectedWeek.getDescription());
 			
 				updateAVGdayKcal();
+				updateDayCalories() ;
 				updateWeekCalories();
 				WeekView.updateWeekView();
 			}
@@ -64,6 +65,7 @@ public class DataView {
 				}
 				
 				updateMealIncridientsList() ;
+				updateDayCalories() ;
 				updateAVGdayKcal();
 				updateWeekCalories();
 			}
@@ -97,6 +99,7 @@ public class DataView {
 			
 			
 			updateAVGdayKcal();
+			updateDayCalories() ;
 			updateWeekCalories();
 			updateMealIncridientsList() ;
 		}else {
@@ -114,6 +117,7 @@ public class DataView {
 					MainWindow.amealTime.delete(MainWindow.selectedMealTime.getId());
 					
 					WeekView.updateWeekView();
+					updateDayCalories() ;
 					updateAVGdayKcal();
 					updateWeekCalories();
 				}
@@ -149,18 +153,36 @@ public class DataView {
 	public static void updateAll() {
 		updateWeekCalories();
 		updateAVGdayKcal() ;
+		updateWeekCalories() ;
 		MainWindow.weekList.clearSelection();
 		updateWeekList();
 		updateMealList();
 		updateMealIncridientsList();
 	}
 	
+	//Set day kcal
+	public static void updateDayCalories() {
+		
+		int k = 0;
+		if(MainWindow.selectedCell!=null) {
+			Day d =  MainWindow.selectedWeek.getDay(MainWindow.selectedCell.getX());
+			k =  d.getKcals();
+			MainWindow.LdayKcal.setText(Utility.weekDayToString(d.getDay()+7)+": " + k + " Kcal");
+		}else {
+			MainWindow.LdayKcal.setText("");
+
+		}
+			
+	}
+	
 	//Set week kcal
 	public static void updateWeekCalories() {
 		int k = 0;
-		if(MainWindow.selectedWeek!=null)
+		if(MainWindow.selectedWeek!=null) 
 			k =  MainWindow.selectedWeek.getKcal();
 		MainWindow.LweekKcal.setText("Viikossa: " + k + " Kcal");
+		
+			
 	}
 	
 	//Set AVG day kcal

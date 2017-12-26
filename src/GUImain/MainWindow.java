@@ -120,7 +120,7 @@ public class MainWindow extends JFrame{
 	
 	protected static JLabel LweekKcal = new JLabel("Viikossa: 0 Kcal.");
 	protected static JLabel LdayKcalAVG = new JLabel("Keskim‰‰rin: 0 Kcal/p‰iv‰");
-	protected static JLabel LdayKcal = new JLabel("Perjantai: 0 Kcal.");
+	protected static JLabel LdayKcal = new JLabel("P‰iv‰: 0 Kcal.");
 	
 	//Contents-------------------------------------------------------------------------------------------------------------------------
 	

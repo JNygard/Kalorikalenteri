@@ -1,13 +1,13 @@
 Viikko22
 
-Maanantai (69964 Kcal)
+Maanantai (52834 Kcal)
 _____________________________________________
-Klo. 6:00  asdasdasd234 (17491 Kcal)
+Klo. 6:00  dsdsd (361 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
  -Nalle pikakaurahiutaleita 23 g/ml = 85 Kcal.
  -Snellman Ylikypsä Kinkku viipaloitu  23 g/ml = 25 Kcal.
  -Parkki 34 g/ml = 41 Kcal.
- -Parkki Leipä 500 g/ml = 17215 Kcal.
+ -Nalle pikakaurahiutaleita 23 g/ml = 85 Kcal.
 
 Klo. 8:00  asdasdasd234 (17491 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
@@ -105,7 +105,7 @@ Klo. 8:00  asdasdasd234 (17491 Kcal)
 
 Perjantai (361 Kcal)
 _____________________________________________
-Klo. 7:00  dsdsd (361 Kcal)
+Klo. 6:00  dsdsd (361 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
  -Nalle pikakaurahiutaleita 23 g/ml = 85 Kcal.
  -Snellman Ylikypsä Kinkku viipaloitu  23 g/ml = 25 Kcal.
@@ -113,7 +113,7 @@ Klo. 7:00  dsdsd (361 Kcal)
  -Nalle pikakaurahiutaleita 23 g/ml = 85 Kcal.
 
 
-Lauantai (17491 Kcal)
+Lauantai (17852 Kcal)
 _____________________________________________
 Klo. 7:00  asdasdasd234 (17491 Kcal)
  -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
@@ -122,7 +122,19 @@ Klo. 7:00  asdasdasd234 (17491 Kcal)
  -Parkki 34 g/ml = 41 Kcal.
  -Parkki Leipä 500 g/ml = 17215 Kcal.
 
+Klo. 6:00  dsdsd (361 Kcal)
+ -Nalle pikakaurahiutaleita 34 g/ml = 125 Kcal.
+ -Nalle pikakaurahiutaleita 23 g/ml = 85 Kcal.
+ -Snellman Ylikypsä Kinkku viipaloitu  23 g/ml = 25 Kcal.
+ -Parkki 34 g/ml = 41 Kcal.
+ -Nalle pikakaurahiutaleita 23 g/ml = 85 Kcal.
 
-Sunnuntai (0 Kcal)
+
+Sunnuntai (12025 Kcal)
 _____________________________________________
+Klo. 6:00  Aamiainen (12025 Kcal)
+ -Valio Oltermanni 34 g/ml = 122 Kcal.
+ -Snellman Ylikypsä Kinkku viipaloitu  23 g/ml = 25 Kcal.
+ -Parkki Leipä 345 g/ml = 11878 Kcal.
+
 
