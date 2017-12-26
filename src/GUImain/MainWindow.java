@@ -37,6 +37,7 @@ import DB.AdapterMealTime;
 import DB.AdapterWeek;
 import GUIinfo.CreateInfoWindow;
 import GUImeal.MealWindow;
+import GUIsettings.SettingsWindow;
 import GUIweek.CreateWeekWindow;
 import Model.Cell;
 import Model.Food;
@@ -48,9 +49,11 @@ import GUImeal.FoodTab;
 
 public class MainWindow extends JFrame{
 	
+	//Windows
 	MealWindow mw = new MealWindow();
 	protected static CreateWeekWindow cww = new CreateWeekWindow();
 	protected static CreateInfoWindow ciw = new CreateInfoWindow();
+	protected static SettingsWindow csw = new SettingsWindow();
 	
 	
 	//String
@@ -180,7 +183,7 @@ public class MainWindow extends JFrame{
 		//Settings
 		MIsettings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				showMessage("Asetukset");
+				csw.show();
 			}});
 		//Exit
 		MIexit.addActionListener(new ActionListener() {
