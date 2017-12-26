@@ -1,5 +1,7 @@
 package GUIsettings;
 
+import java.awt.Dimension;
+
 import GUImeal.MealWindow;
 
 public class SettingsWindowBuilder {
@@ -28,13 +30,14 @@ public class SettingsWindowBuilder {
 
 		//Tab1
 		private static void buildTab2PanelLayout() {
-			// TODO Auto-generated method stub
+			SettingsWindow.tab1panel.setPreferredSize(new Dimension(SettingsWindow.windowWidth-SettingsWindow.margin1X, SettingsWindow.windowHeigth-SettingsWindow.margin1Y));
+			SettingsWindow.tab1panel.add(SettingsWindow.BTdefaultData);
+			
 			
 		}
 
 		//Tab2
 		private static void buildTab1PanelLayout() {
-			// TODO Auto-generated method stub
 			
 		}
 

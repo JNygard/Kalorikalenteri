@@ -163,6 +163,7 @@ public class AdapterMeal {
 			if(amealTime.checkMealUse(id)>0) {
 				return count;
 			}
+			afood.deleteByMeal(id);
 			
 			String sql = "DELETE FROM " + TB_1 + " WHERE id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
