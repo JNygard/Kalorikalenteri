@@ -85,7 +85,7 @@ public class MealWindowBuilder {
 		MealWindow.BfoodEmpty.setText("Tyhjenn‰");
 		sFoodButtonPanel.add(MealWindow.BfoodEmpty);
 		//Add
-		MealWindow.BfoodAdd.setText("Lis‰‰");
+		MealWindow.BfoodAdd.setText("Tallenna");
 		sFoodButtonPanel.add(MealWindow.BfoodAdd);	
 		foodBox.add(sFoodButtonPanel, BorderLayout.NORTH); //Add ///////////////
 		sFoodButtonPanel.setMaximumSize(new Dimension(MealWindow.panelWidth1,25));

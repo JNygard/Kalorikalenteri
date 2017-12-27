@@ -188,7 +188,7 @@ public class MealWindow extends JFrame{
 		//BTN edit
 		BfoodEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				FoodTab.editFood() ;
 			}});
 
 		//BTN cacel

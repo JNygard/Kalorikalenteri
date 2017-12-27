@@ -44,6 +44,7 @@ import Model.Food;
 import Model.Meal;
 import Model.MealTime;
 import Model.Week;
+import PrintableSchedule.Printer;
 import PrintableSchedule.ScheduleBuilder;
 import GUImeal.FoodTab;
 
@@ -191,11 +192,15 @@ public class MainWindow extends JFrame{
 				CloseFrame();
 			}});
 		//Print
+
 		MIprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ScheduleBuilder.buildDocument(selectedWeek);
-				showMessage("Tulostettava tekstidokumentti viety kansioon nimellä \"" + selectedWeek.getName()+  "-tulosta\"  ");
+				ScheduleBuilder.printDocument();
+				//showMessage("Tulostettava tekstidokumentti viety kansioon nimellä \"" + selectedWeek.getName()+  "-tulosta\"  ");
 			}});
+
+		
 		//Add week
 		MIaddWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

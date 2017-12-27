@@ -1,5 +1,8 @@
 package PrintableSchedule;
 
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -14,18 +17,22 @@ public class ScheduleBuilder {
 	
 	
 	//Content
-
+	public static String docName;
+	
+	
 	public ScheduleBuilder() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
+	//Build tct document
 	public static void buildDocument(Week w) {
 		
 		PrintWriter writer;
 		try {
-			writer = new PrintWriter(w.getName()+"-tulosta.txt", "UTF-8");
+			docName = w.getName()+"-tulosta.txt"; 
+			writer = new PrintWriter(docName, "UTF-8");
 			
 			//Print week name
 			writer.println(w.getName());
@@ -34,7 +41,7 @@ public class ScheduleBuilder {
 			//Print 
 			for(Day d : w.getDays()) {
 				writer.println(Utility.weekDayToString(d.getDay()+7) + " (" + d.getKcals() + " Kcal)");
-				writer.println("_____________________________________________");
+				writer.println("____________________________");
 				for(MealTime mt : d.getMealTimes()) {
 					writer.println("Klo. " + mt.getHour() + ":00  " + mt.getMeal().getName() + " (" + mt.getMeal().getKcals() + " Kcal)");
 					
@@ -43,20 +50,29 @@ public class ScheduleBuilder {
 					}
 					writer.println("");
 				}
-				writer.println("");
-				
-				
+				writer.println("");				
 			}
 			
-			
-			
 			writer.close();
-			
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
+	
+	//Print document
+	public static void printDocument() {
+		PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPrintable(new Printer(new File(docName)));
+        boolean ok = job.printDialog();
+        if (ok) {
+            try {
+                 job.print();
+            } catch (PrinterException ex) {
+             /* The job did not successfully complete */
+            }
+        }
+	}
+	
 
 }

@@ -2,6 +2,9 @@ package GUImeal;
 
 import javax.swing.JOptionPane;
 
+import GUImain.DataView;
+import GUImain.MainWindow;
+import GUImain.WeekView;
 import Model.Food100g;
 
 public class FoodTab {
@@ -12,6 +15,17 @@ public class FoodTab {
 	//Add food
 	protected static void addFood() {
 		String name = MealWindow.JTfoodName.getText();
+		boolean newFood = true;
+		
+		if(MealWindow.af100.get(name)!=null) {
+			if(MealWindow.confirm("Muokataan elintarviketta", "Muokataan elintarviketta. Jos haluat luoda uuden elintarvikkeen, muuta \"nimi\" kenttää.")) {
+				//Edit food100g
+				newFood = false;
+			}else {
+				return;
+			}
+		}
+		
 		if(name.length()<2 || name.length() > MealWindow.maxNameLength) {
 			MealWindow.showMessage("Nimen täytyy olla 2 - " + MealWindow.maxNameLength + " merkkiä pitkä");
 			return;
@@ -27,9 +41,16 @@ public class FoodTab {
 			MealWindow.showMessage("Liian suuri syöte. Syöte alle " + MealWindow.maxKcal + " Kcal");
 			return;
 		}
-		
-		MealWindow.af100.add(new Food100g(0,name, kcal));
-		MealWindow.showMessage(name + " lisätty elintarvikkeisiin");
+		if(newFood) {
+			MealWindow.af100.add(new Food100g(0,name, kcal));
+			MealWindow.showMessage(name + " lisätty elintarvikkeisiin");
+		}else {
+			MealWindow.selectedFood2.setKcal(kcal);
+			MealWindow.af100.update(MealWindow.selectedFood2);
+			MealWindow.showMessage(name + " muokattu");
+			DataView.updateAll();
+			
+		}
 		updateFoodlist2();
 		MealTab.updateFoodlist1();
 		emptyFields();
@@ -44,7 +65,8 @@ public class FoodTab {
 	
 	//Edit food
 	protected static void editFood() {
-		
+		MealWindow.JTfoodName.setText(MealWindow.selectedFood2.getName());
+		MealWindow.JTfoodKcal.setText(MealWindow.selectedFood2.getKcal()+"");
 	}
 	
 	//Delete food
