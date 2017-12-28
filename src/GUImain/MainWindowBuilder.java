@@ -147,6 +147,7 @@ public class MainWindowBuilder {
 		MainWindow.mealList.setListData(MainWindow.testList);
 		MainWindow.mealList.setVisibleRowCount(5);
 		MainWindow.mealList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		MainWindow.mealList.setFocusable(false);
 		wListBox.add(new JScrollPane(MainWindow.mealList));
 		MainWindow.dataMealPanel.add(wListBox);//Add to /////
 		

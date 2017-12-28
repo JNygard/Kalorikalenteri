@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -267,6 +269,26 @@ public class MainWindow extends JFrame{
 			public void mouseReleased(MouseEvent e) {
 				DataView.setTime(TBweekTable.columnAtPoint(e.getPoint()), TBweekTable.rowAtPoint(e.getPoint()));
 			}
+		});
+		TBweekTable.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				DataView.setTime(TBweekTable.getSelectedColumn(), TBweekTable.getSelectedRow());
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
 		});
 				
 		//BTN 
