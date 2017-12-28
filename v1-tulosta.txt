@@ -1,0 +1,65 @@
+v1
+
+Maanantai (1326 Kcal)
+____________________________
+Klo. 5:00  Esimerkki ateria 1 (426 Kcal)
+ -Kananmuna 50 g/ml = 70 Kcal.
+ -Ruisleipä Reissumies  50 g/ml = 115 Kcal.
+ -Kevytmaitojuoma 100 g/ml = 161 Kcal.
+ -Broileri fileesuikale 100 g/ml = 80 Kcal.
+
+Klo. 7:00  Esimerkki aamiainen 1 (450 Kcal)
+ -Kananmuna 50 g/ml = 70 Kcal.
+ -Ruisleipä Reissumies  50 g/ml = 115 Kcal.
+ -Kaurahiutale 50 g/ml = 185 Kcal.
+ -Kevytmaitojuoma 50 g/ml = 80 Kcal.
+
+Klo. 8:00  Esimerkki aamiainen 1 (450 Kcal)
+ -Kananmuna 50 g/ml = 70 Kcal.
+ -Ruisleipä Reissumies  50 g/ml = 115 Kcal.
+ -Kaurahiutale 50 g/ml = 185 Kcal.
+ -Kevytmaitojuoma 50 g/ml = 80 Kcal.
+
+
+Tiistai (524 Kcal)
+____________________________
+Klo. 5:00  Esimerkki aamiainen 1 (450 Kcal)
+ -Kananmuna 50 g/ml = 70 Kcal.
+ -Ruisleipä Reissumies  50 g/ml = 115 Kcal.
+ -Kaurahiutale 50 g/ml = 185 Kcal.
+ -Kevytmaitojuoma 50 g/ml = 80 Kcal.
+
+Klo. 9:00  mömönö (74 Kcal)
+ -Juusto Arki Valio 23 g/ml = 74 Kcal.
+
+
+Keskiviikko (500 Kcal)
+____________________________
+Klo. 5:00  Esimerkki ateria 1 (426 Kcal)
+ -Kananmuna 50 g/ml = 70 Kcal.
+ -Ruisleipä Reissumies  50 g/ml = 115 Kcal.
+ -Kevytmaitojuoma 100 g/ml = 161 Kcal.
+ -Broileri fileesuikale 100 g/ml = 80 Kcal.
+
+Klo. 8:00  123 (74 Kcal)
+ -Juusto Arki Valio 23 g/ml = 74 Kcal.
+
+
+Torstai (426 Kcal)
+____________________________
+Klo. 5:00  Esimerkki ateria 1 (426 Kcal)
+ -Kananmuna 50 g/ml = 70 Kcal.
+ -Ruisleipä Reissumies  50 g/ml = 115 Kcal.
+ -Kevytmaitojuoma 100 g/ml = 161 Kcal.
+ -Broileri fileesuikale 100 g/ml = 80 Kcal.
+
+
+Perjantai (0 Kcal)
+____________________________
+
+Lauantai (0 Kcal)
+____________________________
+
+Sunnuntai (0 Kcal)
+____________________________
+

@@ -24,6 +24,9 @@ public class AdapterFood100g {
 		conn = SQLiteConnection.dbConnector();
 	}
 	
+	public AdapterFood100g(Connection c) {
+		conn = c;
+	}
 	
 	//Get by id
 	public Food100g get(int id) {

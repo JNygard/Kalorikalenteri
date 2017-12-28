@@ -45,8 +45,8 @@ public class MealWindow extends JFrame{
 	protected static String incridientLabel = "Sisältö";
 		//fTab
 	protected static String newFpnael = "Uusi elintarvike";
-	protected static String newFname = "Nimi: ";
-	protected static String newFkcal = "Kcal: ";
+	protected static String newFname = "Elintarvikkeen nimi: ";
+	protected static String newFkcal = "Kcal (per 100 g tai ml): ";
 	protected static String newFfoods = "Elintarvikkeet";
 	
 	//Dimension

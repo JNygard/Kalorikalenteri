@@ -8,12 +8,26 @@ public class SQLiteConnection {
 	Connection conn=null;
 	
 	
+	//This DB contains users modified data
 	public static Connection dbConnector() {
 		
 		try {
 			Class.forName("org.sqlite.JDBC");
 			Connection conn=DriverManager.getConnection("jdbc:sqlite:dietPlan.db");
-			//JOptionPane.showMessageDialog(null, "Connection succesfull");
+			return conn;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
+	//This DB contains the program default data
+	public static Connection dbConnectorDefault() {
+		
+		try {
+			Class.forName("org.sqlite.JDBC");
+			Connection conn=DriverManager.getConnection("jdbc:sqlite:dietPlanDefault.db");
 			return conn;
 		}catch(Exception e) {
 			e.printStackTrace();

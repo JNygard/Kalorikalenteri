@@ -1,6 +1,6 @@
 Viikko1
 
-Maanantai (1182 Kcal)
+Maanantai (1773 Kcal)
 ____________________________
 Klo. 5:00  Ateria23 (591 Kcal)
  -elointarvike2 34 g/ml = 7 Kcal.
@@ -8,6 +8,11 @@ Klo. 5:00  Ateria23 (591 Kcal)
  -elintarvik1 45 g/ml = 55 Kcal.
 
 Klo. 15:00  Ateria23 (591 Kcal)
+ -elointarvike2 34 g/ml = 7 Kcal.
+ -banaani1 23 g/ml = 529 Kcal.
+ -elintarvik1 45 g/ml = 55 Kcal.
+
+Klo. 10:00  Ateria23 (591 Kcal)
  -elointarvike2 34 g/ml = 7 Kcal.
  -banaani1 23 g/ml = 529 Kcal.
  -elintarvik1 45 g/ml = 55 Kcal.
@@ -57,7 +62,7 @@ Klo. 15:00  Ateria1 (833 Kcal)
  -elintarvik1 34 g/ml = 41 Kcal.
 
 
-Perjantai (1182 Kcal)
+Perjantai (2836 Kcal)
 ____________________________
 Klo. 5:00  Ateria23 (591 Kcal)
  -elointarvike2 34 g/ml = 7 Kcal.
@@ -68,6 +73,11 @@ Klo. 10:00  Ateria23 (591 Kcal)
  -elointarvike2 34 g/ml = 7 Kcal.
  -banaani1 23 g/ml = 529 Kcal.
  -elintarvik1 45 g/ml = 55 Kcal.
+
+Klo. 4:00  Aterio3 (1654 Kcal)
+ -banaani1 34 g/ml = 782 Kcal.
+ -elointarvike2 345 g/ml = 79 Kcal.
+ -ASD 345 g/ml = 793 Kcal.
 
 
 Lauantai (1424 Kcal)

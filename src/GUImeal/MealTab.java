@@ -75,17 +75,21 @@ public class MealTab {
 	protected static void addMealMode() {
 		MealWindow.mode = 0;
 		MealWindow.selectedMeal = null;
+		MealWindow.JCmealList.setSelectedIndex(0);
+		MealWindow.BmealDelete.setEnabled(false);
 		emptyFields();
 		showMealInputs(true);
 	}
 	
 	//Set selected meal
 	protected static void setSelectedMeal() {
-		if(MealWindow.JCmealList.getSelectedItem()==null) {
+		if(MealWindow.JCmealList.getSelectedItem()==null ||MealWindow.JCmealList.getSelectedItem()=="") {
 			MealWindow.mode = 0;
 			emptyFields();
+			MealWindow.BmealDelete.setEnabled(false);
 			return;
 		}
+		MealWindow.BmealDelete.setEnabled(true);
 		MealWindow.selectedMeal = MealWindow.ameal.get(String.valueOf(MealWindow.JCmealList.getSelectedItem()));
 		MealWindow.JTmealName.setText(MealWindow.selectedMeal.getName());
 		MealWindow.mealIncridients.clear();
@@ -193,6 +197,7 @@ public class MealTab {
 	//Update mealList
 	protected static void updateMealList() {
 		MealWindow.JCmealList.removeAllItems();
+		MealWindow.JCmealList.addItem("");
 		for(Meal m : MealWindow.ameal.getAll() ){
 			MealWindow.JCmealList.addItem(m.getName());
 		}

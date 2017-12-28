@@ -15,7 +15,7 @@ public class Settings {
 		
 		if(SettingsWindow.confirm("Poistetaan tiedot", "Oletko aivan varma, ett‰ haluat poistaa KAIKKI lis‰‰m‰si tiedot sovelluksesta?")){
 			if(SettingsWindow.confirm("Poistetaan tiedot", "Viimeinen varmistus")){
-				DBmanager.setDefaultData();
+				DBmanager.eraseAll();
 				MainWindow.showMessage("Kaikki tiedot poistettu. Sovellus suljetaan");
 				return true;
 			}

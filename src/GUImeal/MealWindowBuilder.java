@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -64,7 +65,7 @@ public class MealWindowBuilder {
 		Box nameBox = Box.createHorizontalBox();
 		nameBox.setMaximumSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
 		nameBox.add(new JLabel(MealWindow.newFname));
-		MealWindow.JTfoodName.setPreferredSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
+		MealWindow.JTfoodName.setPreferredSize(new Dimension(MealWindow.panelWidth1-100,MealWindow.inputHeight1));
 		nameBox.add(MealWindow.JTfoodName);
 		foodBox.add(nameBox);//Add to mealbox///////
 		
@@ -73,7 +74,7 @@ public class MealWindowBuilder {
 		Box kcalBox = Box.createHorizontalBox();
 		kcalBox.setMaximumSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
 		kcalBox.add(new JLabel(MealWindow.newFkcal));
-		MealWindow.JTfoodKcal.setPreferredSize(new Dimension(MealWindow.panelWidth1,MealWindow.inputHeight1));
+		MealWindow.JTfoodKcal.setPreferredSize(new Dimension(MealWindow.panelWidth1-100,MealWindow.inputHeight1));
 		kcalBox.add(MealWindow.JTfoodKcal);
 		foodBox.add(kcalBox);//Add to mealbox///////
 		
@@ -156,13 +157,18 @@ public class MealWindowBuilder {
 		//Meallist
 		Box mealListBox = Box.createHorizontalBox();
 		Box emptybox = Box.createHorizontalBox();
-		MealWindow.JCmealList = new JComboBox(Utility.mealToStringArray(MealWindow.ameal.getAll()).toArray());
+		
+		ArrayList<String> al = new ArrayList();
+		al.add("");
+		al.addAll(Utility.mealToStringArray(MealWindow.ameal.getAll()));
+		MealWindow.JCmealList = new JComboBox(al.toArray());
 		mealListBox.add(MealWindow.JCmealList);
 		MealWindow.JCmealList.setPreferredSize(new Dimension(MealWindow.panelWidth1+28, MealWindow.inputHeight1));
 		mealBox2.add(mealListBox);
 		
 		
 		JPanel REDpanel = new JPanel(new GridLayout(1,3));	
+		MealWindow.BmealDelete.setEnabled(false);
 		REDpanel.add(MealWindow.BmealDelete);
 		//REDpanel.add(MealWindow.BmealEdit);
 		REDpanel.add(MealWindow.BmealNew);
