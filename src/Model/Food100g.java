@@ -1,6 +1,6 @@
 package Model;
 
-public class Food100g {
+public class Food100g implements Comparable<Food100g>{
 	
 	private int id;
 	private String name;
@@ -114,6 +114,12 @@ public class Food100g {
 
 	public void setFiber(int fiber) {
 		this.fiber = fiber;
+	}
+
+	@Override
+	public int compareTo(Food100g o) {
+		// TODO Auto-generated method stub
+		return this.getName().toLowerCase().compareTo(o.getName().toLowerCase());
 	}
 	
 	

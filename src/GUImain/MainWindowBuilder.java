@@ -18,8 +18,10 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 import GUImeal.MealWindow;
+import Utility.MyTableModel;
 
 
 
@@ -27,15 +29,9 @@ public class MainWindowBuilder {
 
 
 	//Build tabs
-	protected static void buildView() {
-		
-		
+	protected static void buildView() {	
 		buildDataPanel();
 		buildWeekPanel();
-		
-		
-		
-		
 	}
 	
 
@@ -44,7 +40,6 @@ public class MainWindowBuilder {
 	protected static void buildWeekPanel() {
 		
 		//Week table
-		
 		String[] columnNameWeek = {"Klo", "Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai", "Sunnuntai"};
 		Object[][] dataWeek = {
 			    {"0:00", "", " ", " ", " ", "", " ", " "},{"1:00", "", " ", " ", " ", "", " ", " "},
@@ -61,7 +56,16 @@ public class MainWindowBuilder {
 			    {"22:00", "", " ", " ", " ", "", " ", " "},{"23:00", "", " ", " ", " ", "", " ", " "}
 		};
 		
-		MainWindow.TBweekTable  = new JTable(dataWeek, columnNameWeek);
+		//Set cell editing false
+		DefaultTableModel model = new DefaultTableModel(dataWeek, columnNameWeek);
+		MainWindow.TBweekTable = new JTable(model) {
+			public boolean isCellEditable(int rowIndex, int colIndex) {
+				return false; //Disallow the editing of any cell
+			}
+		};
+		
+		//MainWindow.TBweekTable  = new JTable(dataWeek, columnNameWeek);
+		
 		MainWindow.jsc  = new JScrollPane(MainWindow.TBweekTable);
 
 		MainWindow.TBweekTable.setRowHeight(40);
@@ -82,8 +86,6 @@ public class MainWindowBuilder {
 	}
 	
 	
-	
-	
 	//Build data panel
 	protected static void buildDataPanel() {
 		
@@ -94,14 +96,11 @@ public class MainWindowBuilder {
 	}
 	
 	
-	
-	
-	
+
 	
 	//Build dataWeekPanel
 	protected static void buildDataWeekPanel() {
 
-		
 		//Set WEEK list
 		Box wListBox = Box.createVerticalBox();
 		MainWindow.weekList.setListData(MainWindow.testList);
@@ -109,8 +108,6 @@ public class MainWindowBuilder {
 		MainWindow.weekList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wListBox.add(new JScrollPane(MainWindow.weekList));
 		MainWindow.dataWeekPanel.add(wListBox);//Add to /////
-		
-
 		
 		//TA
 		MainWindow.TAweek.setEditable(false);
@@ -203,10 +200,6 @@ public class MainWindowBuilder {
 		
 		MainWindow.dataPanel.add(MainWindow.dataMealPanel);
 	}
-	
-	
-	
-	
 	
 	
 	

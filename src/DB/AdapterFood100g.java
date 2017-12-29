@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
@@ -88,6 +89,7 @@ public class AdapterFood100g {
 			
 			rs.close();
 			pst.close();
+			Collections.sort(foods);
 			return foods;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -123,6 +125,7 @@ public class AdapterFood100g {
 			
 			rs.close();
 			pst.close();
+			Collections.sort(foods, String.CASE_INSENSITIVE_ORDER);
 			return foods;
 		} catch (SQLException e) {
 			e.printStackTrace();

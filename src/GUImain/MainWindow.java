@@ -8,6 +8,10 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -28,6 +32,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -48,6 +54,7 @@ import Model.MealTime;
 import Model.Week;
 import PrintableSchedule.Printer;
 import PrintableSchedule.ScheduleBuilder;
+import Utility.MyTableModel;
 import GUImeal.FoodTab;
 
 public class MainWindow extends JFrame{
@@ -258,10 +265,8 @@ public class MainWindow extends JFrame{
 			public void mouseClicked(MouseEvent e) {
 				   DataView.setTime(TBweekTable.columnAtPoint(e.getPoint()), TBweekTable.rowAtPoint(e.getPoint()));
 			}
-			public void mouseEntered(MouseEvent e) {
-			}
-			public void mouseExited(MouseEvent e) {
-			}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
 			
 			public void mousePressed(MouseEvent e) {
 				DataView.setTime(TBweekTable.columnAtPoint(e.getPoint()), TBweekTable.rowAtPoint(e.getPoint()));
@@ -270,26 +275,19 @@ public class MainWindow extends JFrame{
 				DataView.setTime(TBweekTable.columnAtPoint(e.getPoint()), TBweekTable.rowAtPoint(e.getPoint()));
 			}
 		});
+		//TABLE key listener
 		TBweekTable.addKeyListener(new KeyListener() {
-
-			@Override
 			public void keyPressed(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				
 			}
-
-			@Override
 			public void keyReleased(KeyEvent e) {
-				DataView.setTime(TBweekTable.getSelectedColumn(), TBweekTable.getSelectedRow());
+				if(TBweekTable.getSelectedColumn()>0 && TBweekTable.getSelectedRow()>0)
+					DataView.setTime(TBweekTable.getSelectedColumn(), TBweekTable.getSelectedRow());
 			}
-
-			@Override
 			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
 				
 			}
-			
 		});
+		
 				
 		//BTN 
 		BTnewWeek.addActionListener(new ActionListener() {

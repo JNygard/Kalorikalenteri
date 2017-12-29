@@ -39,7 +39,7 @@ public class MealWindow extends JFrame{
 	protected static String tab1Title = "Hallitse aterioita";
 	protected static String tab2Title = "Hallitse elintarvikkeita";
 	protected static String groupTitle1 = "Aterian tiedot";
-	protected static String groupTitle2 = "Elintarvikkeet";
+	protected static String groupTitle2 = "Elintarvikkeet (A-Ö)";
 	protected static String groupTitle3 = "Muokkaa ateriaa";
 	protected static String nameLabel = "Nimi: ";
 	protected static String incridientLabel = "Sisältö";
@@ -47,7 +47,7 @@ public class MealWindow extends JFrame{
 	protected static String newFpnael = "Uusi elintarvike";
 	protected static String newFname = "Elintarvikkeen nimi: ";
 	protected static String newFkcal = "Kcal (per 100 g tai ml): ";
-	protected static String newFfoods = "Elintarvikkeet";
+	protected static String newFfoods = "Elintarvikkeet (A-Ö)";
 	
 	//Dimension
 	protected static int windowWidth = 700;
