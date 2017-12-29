@@ -287,7 +287,7 @@ public class MainWindow extends JFrame{
 			public void keyPressed(KeyEvent arg0) {
 			}
 			public void keyReleased(KeyEvent e) {
-				if(TBweekTable.getSelectedColumn()>0 && TBweekTable.getSelectedRow()>0)
+				if(TBweekTable.getSelectedColumn()>0 && TBweekTable.getSelectedRow()>=0)
 					DataView.setTime(TBweekTable.getSelectedColumn(), TBweekTable.getSelectedRow());
 			}
 			public void keyTyped(KeyEvent arg0) {

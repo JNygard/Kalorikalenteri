@@ -55,12 +55,13 @@ public class SettingsWindow extends JFrame{
 		
 		//Tab1 view
 		protected static JLabel LformatWarning = new JLabel("<html> <body> Kaikki sovellukseen asetetu tiedot poistetaan lopullisesti. "
-				+ "<br> KAIKKI TIEDOT POISTETAAN! </body> </html>");
+				+ "<br>Tiedot korvataan sovelluksen oletustiedoilla"
+				+ "<br> HUOM! KAIKKI LISÄTYT TIEDOT POISTETAAN! </body> </html>");
 		protected static JButton BTdefaultData = new JButton("Tyhjennä tiedot");
 		
 		
 		protected static JButton BTready = new JButton("Valmis");
-		protected static JButton BTcancel = new JButton("Peruuta");
+		protected static JButton BTcancel = new JButton("Poistu");
 		
 		
 		//DB
@@ -102,7 +103,7 @@ public class SettingsWindow extends JFrame{
 		//BTN cancel
 		BTcancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				 CloseFrame();
 			}});
 		
 		BTdefaultData.addActionListener(new ActionListener() {

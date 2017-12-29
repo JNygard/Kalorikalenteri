@@ -26,11 +26,11 @@ public class SettingsWindowBuilder {
 			buildTab2PanelLayout();
 			
 			SettingsWindow.tabbedPane.add(SettingsWindow.tab1title ,SettingsWindow.tab1panel);
-			SettingsWindow.tabbedPane.add(SettingsWindow.tab2title , SettingsWindow.tab2panel);
+			//SettingsWindow.tabbedPane.add(SettingsWindow.tab2title , SettingsWindow.tab2panel);
 			SettingsWindow.inner.add(SettingsWindow.tabbedPane);
 			
 			SettingsWindow.buttonPanel.add(SettingsWindow.BTcancel);
-			SettingsWindow.buttonPanel.add(SettingsWindow.BTready);
+			//SettingsWindow.buttonPanel.add(SettingsWindow.BTready);
 			SettingsWindow.inner.add(SettingsWindow.buttonPanel);
 		}
 

@@ -31,7 +31,7 @@ public class ScheduleBuilder {
 		
 		PrintWriter writer;
 		try {
-			docName = w.getName()+"-tulosta.txt"; 
+			docName = "Resources/print/"+w.getName()+".txt"; 
 			writer = new PrintWriter(docName, "UTF-8");
 			
 			//Print week name
