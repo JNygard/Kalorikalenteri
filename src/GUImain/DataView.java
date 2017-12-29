@@ -59,12 +59,17 @@ public class DataView {
 					MainWindow.selectedMeal = MainWindow.selectedMealTime.getMeal();
 					MainWindow.mealList.setSelectedIndex(MainWindow.selectedMeal.getId()-1);
 					MainWindow.BTemptyMeal.setEnabled(true);
+					
+					MainWindow.mealList.setSelectedIndex(jmealListIndex());
 				}else {
 					MainWindow.BTemptyMeal.setEnabled(false);
 					MainWindow.selectedMealTime = null;
 					MainWindow.selectedMeal = null;
 					MainWindow.mealList.clearSelection();
+					
+					MainWindow.mealList.clearSelection();
 				}
+				
 				
 				updateMealIncridientsList() ;
 				updateDayCalories() ;
@@ -97,7 +102,7 @@ public class DataView {
 			}else {
 				
 				
-				MainWindow.showMessage("Et ole valinnut ajankohtaa");
+				MainWindow.showMessage("Valitse ensin viereisestä taulukosta ajankohtaa kuvaava solu");
 			}
 			
 			
@@ -251,6 +256,22 @@ public class DataView {
 		
 		//MainWindow.mealList.setListData(Utility.mealToStringArray(MainWindow.ameal.getAll()).toArray());
 		//MainWindow.
+	}
+	
+	//Return selected Jmeallist index of meal
+	private static int jmealListIndex() {
+		String s = MainWindow.selectedMeal.getName();
+		
+		int i = 0;
+		while(i<MainWindow.mealList.getModel().getSize()) {
+			if(MainWindow.mealList.getModel().getElementAt(i).equals(s)) {
+				return i;
+			}
+			i++;
+		}
+		
+		
+		return 0;
 	}
 
 

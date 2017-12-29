@@ -90,9 +90,18 @@ public class MainWindowBuilder {
 	protected static void buildDataPanel() {
 		
 		buildDataWeekPanel() ;
+		
+		//Separator
+		Box separator = Box.createVerticalBox();
+		separator.setBorder(BorderFactory.createEmptyBorder(0,0,20,0));
+		MainWindow.dataPanel.add(separator);
+		
 		buildDataMealPanel() ;
 		
+		
+		MainWindow.dataPanel.setPreferredSize(new Dimension(300, MainWindow.windowHeigth/2));
 		MainWindow.inner.add(MainWindow.dataPanel, BorderLayout.LINE_START);
+		MainWindow.dataPanel.setBorder(BorderFactory.createEmptyBorder(0,0,150,0));
 	}
 	
 	
@@ -124,6 +133,8 @@ public class MainWindowBuilder {
 		
 		MainWindow.dataWeekPanel.setMaximumSize(new Dimension(600,200));
 		MainWindow.dataWeekPanel.setBorder(BorderFactory.createTitledBorder("Viikko"));
+		
+		
 		MainWindow.dataPanel.add(MainWindow.dataWeekPanel,BorderLayout.CENTER);
 		
 	}
@@ -142,7 +153,7 @@ public class MainWindowBuilder {
 		//Set MEAL list
 		Box wListBox = Box.createVerticalBox();
 		MainWindow.mealList.setListData(MainWindow.testList);
-		MainWindow.mealList.setVisibleRowCount(5);
+		MainWindow.mealList.setVisibleRowCount(30);
 		MainWindow.mealList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		MainWindow.mealList.setFocusable(false);
 		wListBox.add(new JScrollPane(MainWindow.mealList));
@@ -166,10 +177,13 @@ public class MainWindowBuilder {
 				MainWindow.dataMealPanel.add(f2);//Add to /////
 		
 		//Incridient table
-				MainWindow.TBmealIncridients.setEnabled(false);
+		MainWindow.TBmealIncridients.setEnabled(false);
 		JScrollPane jsc = new JScrollPane(MainWindow.TBmealIncridients);
-		jsc.setPreferredSize(new Dimension(150, 100));
+		
 		MainWindow.dataMealPanel.add(jsc);
+		
+		
+		
 				
 		//Kcal 
 		MainWindow.LmealKcal.setFont(MainWindow.LmealKcal.getFont().deriveFont(14.0f));
@@ -196,6 +210,8 @@ public class MainWindowBuilder {
 		f3.add(MainWindow.LweekKcal);
 		MainWindow.LweekKcal.setFont(MainWindow.LweekKcal.getFont().deriveFont(14.0f));
 		MainWindow.dataMealPanel.add(f3);//Add to /////
+		
+		//MainWindow.dataMealPanel.setMaximumSize(new Dimension(300, MainWindow.windowHeigth + (MainWindow.windowHeigth/2)));
 		
 		
 		MainWindow.dataPanel.add(MainWindow.dataMealPanel);
