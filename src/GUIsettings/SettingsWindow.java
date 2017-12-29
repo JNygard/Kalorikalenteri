@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +20,7 @@ import javax.swing.JTextField;
 import DB.AdapterDay;
 import DB.AdapterWeek;
 import DB.DBmanager;
+import GUImain.MainWindow;
 import GUImeal.MealTab;
 import GUImeal.MealWindowBuilder;
 import Model.Week;
@@ -72,7 +74,7 @@ public class SettingsWindow extends JFrame{
 	public SettingsWindow() {
 		//Build window
 		super(title);
-		
+		this.setIconImage(MainWindow.icon.getImage());
 		
 
 		SettingsWindowBuilder.buildWindow(); //Builds window

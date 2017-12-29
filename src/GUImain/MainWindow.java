@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -59,11 +60,14 @@ import GUImeal.FoodTab;
 
 public class MainWindow extends JFrame{
 	
+	public static ImageIcon icon = new ImageIcon("Resources/muscle2.png");
+	
 	//Windows
 	MealWindow mw = new MealWindow();
-	protected static CreateWeekWindow cww = new CreateWeekWindow();
+	static CreateWeekWindow cww = new CreateWeekWindow();
 	protected static CreateInfoWindow ciw = new CreateInfoWindow();
 	protected static SettingsWindow csw = new SettingsWindow();
+	
 	
 	
 	//String
@@ -170,6 +174,7 @@ public class MainWindow extends JFrame{
 		this.setJMenuBar(menuBar);
 		
 		//Buildwindow
+		this.setIconImage(icon.getImage());
 		MainWindowBuilder.buildView();
 		this.getContentPane().add(inner);
 		this.setVisible(true);
@@ -198,7 +203,9 @@ public class MainWindow extends JFrame{
 		//Exit
 		MIexit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CloseFrame();
+				if(confirm("Suljetaan","Suljetaanko?")) {
+					CloseFrame();
+				}
 			}});
 		//Print
 

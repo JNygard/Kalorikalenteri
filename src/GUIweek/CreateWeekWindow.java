@@ -61,6 +61,7 @@ public class CreateWeekWindow extends JFrame{
 
 	public CreateWeekWindow() {
 		super(title);
+		this.setIconImage(MainWindow.icon.getImage());
 		
 		setSize(windowWidth,windowHeigth);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -71,7 +72,6 @@ public class CreateWeekWindow extends JFrame{
 		
 		this.getContentPane().add(inner);
 		
-
 		
 	}
 	

@@ -13,7 +13,7 @@ public class SQLiteConnection {
 		
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conn=DriverManager.getConnection("jdbc:sqlite:dietPlan.db");
+			Connection conn=DriverManager.getConnection("jdbc:sqlite:Resources/dietPlan.db");
 			return conn;
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -27,7 +27,7 @@ public class SQLiteConnection {
 		
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conn=DriverManager.getConnection("jdbc:sqlite:dietPlanDefault.db");
+			Connection conn=DriverManager.getConnection("jdbc:sqlite:Resources/dietPlanDefault.db");
 			return conn;
 		}catch(Exception e) {
 			e.printStackTrace();

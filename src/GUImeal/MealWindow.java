@@ -26,6 +26,7 @@ import DB.AdapterFood;
 import DB.AdapterFood100g;
 import DB.AdapterMeal;
 import GUImain.DataView;
+import GUImain.MainWindow;
 import Model.Food;
 import Model.Food100g;
 import Model.Meal;
@@ -140,6 +141,7 @@ public class MealWindow extends JFrame{
 		
 		//Build window
 		super(title);
+		this.setIconImage(MainWindow.icon.getImage());
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		MealWindowBuilder.buildWindow(); //Builds window
 		this.getContentPane().add(inner);

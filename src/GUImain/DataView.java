@@ -120,8 +120,6 @@ public class DataView {
 		if(MainWindow.selectedCell!=null) {
 			if(MainWindow.selectedMealTime!=null) {
 				
-				if(MainWindow.confirm("Tyhjenn‰ ajankohta", "Haluatko tyhjent‰‰ ajankohdan?")) {
-				
 					MainWindow.amealTime.delete(MainWindow.selectedMealTime.getId());
 					MainWindow.BTemptyMeal.setEnabled(false);
 					
@@ -129,7 +127,7 @@ public class DataView {
 					updateDayCalories() ;
 					updateAVGdayKcal();
 					updateWeekCalories();
-				}
+				
 			}else {
 				MainWindow.showMessage("Ajankohta on jo tyhj‰");
 			}
