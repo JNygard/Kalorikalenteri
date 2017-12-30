@@ -106,8 +106,10 @@ public class MealTab {
 	//Set selected food1
 	protected static  void setSelectedFood1() {
 		MealWindow.BaddNewIncridient.setEnabled(true);
-		MealWindow.selectedFood = MealWindow.af100.get(MealWindow.LfoodList1.getSelectedValue().toString());
-		MealWindow.LaddNewIncridient.setText(Utility.limitString(MealWindow.selectedFood.getName(),15) + " | " + MealWindow.selectedFood.getKcal() + " kcal/100g");
+		if(MealWindow.LfoodList1.getSelectedValue()!=null) {
+			MealWindow.selectedFood = MealWindow.af100.get(MealWindow.LfoodList1.getSelectedValue().toString());
+			MealWindow.LaddNewIncridient.setText(Utility.limitString(MealWindow.selectedFood.getName(),15) + " | " + MealWindow.selectedFood.getKcal() + " kcal/100g");
+		}
 	}
 	
 	//Set selected incridient
