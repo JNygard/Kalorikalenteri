@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class CreateInfoWindow extends JFrame{
 	
-		File htmlFile = new File("Resources/HELP.html");
+		static File htmlFile = new File("Resources/ohjeet.html");
 
 		/*
 		//Dimensions
@@ -70,7 +70,7 @@ public class CreateInfoWindow extends JFrame{
 	*/
 	
 	//Open help guide in browser
-	public void guideInBrowser() {
+	public static void guideInBrowser() {
 		try {
 			Desktop.getDesktop().browse(htmlFile.toURI());
 		} catch (IOException e) {

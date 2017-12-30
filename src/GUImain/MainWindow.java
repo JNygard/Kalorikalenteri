@@ -43,6 +43,7 @@ import DB.AdapterFood;
 import DB.AdapterFood100g;
 import DB.AdapterMeal;
 import DB.AdapterMealTime;
+import DB.AdapterUser;
 import DB.AdapterWeek;
 import GUIinfo.CreateInfoWindow;
 import GUImeal.MealWindow;
@@ -73,7 +74,7 @@ public class MainWindow extends JFrame{
 	//String
 	protected static String title = "Kalorikalenteri";
 	protected static String programAuthor = "Tämä sovellus on Oulun yliopiston tietojenkäsittelytieteen laitoksen "
-			+ "Käyttöliittymäohjelmointi kurssille Joonas Nygårdin tekemä harkoitustyö. ";
+			+ "Käyttöliittymäohjelmointi kurssille Joonas Nygårdin tekemä harjoitustyö. ";
 
 	
 	//Dimensions
@@ -164,6 +165,11 @@ public class MainWindow extends JFrame{
 	public MainWindow() {
 		super(title);
 		
+		//Check first time
+		if(!AdapterUser.instructionCheck()){
+			CreateInfoWindow.guideInBrowser();
+		}
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(windowWidth,windowHeigth);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -192,6 +198,7 @@ public class MainWindow extends JFrame{
 		DataView.setSelectedWeek();
 		setTitle();
 		
+
 	}
 	
 	private void setMenuListeners(){

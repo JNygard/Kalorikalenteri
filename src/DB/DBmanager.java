@@ -79,7 +79,12 @@ public class DBmanager {
 			}
 		}
 		
+		//Set instructions to not read
+		AdapterUser.setInstructionCheck(false);
+		
 	}
+	
+	
 	
 	
 	

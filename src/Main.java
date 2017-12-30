@@ -17,32 +17,20 @@ import cli.CLI;
 
 public class Main {
 	
+	//Commandline interface
 	static CLI cli = new CLI();
+	
+	//Graphical user interface
 	static MainWindow gui2 = new MainWindow();
-	//static MealWindow mw = new MealWindow();
 
 	public Main() {
 	}
 	
 
 	public static void main(String[] args) {
-		
-		
-		cli.start();
-		
-		/*
-		AdapterFood100g a100 = new AdapterFood100g();
-		
-		String s= "";
-		
-		
-		for(Food100g f: a100.getAll()) {
-			s+= f.getName() + " | ";
-		}
-		
-		
-		JOptionPane.showMessageDialog(null, s);
-*/
+
+		//cli.start();
+
 
 	}
 
