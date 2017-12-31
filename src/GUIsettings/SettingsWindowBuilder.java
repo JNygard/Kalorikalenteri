@@ -46,11 +46,6 @@ public class SettingsWindowBuilder {
 			
 			SettingsWindow.tab1panel.add(box);
 			SettingsWindow.tab1panel.setPreferredSize(new Dimension(SettingsWindow.windowWidth-SettingsWindow.margin1X, SettingsWindow.windowHeigth-SettingsWindow.margin1Y));
-
-			
-			
-			
-			
 			
 		}
 

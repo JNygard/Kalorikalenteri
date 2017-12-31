@@ -56,7 +56,6 @@ import Model.MealTime;
 import Model.Week;
 import PrintableSchedule.Printer;
 import PrintableSchedule.ScheduleBuilder;
-import Utility.MyTableModel;
 import GUImeal.FoodTab;
 
 public class MainWindow extends JFrame{
@@ -262,17 +261,6 @@ public class MainWindow extends JFrame{
 					public void valueChanged(ListSelectionEvent arg0) {
 						DataView.setSelectedMeal();
 					}});
-		//TABLE
-		/*
-		TBweekTable.getSelectionModel().addListSelectionListener(
-				new ListSelectionListener() {
-					public void valueChanged(ListSelectionEvent arg0) {
-				        int selectedRow = TBweekTable.getSelectedRows()[0];
-				        int selectedColumn = TBweekTable.getSelectedColumns()[0];
-				        DataView.setTime(selectedColumn, selectedRow);
-				      //showMessage(". Row: " + selectedRow + ". Column: " + selectedColumn);
-					}});
-		*/
 		//TABLE
 		TBweekTable.addMouseListener(new MouseListener() {
 

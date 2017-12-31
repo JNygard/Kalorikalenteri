@@ -211,15 +211,7 @@ public class MealWindowBuilder {
 		MealWindow.LmealIncridients.setListData(s);
 		MealWindow.LmealIncridients.setVisibleRowCount(8);
 		MealWindow.LmealIncridients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		/*
-		LmealIncridients.addListSelectionListener(
-				new ListSelectionListener() {
-					@Override
-					public void valueChanged(ListSelectionEvent arg0) {
-						JOptionPane.showMessageDialog(getParent(), "asd " + arg0.getLastIndex());
-					}
-			});
-			*/
+
 		incridientBox2.add(new JScrollPane(MealWindow.LmealIncridients));
 		incridientBox.add(incridientBox2);//Add to mealbox/////
 		
@@ -256,15 +248,7 @@ public class MealWindowBuilder {
 		
 		MealWindow.LfoodList1.setVisibleRowCount(MealWindow.foodListHeight);
 		MealWindow.LfoodList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		/*
-		MealWindow.LfoodList1.addListSelectionListener(
-				new ListSelectionListener() {
-					@Override
-					public void valueChanged(ListSelectionEvent arg0) {
-						JOptionPane.showMessageDialog(getParent(), "asd " + arg0.getLastIndex());
-					}
-			});
-			*/
+
 		
 		mealFoodBox.add(new JScrollPane(MealWindow.LfoodList1));
 		MealWindow.mealGrid.add(mealFoodBox);

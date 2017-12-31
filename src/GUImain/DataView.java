@@ -251,9 +251,7 @@ public class DataView {
 			
 		}
 		
-		
-		//MainWindow.mealList.setListData(Utility.mealToStringArray(MainWindow.ameal.getAll()).toArray());
-		//MainWindow.
+
 	}
 	
 	//Return selected Jmeallist index of meal

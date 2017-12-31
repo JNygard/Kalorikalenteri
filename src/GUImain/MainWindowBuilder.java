@@ -21,7 +21,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import GUImeal.MealWindow;
-import Utility.MyTableModel;
 
 
 
@@ -63,24 +62,14 @@ public class MainWindowBuilder {
 				return false; //Disallow the editing of any cell
 			}
 		};
-		
-		//MainWindow.TBweekTable  = new JTable(dataWeek, columnNameWeek);
-		
+				
 		MainWindow.jsc  = new JScrollPane(MainWindow.TBweekTable);
 
 		MainWindow.TBweekTable.setRowHeight(40);
-		
-		//MainWindow.TBweekTable.setPreferredScrollableViewportSize(new Dimension(700,450));
-		
-		//MainWindow.TBweekTable.setAutoResizeMode( MainWindow.TBweekTable.AUTO_RESIZE_OFF );
-		//MainWindow.TBweekTable.getColumnModel().getColumn(0).setPreferredWidth(100);
-		
-		//MainWindow.TBweekTable.setFillsViewportHeight(true);
-		
 		MainWindow.TBweekTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		MainWindow.TBweekTable.setCellSelectionEnabled(true);
 		MainWindow.TBweekTable.disable();
-		
+
 		MainWindow.inner.add(MainWindow.jsc,BorderLayout.CENTER );
 		
 	}
@@ -172,18 +161,16 @@ public class MainWindowBuilder {
 
 		
 		//Label meal name		
-				JPanel f2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				f2.add(MainWindow.LmealName);
-				MainWindow.LmealName.setFont(MainWindow.LmealKcal.getFont().deriveFont(14.0f));
-				MainWindow.dataMealPanel.add(f2);//Add to /////
+		JPanel f2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		f2.add(MainWindow.LmealName);
+		MainWindow.LmealName.setFont(MainWindow.LmealKcal.getFont().deriveFont(14.0f));
+		MainWindow.dataMealPanel.add(f2);//Add to /////
 		
 		//Incridient table
 		MainWindow.TBmealIncridients.setEnabled(false);
 		JScrollPane jsc = new JScrollPane(MainWindow.TBmealIncridients);
 		
 		MainWindow.dataMealPanel.add(jsc);
-		
-		
 		
 				
 		//Kcal 
