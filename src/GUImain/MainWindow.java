@@ -61,7 +61,7 @@ import GUImeal.FoodTab;
 
 public class MainWindow extends JFrame{
 	
-	public static ImageIcon icon = new ImageIcon("Resources/muscle2.png");
+	public static ImageIcon icon = new ImageIcon("Resources/images/muscle2.png");
 	
 	//Windows
 	MealWindow mw = new MealWindow();
